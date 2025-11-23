@@ -1,9 +1,8 @@
 import AuthLayout from "~/features/auth/authLayout";
+import RegisterForm from "~/features/auth/Register/registerForm";
 import AuthFooterLinks from "~/features/auth/components/AuthFooterLinks";
-import LoginForm from "~/features/auth/Login/loginForm";
 import { useNavigate } from "react-router-dom";
-
-export default function LoginPage() {
+export default function RegisterPage() {
     const navigate = useNavigate();
     return (
         <AuthLayout>
@@ -15,11 +14,11 @@ export default function LoginPage() {
                                 Welcome Back
                             </h1>
                             <p className="text-slate-400 text-sm">
-                                Sign in to your LikesubVIP account
+                                Sign up to your LikesubVIP account
                             </p>
                         </div>
 
-                        <LoginForm />
+                        <RegisterForm />
 
                         <div className="relative my-6">
                             <div className="absolute inset-0 flex items-center">
@@ -27,7 +26,7 @@ export default function LoginPage() {
                             </div>
                             <div className="relative flex justify-center text-sm">
                                 <span className="px-2 bg-linear-to-b from-slate-800/50 to-slate-900/50 text-slate-500">
-                                    New to LikesubVIP?
+                                    You already have an account to LikesubVIP?
                                 </span>
                             </div>
                         </div>
@@ -35,9 +34,9 @@ export default function LoginPage() {
                         <button
                             type="button"
                             className="w-full border border-slate-600/50 hover:border-slate-500/50 text-slate-300 hover:text-white font-semibold py-3 rounded-lg transition duration-200"
-                            onClick={() => navigate("/register")}
+                            onClick={() => navigate("/login")}
                         >
-                            Create Account
+                            Sign In
                         </button>
                         <AuthFooterLinks />
                     </div>
