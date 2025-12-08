@@ -245,3 +245,11 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@utility no-scrollbar {
+  &::-webkit-scrollbar { /* Chrome, Safari and Opera */
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
