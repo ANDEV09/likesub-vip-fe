@@ -5,7 +5,7 @@ import UserHeader from "./UserHeader"
 
 function ClientLayout() {
     return (
-        <div className="flex">
+        <div className="min-h-screen lg:flex">
             <UserSidebar />
 
             <main className="flex-1">
