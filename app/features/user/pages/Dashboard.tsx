@@ -1,6 +1,8 @@
 function ClientDashboard() {
     return (
-        <div>Dashboard</div>
+        <div>
+            Dashboard
+        </div>
     )
 }
 
