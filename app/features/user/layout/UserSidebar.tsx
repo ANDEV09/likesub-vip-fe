@@ -1,14 +1,25 @@
-import { 
-    Calendar,
-    GridIcon,
-    ListIcon,
-    PiIcon,
-    TableIcon,
-    UserCircle
+import {
+    ShoppingCart,
+    Wallet,
+    PackageCheck,
+    BadgeDollarSign,
+    Link2,
+    LifeBuoy,
+    FileCode2,
+    Globe,
+    MessageCircle,
+    ShoppingBag,
+    Facebook,
+    Youtube,
+    Instagram,
+    ChevronDownIcon
 } from "lucide-react";
-import { Link } from "react-router";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-type NavItemType = {
+import { Link, useLocation } from "react-router";
+import { useSidebar } from "../hooks/useSidebar";
+
+interface NavItemType {
     name: string,
     icon: React.ReactNode,
     path?: string,
@@ -21,93 +32,290 @@ type NavItemType = {
 
 const navItems: NavItemType[] = [
     {
-        icon: <GridIcon />,
-        name: "Tạo đơn ",
-        path: "/dashboard"
+        name: "Tạo đơn hàng",
+        icon: <ShoppingCart size={20} />,
+        path: "/client/create-order",
     },
     {
-        icon: <Calendar />,
         name: "Nạp tiền",
-        path: "/calendar",
+        icon: <Wallet size={20} />,
+        path: "/top-up",
     },
     {
-        icon: <UserCircle />,
         name: "Đơn hàng đã mua",
-        path: "/profile",
+        icon: <PackageCheck size={20} />,
+        path: "/orders",
     },
     {
-        icon: <Calendar />,
         name: "Bảng giá dịch vụ",
-        path: "/calendar",
+        icon: <BadgeDollarSign size={20} />,
+        path: "/client/service-pricing",
     },
     {
-        icon: <UserCircle />,
         name: "Tiếp thị liên kết",
-        path: "/profile",
+        icon: <Link2 size={20} />,
+        path: "/affiliate",
+    },
+];
+
+const othersItems: NavItemType[] = [
+    {
+        name: "Yêu cầu hỗ trợ",
+        icon: <LifeBuoy size={20} />,
+        path: "/client/support-request",
     },
     {
-        name: "Forms",
-        icon: <ListIcon />,
+        name: "Tài liệu API",
+        icon: <FileCode2 size={20} />,
+        path: "/api-docs",
+    },
+    {
+        name: "Tạo web riêng",
+        icon: <Globe size={20} />,
+        path: "/custom-website",
+    },
+];
+
+const servicesItems: NavItemType[] = [
+    {
+        name: "Dịch vụ Facebook",
+        icon: <Facebook size={20} />,
         subItems: [
-            { 
-                name: "Form Elements",
-                path: "/form-elements",
-            }
+        { name: "Like bài viết", path: "/services/facebook/like" },
+        { name: "Follow trang", path: "/services/facebook/follow" },
+        { name: "Comment bài viết", path: "/services/facebook/comment" },
+        { name: "Share bài viết", path: "/services/facebook/share" },
         ],
     },
     {
-        name: "Tables",
-        icon: <TableIcon />,
+        name: "Dịch vụ TikTok",
+        icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M21 7.5a6.5 6.5 0 0 1-5-2.4V15a5 5 0 1 1-5-5h1v3a2 2 0 1 0 2 2V2h3a6.5 6.5 0 0 0 5 5.5Z"/>
+        </svg>
+        ),
         subItems: [
-            {
-                name: "Basic Tables",
-                path: "/basic-tables",
-            }
+        { name: "Follow kênh", path: "/services/tiktok/follow" },
+        { name: "Like video", path: "/services/tiktok/like" },
+        { name: "View video", path: "/services/tiktok/view" },
+        { name: "Comment video", path: "/services/tiktok/comment" },
         ],
     },
     {
-        name: "Other Pages",
-        icon: <PiIcon />,
+        name: "Dịch vụ Youtube",
+        icon: <Youtube size={20} />,
         subItems: [
-            { 
-                name: "Blank Page",
-                path: "/blank",
-            },
-            { 
-                name: "404 Error",
-                path: "/error-404",
-            },
+        { name: "Subscribe kênh", path: "/services/youtube/subscribe" },
+        { name: "View video", path: "/services/youtube/view" },
+        { name: "Like video", path: "/services/youtube/like" },
         ],
     },
-]
+    {
+        name: "Dịch vụ Instagram",
+        icon: <Instagram size={20} />,
+        subItems: [
+        { name: "Follow", path: "/services/instagram/follow" },
+        { name: "Like bài viết", path: "/services/instagram/like" },
+        { name: "View story", path: "/services/instagram/story-view" },
+        ],
+    },
+    {
+        name: "Dịch vụ Threads",
+        icon: <MessageCircle size={20} />,
+        subItems: [
+        { name: "Follow", path: "/services/threads/follow" },
+        { name: "Like bài viết", path: "/services/threads/like" },
+        ],
+    },
+    {
+        name: "Dịch vụ Lazada",
+        icon: <ShoppingBag size={20} />,
+        subItems: [
+        { name: "Follow shop", path: "/services/lazada/follow-shop" },
+        { name: "Like sản phẩm", path: "/services/lazada/like-product" },
+        ],
+    },
+];
 
 function UserSidebar() {
+    const location = useLocation();
+    const pathname = location.pathname;
+
+    const { isExpanded, isHovered, setIsHovered } = useSidebar();
+
+    const [openSubmenu, setOpenSubmenu] = useState<{
+        type: "menu" | "others" | "services";
+        index: number;
+    } | null>(null);
+
+    const isActive = useCallback((path: string) => {
+        if (!path) return false;
+        return pathname === path;
+    }, [pathname]);
+
+    const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({}); // to get real height
+    const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>({}); // to get current height
+
+    const handleSubmenuToggle = (index: number, menuType: "menu" | "others" | "services") => {
+        setOpenSubmenu((prev) => {
+            if (prev &&
+                prev.type === menuType &&
+                prev.index === index
+            ) {
+                return null
+            }
+
+            return {
+                type: menuType,
+                index
+            }
+        })
+    }
+
+    // check if current path matches any submenu item
+    useEffect(() => {
+        let subMenuMatched = false;        
+
+        ["menu", "others", "services"].map(type => {
+            const items = type === "menu" 
+                ? navItems 
+                : type === "others" ? othersItems : servicesItems;
+
+            items.map((nav, index) => {
+                if (nav.subItems) {
+                    nav.subItems.forEach((subItem) => {
+                    if (isActive(subItem.path)) {
+                        setOpenSubmenu({
+                            type: type as "menu" | "others" | "services",
+                            index
+                        });
+                        subMenuMatched = true;
+                }
+            })};
+        });
+
+        if (!subMenuMatched) setOpenSubmenu(null);
+
+    })}, [pathname, isActive]);
+
+    // Set the height of the submenu items when the submenu is opened
+    useEffect(() => {
+        if (openSubmenu !== null) {
+            const key = `${openSubmenu.type}-${openSubmenu.index}`;
+
+            if (subMenuRefs.current[key]) {
+                setSubMenuHeight(prev => ({
+                    ...prev,
+                    [key]: subMenuRefs.current[key]?.scrollHeight || 0,
+                }));
+            }
+        }
+    }, [openSubmenu]);
+
     const renderMenuItems = (
         navItems: NavItemType[],
-        menuType: "main" | "others"
+        menuType: "menu" | "others" | "services"
     ) => {
         return (
             <ul className="flex flex-col gap-4">
                 {navItems.map((nav, index) => (
                     <li key={nav.name}>
                         {nav.subItems ? (
-                            <button>
-
+                            <button
+                                onClick={() => handleSubmenuToggle(index, menuType)}
+                                className={`relative hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-2 font-normal rounded-lg text-[14px] group text-slate-300 ${
+                                    openSubmenu?.type === menuType && openSubmenu?.index === index
+                                        ? "bg-slate-800 text-blue-400"
+                                        : "text-slate-300 group-hover:text-slate-400"
+                                    } cursor-pointer ${
+                                        !isExpanded && !isHovered
+                                            ? "justify-center"
+                                            : "justify-start"
+                                    }`}
+                            >
+                                <span 
+                                    className={`${openSubmenu?.type === menuType && openSubmenu?.index === index 
+                                        ? "text-blue-400"
+                                        : "text-slate-300 group-hover:text-slate-400" 
+                                    }`}
+                                >
+                                    {nav.icon}
+                                </span>
+                                {(isExpanded || isHovered) && (
+                                    <span
+                                        className={`${openSubmenu?.type === menuType && openSubmenu?.index === index 
+                                        ? "text-blue-400"
+                                        : "text-slate-300 group-hover:text-slate-400" 
+                                    }`}    
+                                    >
+                                        {nav.name}
+                                    </span>
+                                )}
+                                {(isExpanded || isHovered) && (
+                                    <ChevronDownIcon
+                                        className={`ml-auto w-5 h-5 transition-transform duration-200 ${
+                                            openSubmenu?.type === menuType &&
+                                            openSubmenu?.index === index
+                                            ? "rotate-180 text-blue-400"
+                                            : ""
+                                        }`}
+                                    />
+                                )}
                             </button>
                         ) : (
                             nav.path && (
                                 <Link
-                                    className={"bg-slate-800 flex items-center w-full gap-3 px-3 py-2 font-medium rounded-lg text-[14px] group text-slate-200"}
+                                    className={"hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-2 font-normal rounded-lg text-[14px] group text-slate-300"}
                                     to={nav.path}
                                 >
-                                    <span>
+                                    <span className={`${isActive(nav.path) 
+                                        ? "text-blue-400"
+                                        : "text-slate-300 group-hover:text-slate-400" 
+                                    }`}>
                                         {nav.icon}
                                     </span>
-                                    <span>
+                                    <span className={`${isActive(nav.path) 
+                                        ? "text-blue-400"
+                                        : "text-slate-300 group-hover:text-slate-400" 
+                                    }`}>
                                         {nav.name}
                                     </span>
                                 </Link>
                             )
+                        )}
+
+                        {/* Nav Sub Item */}
+                        {nav.subItems && (isExpanded || isHovered) && (
+                            <div
+                                ref={(el) => {
+                                    subMenuRefs.current[`${menuType}-${index}`] = el;
+                                }}
+                                className="overflow-hidden transition-all duration-300"
+                                style={{
+                                    height:
+                                        openSubmenu?.type === menuType && openSubmenu?.index === index
+                                            ? `${subMenuHeight[`${menuType}-${index}`]}px`
+                                            : "0px",
+                                }}
+                            >
+                                <ul className="mt-2 space-y-1 text-left ml-11">
+                                    {nav.subItems.map(subItem => (
+                                        <li key={subItem.name}>
+                                            <Link
+                                                className={`hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-2 font-normal rounded-lg text-[14px] group text-slate-300 ${isActive(subItem.path) 
+                                                    ? "text-blue-400"
+                                                    : "text-slate-300 group-hover:text-slate-400" 
+                                                }`}
+                                                to={subItem.path}
+                                            >
+                                                {subItem.name}
+                                            </Link>
+
+                                            {/* new */}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         )}
                     </li>
                 ))}
@@ -116,28 +324,40 @@ function UserSidebar() {
     }
 
     return (
-        <aside className="sticky mt-1 lg:mt-0 flex flex-col top-0 px-5 left-0 w-72 bg-[#0f172a] text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-slate-200">
+        <aside className="sticky mt-1 lg:mt-0 flex flex-col top-0 px-5 left-0 w-64 bg-[#0f172a] text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-slate-200">
             {/* Logo */}
-            <div className="h-18 py-3 px-6 mb-4">
+            <Link to={"/"} className="h-18 py-3 px-6 mb-4">
                 <img 
-                    src="./images/logo.png" 
+                    src="/images/logo.png" 
                     alt="" 
                     className="w-auto h-auto"
                 />
-            </div>
+            </Link>
 
             {/* Nav Item */}
             <div className="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar">
                 <nav className="mb-6">
                     <div className="flex flex-col gap-4">
                         {/* Menu Item */}
-                            <h2 className={`mb-4 text-xs uppercase flex leading-[20px] text-slate-400 font-medium`}>
-                                MENU
-                            </h2>
-                            {/* render menu items */}
-                            {renderMenuItems(navItems, "main")}
+                        <h2 className={`text-xs uppercase flex leading-5 text-slate-400 font-medium`}>
+                            MENU
+                        </h2>
+                        {/* render menu items */}
+                        {renderMenuItems(navItems, "menu")}
 
-                        {/* Service Item */}
+                        {/* Others Item */}
+                        <h2 className={`text-xs uppercase flex leading-5 text-slate-400 font-medium`}>
+                            Khác
+                        </h2>
+                        {/* render menu items */}
+                        {renderMenuItems(othersItems, "others")}
+
+                        {/* Services Item */}
+                        <h2 className={`text-xs uppercase flex leading-5 text-slate-400 font-medium`}>
+                            Dịch vụ
+                        </h2>
+                        {/* render menu items */}
+                        {renderMenuItems(servicesItems, "others")}
                     </div>
                 </nav>
             </div>

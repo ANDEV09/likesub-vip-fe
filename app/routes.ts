@@ -7,6 +7,8 @@ export default [
 
     route("client", "routes/user.routes.tsx", [
         index("routes/user.index.routes.tsx"), 
-        route("dashboard", "routes/user.dashboard.routes.tsx"), 
+        route("create-order", "routes/user.create-order.routes.tsx"), 
+        route("service-pricing", "routes/user.service-pricing.routes.tsx"), 
+        route("support-request", "routes/user.support-request.routes.tsx"), 
 ]),
 ] satisfies RouteConfig;

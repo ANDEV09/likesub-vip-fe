@@ -4,10 +4,11 @@ type SidebarContextType = {
     isExpanded: boolean;
     isHovered: boolean;
     activeItem: string | null;
-    openSubmenu: string | null;
+    // openSubmenu: string | null;
+    
 
     toggleSidebar: () => void;
-    toggleSubmenu: (item: string | null) => void;
+    // toggleSubmenu: (item: string | null) => void;
     setIsHovered: (isHovered: boolean) => void;
     setActiveItem: (item: string | null) => void;
 };
@@ -18,15 +19,15 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({ child
     const [isExpanded, setIsExpanded] = useState(true);
     const [isHovered, setIsHovered] = useState(false);
     const [activeItem, setActiveItem] = useState<string | null>(null);
-    const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+    // const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
     const toggleSidebar = () => {
         setIsExpanded(prev => !prev);
     };
 
-    const toggleSubmenu = (item: string | null) => {
-        setOpenSubmenu(prev => (prev === item ? null : item));
-    };
+    // const toggleSubmenu = (item: string | null) => {
+    //     setOpenSubmenu(prev => (prev === item ? null : item));
+    // };
 
     return (
         <SidebarContext.Provider
@@ -34,9 +35,9 @@ export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({ child
                 isExpanded,
                 isHovered,
                 activeItem,
-                openSubmenu,
+                // openSubmenu,
                 toggleSidebar,
-                toggleSubmenu,
+                // toggleSubmenu,
                 setIsHovered,
                 setActiveItem,
             }}
