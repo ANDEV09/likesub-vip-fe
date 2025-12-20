@@ -73,7 +73,7 @@ function UserDropdown() {
                     <li>
                         <DropdownItem
                             onItemClick={closeDropdown}
-                            to="/client/profile"
+                            to="/client/profile/personal-details"
                         >
                             <svg
                             className="fill-gray-500 group-hover:fill-gray-700 dark:fill-gray-400 dark:group-hover:fill-gray-300"
