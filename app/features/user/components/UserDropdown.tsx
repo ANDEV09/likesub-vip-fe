@@ -90,7 +90,7 @@ function UserDropdown() {
                                 fill=""
                                 />
                             </svg>
-                                Edit profile
+                                Tài khoản của tôi
                         </DropdownItem>
                     </li>
                     <li>
@@ -160,7 +160,7 @@ function UserDropdown() {
                         fill=""
                         />
                     </svg>
-                        Sign out
+                        Đăng xuất
                 </Link>
             </Dropdown>
         </div>
