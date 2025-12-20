@@ -1,6 +1,6 @@
 function SupportRequestPage() {
     return (
-        <div>
+        <div className="py-4 px-6">
             Support Request Page
         </div>
     )

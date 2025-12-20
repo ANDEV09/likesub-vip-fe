@@ -1,6 +1,6 @@
 function CreateOrder() {
     return (
-        <div>
+        <div className="py-4 px-6">
             Create Order
         </div>
     )
