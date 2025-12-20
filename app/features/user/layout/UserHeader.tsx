@@ -4,7 +4,7 @@ import UserDropdown from "../components/UserDropdown"
 
 function UserHeader() {
     return (
-        <header className="sticky top-0 flex w-full h-18 bg-white z-50 lg:border-b border-gray-200 shadow-sm">
+        <header className="sticky top-0 right-0 flex w-full h-18 bg-white z-50 lg:border-b border-gray-200 shadow-sm">
             <div className="flex flex-col items-center justify-between grow lg:flex-row lg:px-6">
                 {/* Left Side */}
                 <div className="flex items-center justify-between w-full gap-2 lg:justify-start lg:border-b-0 sm:gap-6">

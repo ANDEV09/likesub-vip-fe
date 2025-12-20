@@ -1,6 +1,6 @@
 function ServicePricingPage() {
     return (
-        <div>
+        <div className="py-4 px-6">
             Service Pricing Page
         </div>
     )

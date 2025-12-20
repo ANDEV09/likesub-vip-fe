@@ -1,4 +1,4 @@
-import { Outlet } from "react-router"
+import { Outlet } from "react-router-dom"
 
 import UserSidebar from "./UserSidebar"
 import UserHeader from "./UserHeader"
@@ -9,10 +9,10 @@ function ClientLayout() {
         <div className="min-h-screen lg:flex">
             <UserSidebar />
 
-            <main className="flex-1 flex flex-col transition-all duration-300 ease-in-out overflow-y-auto">
+            <main className="flex-1 flex flex-col transition-all duration-300 ease-in-out">
                 <UserHeader />
 
-                <div className="flex-1 py-4 px-6 bg-slate-50">
+                <div className="flex-1 bg-slate-50 overflow-y-auto">
                     <Outlet />
                 </div>
 
