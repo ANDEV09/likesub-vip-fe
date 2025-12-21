@@ -38,7 +38,7 @@ function CreateOrder() {
             <UserSubHeader titlePage={titlePage} />
 
             {/* Main Content */}
-            <div className="p-6 flex flex-col gap-4">
+            <div className="p-6 flex flex-col gap-4">   
                 {/* Dismissible Notification Banner 1 */}
                 <div className={`${isHidden.c1 ? "hidden" : "flex"} items-start justify-between gap-2 bg-white shadow-md border-2 border-blue-200 rounded-sm p-4 h-[90px] ${isClosing.c1 ? "opacity-0 transition-colors duration-500 -translate-y-2" : "opacity-100 translate-y-0"}`}>
                     <span className="text-blue-800 text-sm">
@@ -74,7 +74,9 @@ function CreateOrder() {
                 </div>
 
                 {/* Content */}
-                <div></div>
+                <div>
+                    Main Content
+                </div>
             </div>
         </div>
     )
