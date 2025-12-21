@@ -4,6 +4,7 @@ import {
     Check,
     CircleCheck,
     Crown,
+    Headset,
     Info,
     Star,
     Tag,
@@ -305,7 +306,7 @@ function ServicePricingPage() {
                             {/* Content Item 4 */}
                             <div className="flex items-center gap-4 bg-[#ecf4ff] p-2 rounded-md w-full">
                                 <div className="bg-[#3023c3] p-2 rounded-md">
-                                    <CircleCheck className="text-white w-3.5 h-3.5" />
+                                    <Headset className="text-white w-3.5 h-3.5" />
                                 </div>
                                 <div className="flex items-start flex-col gap-1">
                                     <span className="text-sm font-medium text-slate-800">
