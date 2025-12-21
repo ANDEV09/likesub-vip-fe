@@ -2,8 +2,8 @@ import { Link } from "react-router"
 
 function UserFooter() {
     return (
-        <div className="bg-white border-t border-slate-200 h-16 p shadow-[0_-2px_6px_rgba(0,0,0,0.05)]">
-            <div className="flex items-center justify-between px-6 py-5">
+        <div className="bg-white border-t border-slate-200 h-16 shadow-[0_-2px_6px_rgba(0,0,0,0.05)]">
+            <div className="flex items-center justify-between h-full px-6">
                 {/* Left Side */}
                 <p className="text-slate-400 text-sm">   
                     © All Copyrights Reserved by <Link     
@@ -19,13 +19,13 @@ function UserFooter() {
                 <div className="flex gap-2">
                     <p className="text-slate-400 text-sm">   
                         Software By{" "}   
-                    <Link
-                        target="_blank"
-                        to={"https://tuanori.vn/"}
-                        className="text-cyan-700 hover:underline cursor-pointer">
-                        TUANORI.VN
-                    </Link>
-                </p>
+                        <Link
+                            target="_blank"
+                            to={"https://tuanori.vn/"}
+                            className="text-cyan-700 hover:underline cursor-pointer">
+                            TUANORI.VN
+                        </Link>
+                    </p>
                 </div>
             </div>
         </div>
