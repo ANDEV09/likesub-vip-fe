@@ -5,6 +5,7 @@ import UserSidebar from "./UserSidebar";
 import UserHeader from "./UserHeader";
 import UserFooter from "./UserFooter";
 import SystemAlertModal from "../components/SystemAlertModal";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 function ClientLayout() {
     const [isShowFirstAlert, setIsShowFirstAlert] = useState(true);
@@ -25,6 +26,8 @@ function ClientLayout() {
 
                 <UserFooter />
             </main>
+
+            <ScrollToTopButton />
         </div>
     )
 }
