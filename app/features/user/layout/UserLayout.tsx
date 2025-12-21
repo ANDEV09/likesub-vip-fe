@@ -12,7 +12,7 @@ function ClientLayout() {
             <main className="flex-1 flex flex-col transition-all duration-300 ease-in-out">
                 <UserHeader />
 
-                <div className="flex-1 bg-slate-50 overflow-y-auto">
+                <div className="flex-1 bg-slate-100 overflow-y-auto">
                     <Outlet />
                 </div>
 

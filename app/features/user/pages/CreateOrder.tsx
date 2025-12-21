@@ -10,7 +10,7 @@ function CreateOrder() {
 
             {/* Main Content */}
             <div className="py-4 px-6">
-                Service Pricing Page
+                Tạo đơn hàng
             </div>
         </div>
     )
