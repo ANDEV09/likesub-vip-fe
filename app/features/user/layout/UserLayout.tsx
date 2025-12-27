@@ -13,7 +13,8 @@ function ClientLayout() {
     return (
         <div className="min-h-screen lg:flex relative">
             {/* Overlay Alert */}
-            {isShowFirstAlert && <SystemAlertModal setIsShowFirstAlert={setIsShowFirstAlert} />}
+            {isShowFirstAlert && 
+                <SystemAlertModal setIsShowFirstAlert = {setIsShowFirstAlert} />}
 
             <UserSidebar />
 
