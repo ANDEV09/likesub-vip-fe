@@ -125,8 +125,10 @@ function UserProfileSecurity() {
 
             {/* Save Button */}
             <div className="flex w-full items-center justify-end mt-4">
-                <button className="px-4 py-2 bg-[#0f172a] text-white rounded-sm text-sm flex items-center gap-2 cursor-pointer">
-                    Đổi mật khẩu
+                <button 
+                    className="px-4 py-2 bg-[#0f172a] text-white rounded-sm text-sm flex items-center gap-2 cursor-pointer"
+                >
+                    Cập nhật
                 </button>
             </div>
         </div>
