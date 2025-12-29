@@ -1,12 +1,34 @@
-import AdminLayout from "../layout/AdminLayout";
-
+import MetricsCards from "../components/MetricsCards";
+import MonthlySalesChart from '../components/MonthlySalesChart/index';
+import MonthlyTarget from '../components/MonthlyTarget/index';
+import StatisticsChart from '../components/StatisticsChart/index';
 
 export default function Dashboard() {
     return (
-        <AdminLayout>
-            <div>
-                Dashboard
+        <div className="p-6 grid grid-cols-12 gap-4 md:gap-6">
+            {/* Card & Pie, Bar Chart */}
+            <div className="col-span-12 space-y-6 lg:col-span-7">
+                <MetricsCards />
+                <MonthlySalesChart />
             </div>
-        </AdminLayout>
+
+            {/* Analytics Bar */}
+            <div className="col-span-12 lg:col-span-5">
+                <MonthlyTarget />
+            </div>
+
+            {/* Statistics Chart */}
+            <div className="col-span-12">
+                <StatisticsChart />
+            </div>
+
+            {/* Map Chart */}
+            <div>
+
+            </div>
+
+            {/* Table Data */}
+            <div></div>
+        </div>
     )
 }
