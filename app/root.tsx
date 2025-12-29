@@ -9,7 +9,8 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { SidebarProvider } from "./features/user/context/SidebarContext";
+import { SidebarProvider } from "./context/SidebarContext";
+// import { SidebarProvider } from "./features/user/context/SidebarContext";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },

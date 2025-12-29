@@ -4,6 +4,14 @@ export default [
     index("routes/landingPage.routes.tsx"),
     route("login", "routes/loginPage.routes.tsx"),
     route("register", "routes/registerPage.routes.tsx"),
+
+    route("admin", "routes/admin/admin.routes.tsx", [
+        index("routes/admin/admin.index.routes.tsx"), 
+        route("dashboard", "routes/admin/admin.dashboard.routes.tsx"),
+        
+        route("test-admin", "routes/admin/admin.test.routes.tsx"), 
+    ]),
+
     route("client", "routes/user/user.routes.tsx", [
         index("routes/user/user.index.routes.tsx"), 
         route("create-order", "routes/user/user.create-order.routes.tsx"), 
