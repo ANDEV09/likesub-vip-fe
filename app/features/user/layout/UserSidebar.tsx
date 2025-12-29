@@ -17,7 +17,8 @@ import {
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Link, useLocation } from "react-router";
-import { useSidebar } from "../hooks/useSidebar";
+import { useSidebar } from "~/context/SidebarContext";
+// import { useSidebar } from "../hooks/useSidebar";
 
 interface NavItemType {
     name: string,

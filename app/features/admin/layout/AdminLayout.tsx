@@ -1,37 +1,29 @@
-import { useSidebar } from '~/context/SidebarContext';
+import { Outlet } from 'react-router';
+
 import AdminHeader from './AdminHeader';
 import AdminSidebar from './AdminSidebar';
 import Backdrop from './Backdrop';
+import ScrollToTopButton from '~/features/user/components/ScrollToTopButton';
 
-interface AdminLayoutProps {
-    children: React.ReactNode;
-}
-
-export default function AdminLayout({ children }: AdminLayoutProps) {
-    const { isExpanded, isHovered, isMobileOpen } = useSidebar();
-
-    const mainContentMargin = isMobileOpen
-        ? "ml-0"
-        : isExpanded || isHovered
-        ? "lg:ml-[290px]"
-        : "lg:ml-[90px]";
-
+export default function AdminLayout() {
     return (
-        <div className="min-h-screen xl:flex">
+        <div className="min-h-screen lg:flex relative">
             {/* Sidebar */}
             <AdminSidebar />
             <Backdrop />
 
             {/* Main Content */}
-            <div className={`flex-1 transition-all duration-300 ease-in-out ${mainContentMargin}`}>
+            <div className="flex-1 flex flex-col transition-all duration-300 ease-in-out">
                 {/* Header */}
                 <AdminHeader />
 
                 {/* Page Content */}
-                <div className='p-4 mx-auto maw-w-[1536px] md:p-6'>
-                    {children}
+                <div className='flex-1 bg-slate-50 overflow-y-auto'>
+                    <Outlet />
                 </div>
             </div>
+
+            <ScrollToTopButton />
         </div>
     )
 }
