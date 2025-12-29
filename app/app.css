@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "daisyui";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -30,6 +31,24 @@ body {
 
 .animate-float {
   animation: float 2.5s ease-in-out infinite;
+}
+
+
+@utility no-scrollbar {
+  &::-webkit-scrollbar { /* Chrome, Safari and Opera */
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 999px;
 }
 
 @theme inline {

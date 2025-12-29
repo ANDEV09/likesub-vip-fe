@@ -1,7 +1,9 @@
-import AuthLayout from "~/features/auth/authLayout";
-import RegisterForm from "~/features/auth/Register/registerForm";
-import AuthFooterLinks from "~/features/auth/components/AuthFooterLinks";
 import { useNavigate } from "react-router-dom";
+
+import AuthLayout from "~/features/auth/authLayout";
+import AuthFooterLinks from "~/features/auth/components/AuthFooterLinks";
+import RegisterForm from "./RegisterForm";
+
 export default function RegisterPage() {
     const navigate = useNavigate();
     return (
