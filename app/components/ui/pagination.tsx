@@ -8,12 +8,12 @@ function Pagination() {
     const [pages] = useState(3);
     const [pageActive, setPageActive] = useState(1);
 
-    const changePage = (action: Action) => { 
+    const changePage = (action: Action | number) => { 
         setPageActive((prev) => { 
             if (action === "increase") return Math.min(prev + 1, pages);
             if (action === "decrease") return Math.max(prev - 1, 1);  
-            
-            return prev; 
+
+            return action; 
         }); 
     };
 
@@ -30,6 +30,7 @@ function Pagination() {
             {/* Page Number Button */}
             {[...Array(pages)].map((_, index) => (
                 <button
+                    onClick={() => changePage(index + 1)}
                     key={index}
                     className={`${SIZE} flex items-center justify-center rounded-md border border-gray-300 cursor-pointer transition-colors duration-300 ${pageActive === index + 1
                         ? "bg-[#5f73ff] text-white hover:bg-blue-600"
