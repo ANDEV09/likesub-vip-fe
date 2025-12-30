@@ -1,0 +1,54 @@
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useState } from "react";
+
+const SIZE = "w-10 h-10"; 
+type Action = "increase" | "decrease";
+
+function Pagination() {
+    const [pages] = useState(3);
+    const [pageActive, setPageActive] = useState(1);
+
+    const changePage = (action: Action) => { 
+        setPageActive((prev) => { 
+            if (action === "increase") return Math.min(prev + 1, pages);
+            if (action === "decrease") return Math.max(prev - 1, 1);  
+            
+            return prev; 
+        }); 
+    };
+
+    return (
+        <div className="flex items-center gap-2">
+            {/* Previous Button */}
+            <button
+                onClick={() => changePage("decrease")}
+                className={`${SIZE} flex items-center justify-center rounded-md border border-gray-300 cursor-pointer hover:bg-slate-100 transition-colors duration-300`}
+            >
+                <ArrowLeft className="w-5 h-5" />
+            </button>
+
+            {/* Page Number Button */}
+            {[...Array(pages)].map((_, index) => (
+                <button
+                    key={index}
+                    className={`${SIZE} flex items-center justify-center rounded-md border border-gray-300 cursor-pointer transition-colors duration-300 ${pageActive === index + 1
+                        ? "bg-[#5f73ff] text-white hover:bg-blue-600"
+                        : "hover:bg-slate-100"    
+                    }`}
+                >
+                    {index + 1}
+                </button>
+            ))}
+
+            {/* Next Button */}
+            <button
+                onClick={() => changePage("increase")}
+                className={`${SIZE} flex items-center justify-center rounded-md     border border-gray-300 cursor-pointer hover:bg-slate-100 transition-colors duration-300`}
+            >
+                <ArrowRight className="w-5 h-5" />
+            </button>
+        </div>
+    );
+}
+
+export default Pagination;

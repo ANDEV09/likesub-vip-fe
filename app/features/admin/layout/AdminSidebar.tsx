@@ -11,7 +11,8 @@ import {
     Server,
     Wallet,
     Link2,
-    BarChart3
+    BarChart3,
+    Package2
 } from "lucide-react";
 import { useSidebar } from "~/context/SidebarContext";
 
@@ -36,19 +37,28 @@ const adminMenuItems: NavItemType[] = [
         name: "Quản lý người dùng",
         icon: <Users size={16} />,
         subItems: [
-        { name: "Danh sách người dùng", path: "/admin/users" },
-        { name: "Vai trò & phân quyền", path: "/admin/roles" },
-        { name: "Tài khoản bị khóa", path: "/admin/users/banned" },
+            { name: "Danh sách người dùng", path: "/admin/users" },
+            { name: "Vai trò & phân quyền", path: "/admin/roles" },
+            { name: "Tài khoản bị khóa", path: "/admin/users/banned" },
+        ],
+    },
+    {
+        name: "Quản lý sản phẩm",
+        icon: <Package size={16} />,
+        subItems: [
+            { name: "Danh sách sản phẩm", path: "/admin/products" },
+            { name: "Thêm mới sản phẩm", path: "/admin/add-product" },
+            { name: "Sản phẩm hết hạn", path: "/admin/products/expired" },
         ],
     },
     {
         name: "Quản lý đơn hàng",
         icon: <ShoppingCart size={16} />,
         subItems: [
-        { name: "Tất cả đơn hàng", path: "/admin/orders" },
-        { name: "Đơn đang xử lý", path: "/admin/orders/pending" },
-        { name: "Đơn hoàn thành", path: "/admin/orders/completed" },
-        { name: "Đơn bị hủy", path: "/admin/orders/cancelled" },
+            { name: "Tất cả đơn hàng", path: "/admin/orders" },
+            { name: "Đơn đang xử lý", path: "/admin/orders/pending" },
+            { name: "Đơn hoàn thành", path: "/admin/orders/completed" },
+            { name: "Đơn bị hủy", path: "/admin/orders/cancelled" },
         ],
     },
 ];
@@ -56,7 +66,7 @@ const adminMenuItems: NavItemType[] = [
 const adminServiceItems: NavItemType[] = [
     {
         name: "Quản lý dịch vụ",
-        icon: <Package size={16} />,
+        icon: <Package2 size={16} />,
         subItems: [
             { name: "Danh sách dịch vụ", path: "/admin/services" },
             { name: "Tạo dịch vụ mới", path: "/admin/services/create" },
@@ -195,15 +205,15 @@ function AdminSidebar() {
         menuType: "menu" | "services" | "support"
     ) => {
         return (
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-2">
                 {navItems.map((nav, index) => (
                     <li key={nav.name}>
                         {nav.subItems ? (
                             <button
                                 onClick={() => handleSubmenuToggle(index, menuType)}
-                                className={`relative text-left  hover:bg-gray-100 flex items-center w-full gap-3 px-3 py-2 font-normal rounded-lg text-[14px] group text-slate-300 transition-all duration-300 ${
+                                className={`relative hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-3 font-normal rounded-lg text-[14px] group text-slate-300 ${
                                     openSubmenu?.type === menuType && openSubmenu?.index === index
-                                        ? "bg-blue-100 text-blue-400"
+                                        ? "bg-slate-800 text-blue-400"
                                         : "text-slate-300 group-hover:text-slate-400"
                                     } cursor-pointer ${
                                         !isExpanded && !isHovered
@@ -213,8 +223,8 @@ function AdminSidebar() {
                             >
                                 <span 
                                     className={`${openSubmenu?.type === menuType && openSubmenu?.index === index 
-                                        ? "text-blue-600"
-                                        : "text-slate-800 group-hover:text-slate-400" 
+                                        ? "text-blue-400"
+                                        : "text-slate-300 group-hover:text-slate-400" 
                                     }`}
                                 >
                                     {nav.icon}
@@ -222,8 +232,8 @@ function AdminSidebar() {
                                 {(isExpanded || isHovered) && (
                                     <span
                                         className={`${openSubmenu?.type === menuType && openSubmenu?.index === index 
-                                        ? "text-blue-600"
-                                        : "text-slate-800 group-hover:text-slate-400 text-sm" 
+                                        ? "text-blue-400"
+                                        : "text-slate-300 group-hover:text-slate-400" 
                                     }`}    
                                     >
                                         {nav.name}
@@ -243,22 +253,23 @@ function AdminSidebar() {
                         ) : (
                             nav.path && (
                                 <Link
-                                    className={`hover:bg-gray-200 flex items-center w-full gap-3 px-3 py-2 font-normal rounded-md text-[14px] group text-slate-80 transition-all duration-200
+                                    className={`hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-3 font-normal rounded-lg text-[14px] group text-slate-300 
                                         ${isActive(nav.path)
-                                            ? "bg-blue-100"
+                                            ? "bg-slate-800"
                                             : ""
-                                        }`}
+                                        }
+                                    `}
                                     to={nav.path}
                                 >
                                     <span className={`${isActive(nav.path) 
-                                        ? "text-blue-600"
-                                        : "text-slate-800 group-hover:text-slate-400" 
+                                        ? "text-blue-400"
+                                        : "text-slate-300 group-hover:text-slate-400" 
                                     }`}>
                                         {nav.icon}
                                     </span>
                                     <span className={`${isActive(nav.path) 
-                                        ? "text-blue-600"
-                                        : "text-slate-800 group-hover:text-slate-400 text-sm" 
+                                        ? "text-blue-400"
+                                        : "text-slate-300 group-hover:text-slate-400" 
                                     }`}>
                                         {nav.name}
                                     </span>
@@ -284,10 +295,11 @@ function AdminSidebar() {
                                     {nav.subItems.map(subItem => (
                                         <li key={subItem.name}>
                                             <Link
-                                                className={`hover:bg-gray-100 flex items-center w-full gap-3 px-3 py-2 font-normal rounded-lg text-sm group text-slate-800 ${isActive(subItem.path) 
-                                                    ? "text-blue-4  00"
-                                                    : "text-slate-300 group-hover:text-slate-400" 
-                                                }`}
+                                                className={`hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-2 font-normal rounded-lg text-[14px] group text-slate-300 
+                                                    ${isActive(subItem.path) 
+                                                        ? "bg-slate-800 text-blue-400!"
+                                                        : "text-slate-300 group-hover:text-slate-400" 
+                                                    }`}
                                                 to={subItem.path}
                                             >
                                                 {subItem.name}
@@ -306,7 +318,7 @@ function AdminSidebar() {
     }
 
     return (
-        <aside className="sticky mt-1 lg:mt-0 flex flex-col top-0 px-5 left-0 w-72 bg-white text-gray-900 border-r border-gray-200 h-screen transition-all duration-300 ease-in-out z-50">
+        <aside className="sticky mt-1 lg:mt-0 flex flex-col top-0 px-5 left-0 w-72 bg-[#0f172a] text-gray-900 border-r border-gray-200 h-screen transition-all duration-300 ease-in-out z-50">
             {/* Logo */}
             <Link to={"/"} className="h-18 py-3 px-6 mb-4">
                 <img 

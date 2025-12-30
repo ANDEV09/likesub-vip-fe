@@ -218,7 +218,7 @@ function UserSidebar() {
         menuType: "menu" | "others" | "services"
     ) => {
         return (
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-2">
                 {navItems.map((nav, index) => (
                     <li key={nav.name}>
                         {nav.subItems ? (
@@ -266,7 +266,12 @@ function UserSidebar() {
                         ) : (
                             nav.path && (
                                 <Link
-                                    className={"hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-2 font-normal rounded-lg text-[14px] group text-slate-300"}
+                                    className={`hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-3 font-normal rounded-lg text-[14px] group text-slate-300 
+                                        ${isActive(nav.path)
+                                            ? "bg-slate-800"
+                                            : ""
+                                        }
+                                    `}
                                     to={nav.path}
                                 >
                                     <span className={`${isActive(nav.path) 

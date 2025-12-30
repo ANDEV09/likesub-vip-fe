@@ -1,6 +1,6 @@
 import NotificationDropdown from "../components/NotificationDropdown"
 import ThemeToggleButton from "../components/ThemeToggleButton"
-import UserDropdown from "../components/UserDropdown"
+import AdminDropdown from "../components/AdminDropdown"
 
 function AdminHeader() {
     return (
@@ -51,7 +51,7 @@ function AdminHeader() {
                     </div>
 
                     {/* User Info */}
-                    <UserDropdown />
+                    <AdminDropdown />
                 </div>
             </div>
         </header>

@@ -114,10 +114,10 @@ function Target() {
                 <div className="relative">
                     <div className="max-h-[330px]">
                         <ReactApexChart
-                        options={options}
-                        series={series}
-                        type="radialBar"
-                        height={330}
+                            options={options}
+                            series={series}
+                            type="radialBar"
+                            height={330}
                         />
                     </div>
 
