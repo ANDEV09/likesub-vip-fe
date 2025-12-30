@@ -55,8 +55,7 @@ function CreateOrder() {
                             <select className="w-full border rounded px-3 py-2 text-black font-semibold">
                                 <option>
                                     #11946 Facebook Live Stream Views [ Max 100K
-                                    ] | 100% Concurrent | 15 Minutes &nbsp;
-                                    62.370đ
+                                    ] | 100% Concurrent | 15 Minutes 62.370đ
                                 </option>
                             </select>
                         </div>

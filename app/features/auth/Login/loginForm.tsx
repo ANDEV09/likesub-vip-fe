@@ -51,7 +51,7 @@ export default function LoginForm() {
         });
     }
     return (
-        <Card className="w-full sm:max-w-md shadow-xl border border-slate-700/40 bg-linear-to-b from-slate-900/70 to-slate-950/90 rounded-2xl p-2">
+        <Card className="w-full shadow-xl border border-slate-700/70 bg-black-100 rounded-2xl p-2">
             <CardHeader className="mt-4">
                 <CardTitle className="text-2xl font-bold text-blue-400 text-center">
                     Đăng nhập
@@ -140,7 +140,7 @@ export default function LoginForm() {
                         type="button"
                         variant="outline"
                         onClick={() => form.reset()}
-                        className="border border-slate-700/40 text-slate-400 hover:text-white hover:border-blue-500 px-6 py-2 rounded-lg transition"
+                        className="border border-slate-700/40 text-black hover:border-blue-500 px-6 py-2 rounded-lg transition"
                     >
                         Reset
                     </Button>
