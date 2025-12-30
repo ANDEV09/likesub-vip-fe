@@ -8,8 +8,8 @@ export default [
     route("admin", "routes/admin/admin.routes.tsx", [
         index("routes/admin/admin.index.routes.tsx"), 
         route("dashboard", "routes/admin/admin.dashboard.routes.tsx"),
-        
-        route("test-admin", "routes/admin/admin.test.routes.tsx"), 
+        route("products", "routes/admin/admin.products.routes.tsx"), 
+        route("add-product", "routes/admin/admin.add-product.routes.tsx"), 
     ]),
 
     route("client", "routes/user/user.routes.tsx", [
