@@ -18,7 +18,7 @@ export default function AdminLayout() {
                 <AdminHeader />
 
                 {/* Page Content */}
-                <div className='flex-1 bg-slate-50 overflow-y-auto'>
+                <div className='flex-1 bg-slate-100 overflow-y-auto'>
                     <Outlet />
                 </div>
             </div>
