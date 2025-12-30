@@ -1,85 +1,240 @@
-import { Send, X } from "lucide-react";
 import UserSubHeader from "../layout/UserSubHeader";
-import { useState } from "react";
+import CreateOrderNotices from "~/features/user/components/CreateOrderNotices";
+import {
+    Banknote,
+    ContactRound,
+    CreditCard,
+    ShieldPlus,
+    Wallet,
+} from "lucide-react";
 
 function CreateOrder() {
     const titlePage = "đặt hàng dịch vụ";
 
-    const [isHidden, setIsHidden] = useState({
-        c1: false,
-        c2: false
-    });
-    const [isClosing, setIsClosing] = useState({
-        c1: false,
-        c2: false
-    });
-
-    const handleHideContainer = (key: keyof typeof isHidden) => {
-        setIsClosing(prev => ({
-            ...prev,
-            [key]: true
-        }));
-
-        setTimeout(() => {
-            setIsHidden(prev => ({
-                ...prev,
-                [key]: true
-            }));
-            setIsClosing(prev => ({
-                ...prev,
-                [key]: false
-            }));
-        }, 300);
-    }
-
     return (
         <div>
-            {/* Sub Header */}
             <UserSubHeader titlePage={titlePage} />
-
-            {/* Main Content */}
-            <div className="p-6 flex flex-col gap-4">   
-                {/* Dismissible Notification Banner 1 */}
-                <div className={`${isHidden.c1 ? "hidden" : "flex"} items-start justify-between gap-2 bg-white shadow-md border-2 border-blue-200 rounded-sm p-4 h-[90px] ${isClosing.c1 ? "opacity-0 transition-colors duration-500 -translate-y-2" : "opacity-100 translate-y-0"}`}>
-                    <span className="text-blue-800 text-sm">
-                        Hệ thống hiện đang vận hành bình thường, mọi thứ đều ổn. Nếu bạn thấy điều gì đó bất thường thì... có lẽ là do vũ trụ đang thử thách bạn. Hãy bình tĩnh, F5 nhẹ rồi tiếp tục công việc nhé!
-                    </span>
-                    <button onClick={() => handleHideContainer("c1")}>
-                        <X className="w-5 h-5 text-blue-300 hover:text-blue-400 transition-colors duration-300 cursor-pointer" />
-                    </button>
-                </div>
-
-                {/* Dismissible Notification Banner 2 */}
-                <div className={`${isHidden.c2 ? "hidden" : "flex"} items-center justify-between gap-2 bg-amber-50 shadow-md rounded-sm px-4 py-2 ${isClosing.c2 ? "opacity-0 transition-colors duration-500 -translate-y-2" : "opacity-100 translate-y-0"}`}>
-                    <div className="flex flex-col items-start space-y-2 px-4 pt-2 py-2">
-                        <div className="text-black text-[16px] font-bold flex gap-2 items-center">
-                            <div className="bg-amber-400 w-4 h-4 rounded-full flex items-center justify-center">
-                                <Send className="w-2 h-2 text-white" />
-                            </div>
-                            <span>
-                                Liên kết Telegram
-                            </span>
+            <CreateOrderNotices />
+            <div className="pr-6 pl-6 flex flex-col gap-4 mb-6">
+                <div className="flex flex-col lg:flex-row gap-6">
+                    <div className="flex-1 bg-white rounded-lg shadow p-6 border border-slate-200">
+                        <div className="mb-4">
+                            <label className="block font-semibold mb-1">
+                                Tìm nhanh dịch vụ
+                            </label>
+                            <input
+                                className="w-full border rounded px-3 py-2"
+                                placeholder="Nhập tên dịch vụ để tìm kiếm"
+                            />
                         </div>
-                        <span className="text-slate-900 text-sm">
-                            Bạn chưa liên kết tài khoản Telegram để nhận thông báo quan trọng về đơn hàng và tài khoản.
-                        </span>
-                    
-                        <button className="py-1.5 px-3 bg-amber-400 hover:bg-amber-600 text-white rounded-xs text-xs flex items-center gap-2 cursor-pointer transition-colors duration-300">
-                            Liên kết ngay
+                        <div className="mb-4 flex gap-3">
+                            <div className="flex-1">
+                                <label className="block font-semibold mb-1">
+                                    Nền tảng
+                                </label>
+                                <select className="w-full border rounded px-3 py-2">
+                                    <option>Dịch vụ Facebook</option>
+                                </select>
+                            </div>
+                            <div className="flex-1">
+                                <label className="block font-semibold mb-1">
+                                    Phân loại
+                                </label>
+                                <select className="w-full border rounded px-3 py-2">
+                                    <option>
+                                        Facebook | Live stream | Tăng mắt Live
+                                        Stream
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="mb-4">
+                            <label className="block font-semibold mb-1">
+                                Dịch vụ
+                            </label>
+                            <select className="w-full border rounded px-3 py-2 text-black font-semibold">
+                                <option>
+                                    #11946 Facebook Live Stream Views [ Max 100K
+                                    ] | 100% Concurrent | 15 Minutes &nbsp;
+                                    62.370đ
+                                </option>
+                            </select>
+                        </div>
+                        <div className="mb-4">
+                            <label className="block font-semibold mb-1">
+                                Liên kết cần tăng
+                            </label>
+                            <input
+                                className="w-full border rounded px-3 py-2"
+                                placeholder="Nhập liên kết cần tăng tương tác..."
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block font-semibold mb-1">
+                                Số lượng
+                            </label>
+                            <input
+                                type="number"
+                                className="w-full border rounded px-3 py-2"
+                                min={10}
+                                max={100000}
+                                defaultValue={10}
+                            />
+                            <div className="text-xs text-slate-500 mt-1">
+                                Tối thiểu: 10 - Tối đa: 100000
+                            </div>
+                        </div>
+                        <div className="border border-dashed border-gray-400 rounded-md p-4 mb-4">
+                            <div className="flex justify-between text-gray-500 text-sm">
+                                <span>Giá trị đơn hàng:</span>
+                                <span>2.310đ</span>
+                            </div>
+
+                            <div className="flex justify-between text-gray-500 text-sm mt-2 pb-2 border-b border-dashed border-gray-300">
+                                <span>Thuế VAT:</span>
+                                <span>231đ (10%)</span>
+                            </div>
+
+                            <div className="flex justify-between mt-3 font-semibold">
+                                <span>Tổng tiền cần thanh toán:</span>
+                                <span className="text-lg">2.541đ</span>
+                            </div>
+                        </div>
+
+                        <div className="mb-4">
+                            <label className="inline-flex items-center gap-2">
+                                <input
+                                    type="checkbox"
+                                    className="accent-cyan-600"
+                                />
+                                Đặt lịch chạy. Múi giờ: Asia/Ho_Chi_Minh
+                            </label>
+                        </div>
+                        <button className="w-full bg-black hover:bg-gray-800 text-white font-semibold py-2 rounded transition">
+                            Đặt hàng
                         </button>
                     </div>
-                    <button onClick={() => handleHideContainer("c2")}>
-                        <X className="w-6 h-6 text-slate-400 hover:text-slate-500 transition-colors duration-300 cursor-pointer" />
-                    </button>
-                </div>
 
-                {/* Content */}
-                <div>
-                    Main Content
+                    <div className="w-1/3 flex flex-col gap-4">
+                        <div className="w-full bg-white rounded-lg shadow p-6 border border-slate-200 flex flex-col gap-4">
+                            <div className="flex items-center gap-6 mb-2">
+                                <div className="relative shrink-0">
+                                    <div className="w-25 h-25 rounded-full bg-blue-500 border-4 flex items-center justify-center text-3xl font-bold text-white select-none">
+                                        AN
+                                    </div>
+                                </div>
+                                <div className="flex-1">
+                                    <div className="font-semibold text-lg mb-3">
+                                        Andev
+                                    </div>
+                                    <div className="flex flex-col gap-1">
+                                        <div className="flex items-center justify-between text-sm border-b border-solid border-gray-300 pb-2">
+                                            <div className="flex items-center gap-2 text-gray-500">
+                                                <CreditCard className="w-5 h-5 text-gray-500" />
+                                                Số dư:
+                                            </div>
+                                            <div className="font-semibold text-sm text-gray-800">
+                                                8.002.410đ
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center justify-between text-sm border-b border-solid border-gray-300 py-2">
+                                            <div className="flex items-center gap-2 text-gray-500">
+                                                <Banknote className="w-5 h-5 text-gray-500" />
+                                                Tổng nạp:
+                                            </div>
+                                            <div className="font-semibold text-sm text-green-600">
+                                                0đ
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center justify-between text-sm pt-2">
+                                            <div className="flex items-center gap-2 text-gray-500">
+                                                <ShieldPlus className="w-5 h-5 text-gray-500" />
+                                                Cấp bậc:
+                                            </div>
+                                            <div className="font-semibold text-sm text-blue-500 cursor-pointer hover:underline">
+                                                Thành viên
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-2 mt-2">
+                                            <button className="bg-black hover:bg-gray-800 text-white px-4 py-1.5 rounded text-sm font-semibold">
+                                                <Wallet className="w-3.5 h-3.5 inline mb-0.5 mr-1" />
+                                                Nạp tiền
+                                            </button>
+                                            <button className="border border-blue-400 text-blue-600 px-4 py-1.5 rounded text-sm font-semibold hover:bg-blue-50">
+                                                <ContactRound className="w-3.5 h-3.5 inline mb-1 mr-1" />
+                                                Tài khoản
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="mt-2">
+                                <div className="flex justify-between items-center mb-1">
+                                    <span className="text-xs text-gray-500">
+                                        Tiến độ lên hạng
+                                    </span>
+                                    <span className="bg-gray-100 px-2 py-1 rounded-full text-xs text-gray-800">
+                                        Hạng tiếp theo: <b>Cộng tác viên</b>
+                                    </span>
+                                </div>
+                                <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                                    <div
+                                        className="bg-blue-500 h-full"
+                                        style={{ width: "40%" }}
+                                    ></div>
+                                </div>
+                                <div className="text-xs text-gray-500 mt-2">
+                                    Chỉ cần nạp thêm <b>500.000đ</b> nữa để
+                                    thăng hạng <b>Cộng tác viên</b>!
+                                </div>
+                            </div>
+                        </div>
+                        <div className="w-full bg-white rounded-lg shadow p-6 border border-slate-200 mt-4">
+                            <div className="grid grid-cols-[140px_1fr] gap-y-2 text-sm">
+                                <span className="text-slate-500">
+                                    ID dịch vụ:
+                                </span>
+                                <span className="font-semibold text-blue-500">
+                                    11906
+                                </span>
+
+                                <span className="text-slate-500">
+                                    Tên dịch vụ:
+                                </span>
+                                <span className="font-semibold text-black break-normal">
+                                    Tăng Like Cho Bình Luận | Account Việt Nam |
+                                    Speed 2k/day
+                                </span>
+
+                                <span className="text-slate-500">
+                                    Loại dịch vụ:
+                                </span>
+                                <span>
+                                    <span className="inline-flex bg-blue-500 text-white px-3 py-0.5 rounded text-xs font-semibold">
+                                        Default
+                                    </span>
+                                </span>
+
+                                <span className="text-slate-500">
+                                    Giới hạn số lượng:
+                                </span>
+                                <span className="font-semibold text-black">
+                                    50 - 50.000
+                                </span>
+
+                                <span className="text-slate-500">
+                                    Giá mỗi 1000:
+                                </span>
+                                <span className="font-bold text-red-500 text-base">
+                                    46.200đ
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default CreateOrder
+export default CreateOrder;
