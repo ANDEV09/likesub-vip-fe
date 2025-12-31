@@ -6,7 +6,7 @@ function StatisticProductCards() {
                 <span className="text-[13px] text-gray-500">
                     Tổng doanh thu
                 </span>
-                <span className="text-[30px] font-medium text-gray-800">
+                <span className="text-[28px] font-medium text-gray-800">
                     $120.80
                 </span>
             </div>
@@ -16,7 +16,7 @@ function StatisticProductCards() {
                 <span className="text-[13px] text-gray-500">
                     Số lượng sản phẩm
                 </span>
-                <span className="text-[30px] font-medium text-gray-800">
+                <span className="text-[28px] font-medium text-gray-800">
                     24
                 </span>
             </div>
@@ -26,7 +26,7 @@ function StatisticProductCards() {
                 <span className="text-[13px] text-gray-500">
                     Số lượng sản phẩm được bán
                 </span>
-                <span className="text-[30px] font-medium text-gray-800">
+                <span className="text-[28px] font-medium text-gray-800">
                     18
                 </span>
             </div>
@@ -36,7 +36,7 @@ function StatisticProductCards() {
                 <span className="text-[13px] text-gray-500">
                     Số lượng sản phẩm hết hạn
                 </span>
-                <span className="text-[30px] font-medium text-gray-800">
+                <span className="text-[28px] font-medium text-gray-800">
                     6
                 </span>
             </div>

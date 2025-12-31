@@ -5,7 +5,7 @@ import {
     TableCell,
     TableHeader,
     TableRow,
-} from "../../../components/ui/product-table";
+} from "../../../../components/ui/product-table";
 
 function ProductTable() {
     interface Order {

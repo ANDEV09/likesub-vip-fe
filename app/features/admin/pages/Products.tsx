@@ -6,10 +6,10 @@ import {
 } from "lucide-react";
 
 import { Input } from "~/components/ui/input";
-import ProductTable from "../components/ProductTable";
+import ProductTable from "../components/products/ProductTable";
 import Pagination from "~/components/ui/pagination";
 import AdminSubHeader from "../components/AdminSubHeader"
-import StatisticProductCards from "../components/StatisticProductCards";
+import StatisticProductCards from "../components/products/StatisticProductCards";
 
 function Products() {
     const titlePage = "danh sách sản phẩm";

@@ -1,7 +1,7 @@
-import MetricsCards from "../components/MetricsCards";
-import MonthlySalesChart from '../components/MonthlySalesChart/index';
-import MonthlyTarget from '../components/MonthlyTarget/index';
-import StatisticsChart from '../components/StatisticsChart/index';
+import MetricsCards from "../components/products/MetricsCards";
+import MonthlySalesChart from '../components/products/MonthlySalesChart/index';
+import MonthlyTarget from '../components/products/MonthlyTarget/index';
+import StatisticsChart from '../components/products/StatisticsChart/index';
 
 export default function Dashboard() {
     return (
