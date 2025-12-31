@@ -55,10 +55,9 @@ const adminMenuItems: NavItemType[] = [
         name: "Quản lý đơn hàng",
         icon: <ShoppingCart size={16} />,
         subItems: [
-            { name: "Tất cả đơn hàng", path: "/admin/orders" },
-            { name: "Đơn đang xử lý", path: "/admin/orders/pending" },
-            { name: "Đơn hoàn thành", path: "/admin/orders/completed" },
-            { name: "Đơn bị hủy", path: "/admin/orders/cancelled" },
+            { name: "Tất cả đơn hàng", path: "/admin/invoices" },
+            { name: "Thông tin đơn hàng", path: "/admin/invoices/id" },
+            { name: "Thêm đơn hàng", path: "/admin/add-invoice" },
         ],
     },
 ];

@@ -10,6 +10,7 @@ export default [
         route("dashboard", "routes/admin/admin.dashboard.routes.tsx"),
         route("products", "routes/admin/admin.products.routes.tsx"), 
         route("add-product", "routes/admin/admin.add-product.routes.tsx"), 
+        route("invoices", "routes/admin/admin.invoices.routes.tsx"), 
     ]),
 
     route("client", "routes/user/user.routes.tsx", [

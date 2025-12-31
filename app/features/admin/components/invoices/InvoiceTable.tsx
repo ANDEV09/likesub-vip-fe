@@ -5,9 +5,9 @@ import {
     TableCell,
     TableHeader,
     TableRow,
-} from "../../../components/ui/product-table";
+} from "../../../../components/ui/product-table";
 
-function ProductTable() {
+function InvoiceTable() {
     interface Order {
         id: number;
         user: {
@@ -125,31 +125,37 @@ function ProductTable() {
                                     isHeader
                                     className="px-5 py-4 font-bold text-gray-500 text-start text-[13px] dark:text-gray-400"
                                 >
-                                    User
+                                    Mã hóa đơn
                                 </TableCell>
                                 <TableCell
                                     isHeader
                                     className="px-5 py-4 font-bold text-gray-500 text-start text-[13px] dark:text-gray-400"
                                 >
-                                    Project Name
+                                    Khách hàng
                                 </TableCell>
                                 <TableCell
                                     isHeader
                                     className="px-5 py-4 font-bold text-gray-500 text-start text-[13px] dark:text-gray-400"
                                 >
-                                    Team
+                                    Ngày tạo
                                 </TableCell>
                                 <TableCell
                                     isHeader
                                     className="px-5 py-4 font-bold text-gray-500 text-start text-[13px] dark:text-gray-400"
                                 >
-                                    Status
+                                    Ngày hết hạn
                                 </TableCell>
                                 <TableCell
                                     isHeader
                                     className="px-5 py-4 font-bold text-gray-500 text-start text-[13px] dark:text-gray-400"
                                 >
-                                    Budget
+                                    Tổng cộng
+                                </TableCell>
+                                <TableCell
+                                    isHeader
+                                    className="px-5 py-4 font-bold text-gray-500 text-start text-[13px] dark:text-gray-400"
+                                >
+                                    Trạng thái
                                 </TableCell>
                             </TableRow>
                         </TableHeader>
@@ -202,6 +208,14 @@ function ProductTable() {
                                         </div>
                                     </TableCell>
 
+                                    <TableCell className="px-4 py-3 text-gray-500 text-sm dark:text-gray-400">
+                                        {order.budget}
+                                    </TableCell>
+
+                                    <TableCell className="px-4 py-3 text-gray-500 text-sm dark:text-gray-400">
+                                        {order.budget}
+                                    </TableCell>
+
                                     <TableCell className="px-4 py-3 text-gray-500 text-start text-sm dark:text-gray-400">
                                         <Badge
                                         size="xs"
@@ -216,10 +230,6 @@ function ProductTable() {
                                             {order.status}
                                         </Badge>
                                     </TableCell>
-
-                                    <TableCell className="px-4 py-3 text-gray-500 text-sm dark:text-gray-400">
-                                        {order.budget}
-                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -232,4 +242,4 @@ function ProductTable() {
     );
 }
 
-export default ProductTable;
+export default InvoiceTable;
