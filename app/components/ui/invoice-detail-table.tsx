@@ -16,7 +16,6 @@ import {
 import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 
 import { Button } from "~/components/ui/button"
-import { Checkbox } from "~/components/ui/checkbox"
 
 import {
     DropdownMenu,
@@ -36,121 +35,77 @@ import {
     TableRow,
 } from "~/components/ui/table"
 
-export type Ticket = {
+export type Product = {
     id: string
-    title: string
-    orderCode: string
-    topic: string
-    status: "mới" | "đang xử lý" | "hoàn thành" | "đã hủy"
-    createdAt: string
-    updatedAt: string
+    name: string
+    quantity: number
+    unitCost: number
+    discount: number 
+    total: number
 }
 
-const data: Ticket[] = [
+const data: Product[] = [
     {
         id: "1",
-        title: "Không đăng nhập được",
-        orderCode: "ORD-1001",
-        topic: "Tài khoản",
-        status: "mới",
-        createdAt: "2025-01-05",
-        updatedAt: "2025-01-05",
+        name: 'Macbook pro 13',
+        quantity: 1,
+        unitCost: 1200,
+        discount: 0,
+        total: 1200,
     },
     {
         id: "2",
-        title: "Thanh toán bị lỗi",
-        orderCode: "ORD-1002",
-        topic: "Thanh toán",
-        status: "đang xử lý",
-        createdAt: "2025-01-04",
-        updatedAt: "2025-01-06",
+        name: "Apple Watch Ultra",
+        quantity: 1,
+        unitCost: 300,
+        discount: 0.5,
+        total: 150,
     },
     {
         id: "3",
-        title: "Yêu cầu hoàn tiền",
-        orderCode: "ORD-1003",
-        topic: "Đơn hàng",
-        status: "hoàn thành",
-        createdAt: "2025-01-01",
-        updatedAt: "2025-01-03",
+        name: "iPhone 15 Pro Max",
+        quantity: 3,
+        unitCost: 800,
+        discount: 0,
+        total: 2400,
     },
     {
         id: "4",
-        title: "Sai thông tin sản phẩm",
-        orderCode: "ORD-1004",
-        topic: "Sản phẩm",
-        status: "đã hủy",
-        createdAt: "2024-12-30",
-        updatedAt: "2024-12-31",
+        name: "iPad Pro 3rd Gen",
+        quantity: 1,
+        unitCost: 900,
+        discount: 0,
+        total: 900,
     },
 ]
 
-export const columns: ColumnDef<Ticket>[] = [
-    {
-        id: "select",
-        header: ({ table }) => (
-        <Checkbox
-            checked={
-            table.getIsAllPageRowsSelected() ||
-            (table.getIsSomePageRowsSelected() && "indeterminate")
-            }
-            onCheckedChange={(value) =>
-            table.toggleAllPageRowsSelected(!!value)
-            }
-            aria-label="Chọn tất cả"
-        />
-        ),
-        cell: ({ row }) => (
-        <Checkbox
-            checked={row.getIsSelected()}
-            onCheckedChange={(value) => row.toggleSelected(!!value)}
-            aria-label="Chọn dòng"
-        />
-        ),
-        enableSorting: false,
-        enableHiding: false,
-    },
+export const columns: ColumnDef<Product>[] = [
     {
         accessorKey: "id",
         header: "ID",
     },
     {
-        accessorKey: "title",
-        header: "Title",
+        accessorKey: "name",
+        header: "Sản phẩm",
     },
     {
-        accessorKey: "orderCode",
-        header: "Mã đơn hàng",
+        accessorKey: "quantity",
+        header: "Số lượng",
     },
     {
-        accessorKey: "topic",
-        header: "Chủ đề",
+        accessorKey: "unitCost",
+        header: "Giá thành",
+        cell: ({ row }) => `$${row.getValue("unitCost")}`,
     },
     {
-        accessorKey: "status",
-        header: ({ column }) => (
-        <Button
-            className="font-bold text-[13px]!"
-            variant="ghost"
-            onClick={() =>
-            column.toggleSorting(column.getIsSorted() === "asc")
-            }
-        >
-            Trạng thái
-            <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-        ),
-        cell: ({ row }) => (
-        <span className="capitalize">{row.getValue("status")}</span>
-        ),
+        accessorKey: "discount",
+        header: "Khuyến mãi",
+        cell: ({ row }) => `${row.getValue("discount") as number * 100}%`,
     },
     {
-        accessorKey: "createdAt",
-        header: "Ngày tạo",
-    },
-    {
-        accessorKey: "updatedAt",
-        header: "Cập nhật",
+        accessorKey: "total",
+        header: "Tổng cộng",
+        cell: ({ row }) => `$${row.getValue("total")}`,
     },
     {
         id: "actions",
@@ -210,7 +165,7 @@ function SortableHeader({
     )
 }
 
-export function DataTableDemo() {
+export function InvoiceDetailTable() {
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] =
         React.useState<ColumnFiltersState>([])
@@ -244,18 +199,18 @@ export function DataTableDemo() {
                 <Table>
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
-                        <TableRow key={headerGroup.id}>
-                            {headerGroup.headers.map((header) => (
-                            <TableHead key={header.id}>
-                                {header.isPlaceholder
-                                ? null
-                                : flexRender(
-                                    header.column.columnDef.header,
-                                    header.getContext()
-                                    )}
-                            </TableHead>
-                            ))}
-                        </TableRow>
+                            <TableRow key={headerGroup.id}>
+                                {headerGroup.headers.map((header) => (
+                                <TableHead key={header.id}>
+                                    {header.isPlaceholder
+                                    ? null
+                                    : flexRender(
+                                        header.column.columnDef.header,
+                                        header.getContext()
+                                        )}
+                                </TableHead>
+                                ))}
+                            </TableRow>
                         ))}
                     </TableHeader>
 
@@ -288,32 +243,6 @@ export function DataTableDemo() {
                         )}
                     </TableBody>
                 </Table>
-            </div>
-
-            {/* Pagination */}
-            <div className="flex items-center justify-end space-x-2 py-4 px-4">
-                <div className="flex-1 text-sm text-muted-foreground">
-                {table.getFilteredSelectedRowModel().rows.length} /{" "}
-                {table.getFilteredRowModel().rows.length} dòng được chọn
-                </div>
-
-                <Button
-                variant="outline"
-                size="sm"
-                onClick={() => table.previousPage()}
-                disabled={!table.getCanPreviousPage()}
-                >
-                Trước
-                </Button>
-
-                <Button
-                variant="outline"
-                size="sm"
-                onClick={() => table.nextPage()}
-                disabled={!table.getCanNextPage()}
-                >
-                Sau
-                </Button>
             </div>
         </div>
     )

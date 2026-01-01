@@ -56,8 +56,8 @@ const adminMenuItems: NavItemType[] = [
         icon: <ShoppingCart size={16} />,
         subItems: [
             { name: "Tất cả đơn hàng", path: "/admin/invoices" },
-            { name: "Thông tin đơn hàng", path: "/admin/invoices/id" },
-            { name: "Thêm đơn hàng", path: "/admin/add-invoice" },
+            { name: "Thông tin đơn hàng", path: "/admin/invoice-detail" },
+            { name: "Thêm đơn hàng", path: "/admin/create-invoice" },
         ],
     },
 ];
