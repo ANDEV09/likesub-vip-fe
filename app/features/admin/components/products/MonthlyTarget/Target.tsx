@@ -75,10 +75,10 @@ function Target() {
                     {/* Analytics Header */}
                     <div>
                         <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
-                            Monthly Target
+                            Mục tiêu tháng
                         </h3>
                         <p className="mt-1 font-normal text-gray-500 text-theme-sm dark:text-gray-400">
-                            Target you’ve set for each month
+                            Chỉ tiêu đã định cho mỗi tháng
                         </p>
                     </div>
 
@@ -128,8 +128,7 @@ function Target() {
 
                 {/* Analytics Description */}
                 <p className="mx-auto mt-10 w-full max-w-[380px] text-center text-sm text-gray-500 sm:text-base">
-                    You earn $3287 today, it&apos;s higher than last month. Keep up your
-                    good work!
+                    Hôm nay bạn kiếm được $3287, cao hơn tháng trước. Giữ vững phong độ!
                 </p>
             </div>
 
@@ -138,7 +137,7 @@ function Target() {
                 {/* Target Annotation */}
                 <div>
                     <p className="mb-1 text-center text-gray-500 text-theme-xs dark:text-gray-400 sm:text-sm">
-                        Target
+                        Chỉ tiêu
                     </p>
                     <p className="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 dark:text-white/90 sm:text-lg">
                         $20K
@@ -165,7 +164,7 @@ function Target() {
                 {/* Revenue Annotation */}
                 <div>
                     <p className="mb-1 text-center text-gray-500 text-theme-xs dark:text-gray-400 sm:text-sm">
-                        Revenue
+                        Doanh thu
                     </p>
                     <p className="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 dark:text-white/90 sm:text-lg">
                         $20K
@@ -192,7 +191,7 @@ function Target() {
                 {/* Today Annotation */}
                 <div>
                     <p className="mb-1 text-center text-gray-500 text-theme-xs dark:text-gray-400 sm:text-sm">
-                        Today
+                        Hôm nay
                     </p>
                     <p className="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 dark:text-white/90 sm:text-lg">
                         $20K

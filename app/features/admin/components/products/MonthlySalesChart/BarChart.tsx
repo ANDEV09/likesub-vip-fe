@@ -79,7 +79,7 @@ function MonthlySalesChartAdmin() {
             <div className="flex items-center justify-between">
                 {/* Title Chart */}
                 <h3 className="text-lg font-semibold text-gray-800">
-                    Month Sales
+                    Doanh số theo tháng
                 </h3>
 
                 {/* Dot Button Toggle */}
