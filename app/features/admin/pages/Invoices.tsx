@@ -6,11 +6,12 @@ import {
 } from "lucide-react";
 
 import { Input } from "~/components/ui/input";
+
 import Pagination from "~/components/ui/pagination";
 import AdminSubHeader from "../components/AdminSubHeader";
 import InvoiceTable from "../components/invoices/InvoiceTable";
 import StatisticInvoiceCards from "../components/StatisticInvoiceCards";
-import ChartTab from "../components/products/ChartTab";
+import { Link } from "react-router";
 
 function Invoices() {
     const titlePage = "danh sách đơn hàng";
@@ -29,14 +30,15 @@ function Invoices() {
                         <span className="text-lg font-medium text-slate-800">
                             Tổng quan
                         </span>
-                        <button
+                        <Link
+                            to={"/admin/create-invoice"}
                             className="flex items-center gap-2 cursor-pointer px-4 py-2.5 rounded-lg hover:opacity-90 transition-all duration-300 bg-[#5f73ff]"
                         >
                             <Plus className="w-4 h-4 text-white" />
                             <span className="text-sm text-white font-medium">
                                 Create an Invoice
                             </span>
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Cards */}
@@ -59,9 +61,6 @@ function Invoices() {
 
                         {/* Right Section */}
                         <div className="relative flex items-center gap-4">
-                            {/* Filter Tab */}
-                            {/* <ChartTab /> */}
-
                             {/* Search Bar */}
                             <div>
                                 <Search 
