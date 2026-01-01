@@ -10,6 +10,7 @@ import ProductTable from "../components/products/ProductTable";
 import Pagination from "~/components/ui/pagination";
 import AdminSubHeader from "../components/AdminSubHeader"
 import StatisticProductCards from "../components/products/StatisticProductCards";
+import { Link } from 'react-router';
 
 function Products() {
     const titlePage = "danh sách sản phẩm";
@@ -49,14 +50,15 @@ function Products() {
                             </button>
 
                             {/* Add Button */}
-                            <button
+                            <Link
+                                to={"/admin/add-product"}
                                 className="flex items-center gap-2 cursor-pointer px-4 py-2 rounded-lg hover:opacity-90 transition-all duration-300 bg-[#5f73ff]"
                             >
                                 <Plus className="w-4 h-4 text-white" />
                                 <span className="text-sm text-white font-medium">
                                     Add Product
                                 </span>
-                            </button>
+                            </Link>
                         </div>
                     </div>
 
