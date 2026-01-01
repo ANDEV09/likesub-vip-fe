@@ -20,7 +20,7 @@ import {
 import Dropzone from "~/components/ui/dropzone";
 
 function AddProduct() {
-    const titlePage = "Add Products"
+    const titlePage = "thêm mới sản phẩm"
 
     return (
         <div>
@@ -246,12 +246,12 @@ function AddProduct() {
             {/* Action Form */}
             <div className="px-6 mb-4 flex items-start justify-end gap-3">
                 <button
-                    className="px-4 py-3 border border-gray-300 text-[13px] bg-white hover:bg-gray-100 text-slate-800 rounded-md cursor-pointer transition-colors duration-300"
+                    className="px-4 py-3 border border-gray-300 text-sm bg-white hover:bg-gray-100 text-slate-800 rounded-md cursor-pointer transition-colors duration-300"
                 >
                     Draft
                 </button>
                 <button
-                    className="px-4 py-3 text-[13px] bg-[#5f73ff] hover:opacity-90 text-white rounded-md cursor-pointer transition-all duration-300"
+                    className="px-4 py-3 text-sm bg-[#5f73ff] hover:opacity-90 text-white rounded-md cursor-pointer transition-all duration-300"
                 >
                     Publish Product
                 </button>

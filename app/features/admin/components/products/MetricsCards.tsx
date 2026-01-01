@@ -20,7 +20,7 @@ function MetricsCards() {
                 <div className="flex items-end justify-between mt-5">
                     <div>
                         <span className="text-sm text-gray-500">
-                            Customers
+                            Khách hàng
                         </span>
                         <h4 className="mt-2 font-extrabold text-gray-800 text-[30px] leading-[38px]">
                             3,782
@@ -44,7 +44,7 @@ function MetricsCards() {
                 <div className="flex items-end justify-between mt-5">
                     <div>
                         <span className="text-sm text-gray-500">
-                            Orders
+                            Đơn hàng
                         </span>
                         <h4 className="mt-2 font-extrabold text-gray-800 text-[30px] leading-[38px]">
                             5,359

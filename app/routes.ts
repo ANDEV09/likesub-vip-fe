@@ -11,6 +11,8 @@ export default [
         route("products", "routes/admin/admin.products.routes.tsx"), 
         route("add-product", "routes/admin/admin.add-product.routes.tsx"), 
         route("invoices", "routes/admin/admin.invoices.routes.tsx"), 
+        route("invoice-detail", "routes/admin/admin.invoice-detail.routes.tsx"), 
+        route("create-invoice", "routes/admin/admin.create-invoice.routes.tsx"), 
     ]),
 
     route("", "routes/user/user.routes.tsx", [

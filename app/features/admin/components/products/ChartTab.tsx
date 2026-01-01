@@ -18,7 +18,7 @@ function ChartTab() {
                 className={`px-3 py-2 font-medium w-full rounded-md text-sm hover:text-gray-90 cursor-pointer transition-colors duration-300 
                     ${getButtonClass("optionOne")}`}
             >
-                Monthly
+                Tháng
             </button>
             
             {/* Quarterly Tab */}
@@ -27,7 +27,7 @@ function ChartTab() {
                 className={`px-3 py-2 font-medium w-full rounded-md text-sm hover:text-gray-900 cursor-pointer transition-colors duration-300 
                     ${getButtonClass("optionTwo")}`}
             >
-                Quarterly
+                Quý
             </button>
             
             {/* Annually Tab */}
@@ -36,7 +36,7 @@ function ChartTab() {
                 className={`px-3 py-2 font-medium w-full rounded-md text-sm hover:text-gray-900 cursor-pointer transition-colors duration-300 
                     ${getButtonClass("optionThree")}`}
             >
-                Annually
+                Năm
             </button>
         </div>
     )

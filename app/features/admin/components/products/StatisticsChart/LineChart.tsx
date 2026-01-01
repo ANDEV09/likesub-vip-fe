@@ -121,10 +121,10 @@ function LineChart() {
                 {/* Title */}
                 <div className="w-full">
                     <h3 className="text-lg font-semibold text-gray-800">
-                        Statistics
+                        Thống kê
                     </h3>
                     <p className="mt-1 text-gray-500 text-sm">
-                        Target you're set for each month
+                        Mục tiêu bạn đặt cho mỗi tháng
                     </p>
                 </div>
 
