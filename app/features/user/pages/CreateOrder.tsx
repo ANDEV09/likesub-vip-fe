@@ -113,6 +113,7 @@ function CreateOrder() {
                             Đặt hàng
                         </button>
                     </div>
+                </div>
 
                 {/* Content */}
                 <div className="flex-1">
