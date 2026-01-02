@@ -74,7 +74,7 @@ function CreateOrder() {
                 </div>
 
                 {/* Content */}
-                <div>
+                <div className="flex-1">
                     Main Content
                 </div>
             </div>

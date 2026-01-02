@@ -28,8 +28,8 @@ function Products() {
                 {/* Products */}
                 <div className="bg-white rounded-2xl border border-gray-200">
                     {/* Title Table */}
-                    <div className="px-6 py-4 flex items-center justify-between w-full border-b border-gray-200">
-                        <div className="flex flex-col items-start">
+                    <div className="px-6 py-4 flex items-center justify-between min-w-0 w-full border-b border-gray-200">
+                        <div className="flex flex-col items-start min-w-0">
                             <span className="text-lg font-medium text-slate-800">
                                 Danh sách sản phẩm
                             </span>
@@ -38,7 +38,7 @@ function Products() {
                             </span>
                         </div>
 
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-4 shrink-0">
                             {/* Export Button */}
                             <button
                                 className="flex items-center gap-2 cursor-pointer px-4 py-2 border border-gray-300 rounded-lg hover:bg-slate-100 transition-colors duration-300"
@@ -52,7 +52,7 @@ function Products() {
                             {/* Add Button */}
                             <Link
                                 to={"/admin/add-product"}
-                                className="flex items-center gap-2 cursor-pointer px-4 py-2 rounded-lg hover:opacity-90 transition-all duration-300 bg-[#5f73ff]"
+                                className="inline-flex! shrink-0 items-center gap-2 cursor-pointer px-4 py-2 rounded-lg hover:opacity-90 transition-opacity duration-300 bg-[#5f73ff]"
                             >
                                 <Plus className="w-4 h-4 text-white" />
                                 <span className="text-sm text-white font-medium">
