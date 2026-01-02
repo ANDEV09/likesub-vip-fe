@@ -15,7 +15,7 @@ export default [
         route("create-invoice", "routes/admin/admin.create-invoice.routes.tsx"), 
     ]),
 
-    route("client", "routes/user/user.routes.tsx", [
+    route("", "routes/user/user.routes.tsx", [
         index("routes/user/user.index.routes.tsx"), 
         route("create-order", "routes/user/user.create-order.routes.tsx"), 
         route("service-pricing", "routes/user/user.service-pricing.routes.tsx"), 
