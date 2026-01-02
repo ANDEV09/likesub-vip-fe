@@ -25,6 +25,16 @@ function UserHeader() {
                             />
                         </svg>
                     </button>
+                  
+                    {/* Title Page & Greeting message */}
+                    <div className="hidden md:block">
+                        <h1 className="text-xl font-bold text-slate-800 m-0!">
+                            Quản trị người dùng
+                        </h1>
+                        <p className="text-sm text-slate-600">
+                            Chào mừng trở lại! Cùng xem sự kiện diễn ra hôm nay.
+                        </p>
+                    </div>
                 </div>
 
                 {/* Right Side */}

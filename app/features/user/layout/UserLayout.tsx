@@ -11,7 +11,7 @@ function ClientLayout() {
     const [isShowFirstAlert, setIsShowFirstAlert] = useState(true);
 
     return (
-        <div className="min-h-screen lg:flex relative">
+        <div className="min-h-screen! lg:flex relative">
             {/* Overlay Alert */}
             {isShowFirstAlert && 
                 <SystemAlertModal setIsShowFirstAlert = {setIsShowFirstAlert} />}
@@ -20,8 +20,9 @@ function ClientLayout() {
 
             <main className="flex-1 flex flex-col transition-all duration-300 ease-in-out">
                 <UserHeader />
-
-                <div className="flex-1 bg-slate-100 overflow-y-auto">
+                
+                {/* Main Content */}
+                <div className="flex-1 bg-slate-100 min-h-screen! overflow-y-auto min-h-0">
                     <Outlet />
                 </div>
 

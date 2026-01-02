@@ -30,7 +30,7 @@ function AdminHeader() {
 
                     {/* Title Page & Greeting message */}
                     <div className="hidden md:block">
-                        <h1 className="text-xl font-bold text-slate-800">
+                        <h1 className="text-xl font-bold text-slate-800 m-0!">
                             Quản trị hệ thống
                         </h1>
                         <p className="text-sm text-slate-600">

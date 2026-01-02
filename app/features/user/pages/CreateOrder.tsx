@@ -114,6 +114,9 @@ function CreateOrder() {
                         </button>
                     </div>
 
+                {/* Content */}
+                <div className="flex-1">
+                  { /* Main Content */ }
                     <div className="w-1/3 flex flex-col gap-4">
                         <div className="w-full bg-white rounded-lg shadow p-6 border border-slate-200 flex flex-col gap-4">
                             <div className="flex items-center gap-6 mb-2">
