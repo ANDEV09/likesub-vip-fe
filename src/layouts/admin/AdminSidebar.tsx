@@ -1,6 +1,8 @@
 "use client"
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 import {
     ShoppingCart,
@@ -16,8 +18,6 @@ import {
     Package2
 } from "lucide-react";
 import { useSidebar } from "@/contexts/shared/SidebarContext";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
 
 interface NavItemType {
     name: string,
@@ -128,7 +128,6 @@ const adminSupportItems: NavItemType[] = [
 
 function AdminSidebar() {
     const pathname = usePathname();
-
     const { isExpanded, isHovered, setIsHovered } = useSidebar();
 
     const [openSubmenu, setOpenSubmenu] = useState<{
@@ -296,7 +295,7 @@ function AdminSidebar() {
                                     {nav.subItems.map(subItem => (
                                         <li key={subItem.name}>
                                             <Link
-                                                className={`hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-2 font-normal rounded-lg text-[14px] group text-slate-300 
+                                                className={`hover:bg-slate-800! flex items-center w-full gap-3 px-3! py-2! font-normal rounded-lg text-[14px] group text-slate-300 
                                                     ${isActive(subItem.path) 
                                                         ? "bg-slate-800 text-blue-400!"
                                                         : "text-slate-300 group-hover:text-slate-400" 

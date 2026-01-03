@@ -11,6 +11,7 @@ import Pagination from "@/components/shared/ui/pagination";
 
 import ProductTable from "@/components/admin/products/ProductTable";
 import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
+import StatisticProductCards from "@/components/admin/products/StatisticProductCards";
 
 
 function Products() {
@@ -24,7 +25,7 @@ function Products() {
             {/* Main Table */}
             <div className="p-6 w-full flex flex-col gap-6">
                 {/* Statistic Card */}
-                {/* <StatisticProductCards /> */}
+                <StatisticProductCards />
 
                 {/* Products */}
                 <div className="bg-white rounded-2xl border border-gray-200">
