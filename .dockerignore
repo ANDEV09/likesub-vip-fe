@@ -1,4 +1,6 @@
-.react-router
-build
 node_modules
+.next
+.git
+Dockerfile*
 README.md
+.env
