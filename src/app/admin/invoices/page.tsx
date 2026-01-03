@@ -7,7 +7,7 @@ import {
 
 import { Input } from "@/components/shared/ui/input";
 import Pagination from "@/components/shared/ui/pagination";
-import StatisticInvoiceCards from "@/components/admin/StatisticInvoiceCards";
+import StatisticInvoiceCards from "@/components/admin/invoices/StatisticInvoiceCards";
 import InvoiceTable from "@/components/admin/invoices/InvoiceTable";
 import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
 import Link from "next/link";
