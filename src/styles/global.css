@@ -24,10 +24,12 @@ body {
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-16px);
   }
@@ -38,15 +40,16 @@ body {
 }
 
 @property --border-angle {
-    inherits: false;
-    initial-value: 0deg;
-    syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+  syntax: '<angle>';
 }
 
 @keyframes border-rotate {
   0% {
     --border-angle: 0deg;
   }
+
   100% {
     --border-angle: 360deg;
   }
@@ -59,11 +62,15 @@ body {
 
 
 @utility no-scrollbar {
-  &::-webkit-scrollbar { /* Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    /* Chrome, Safari and Opera */
     display: none;
   }
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 ::-webkit-scrollbar {
@@ -387,17 +394,22 @@ body {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
 @utility no-scrollbar {
-  &::-webkit-scrollbar { /* Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    /* Chrome, Safari and Opera */
     display: none;
   }
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 @utility custom-scrollbar {

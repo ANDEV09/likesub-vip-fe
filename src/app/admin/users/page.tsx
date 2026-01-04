@@ -26,7 +26,7 @@ import {
 } from "@/components/shared/ui/select";
 
 function Users() {
-    const titlePage = "danh sách người dùng";
+    const titlePage = "danh sách thành viên";
 
     return (
         <div>
@@ -51,10 +51,10 @@ function Users() {
                         {/* Left Section - Title & Subtitle */}
                         <div className="flex flex-col items-start">
                             <span className="text-lg font-medium text-slate-800">
-                                Danh sách người dùng
+                                Danh sách thành viên
                             </span>
                             <span className="text-[13px] text-gray-500">
-                                Theo dõi hoạt động và trạng thái của từng người dùng.
+                                Theo dõi hoạt động và trạng thái của từng thành viên.
                             </span>
                         </div>
 
@@ -75,25 +75,25 @@ function Users() {
                     <div className="flex flex-col items-start gap-4 py-3 px-6 border-b border-gray-200">
                         {/* Row 1 - Search Input */}
                         <div className="w-full mt-2 relative flex items-center justify-between gap-4">
-                            {/* Customer ID */}
+                            {/* User ID */}
                             <div className="grid w-full items-center gap-3">
                                 <Input
                                     type="number"
                                     id="id"
-                                    placeholder="ID khách hàng "
+                                    placeholder="ID thành viên "
                                 />
                             </div>
 
-                            {/* Customer Username */}
+                            {/* User Username */}
                             <div className="grid w-full items-center gap-3">
                                 <Input
                                     type="text"
                                     id="username"
-                                    placeholder="Tên khách hàng"
+                                    placeholder="Tên thành viên"
                                 />
                             </div>
 
-                            {/* Customer Fullname */}
+                            {/* User Fullname */}
                             <div className="grid w-full items-center gap-3">
                                 <Input
                                     type="text"
@@ -102,25 +102,25 @@ function Users() {
                                 />
                             </div>
 
-                            {/* Customer Email */}
+                            {/* User Email */}
                             <div className="grid w-full items-center gap-3">
                                 <Input
                                     type="email"
                                     id="email"
-                                    placeholder="Email khách hàng"
+                                    placeholder="Email thành viên"
                                 />
                             </div>
 
-                            {/* Customer Phone */}
+                            {/* User Phone */}
                             <div className="grid w-full items-center gap-3">
                                 <Input
                                     type="number"
                                     id="phone"
-                                    placeholder="SĐT khách hàng"
+                                    placeholder="SĐT thành viên"
                                 />
                             </div>
 
-                            {/* Customer IP Address */}
+                            {/* User IP Address */}
                             <div className="grid w-full items-center gap-3">
                                 <Input
                                     type="text"

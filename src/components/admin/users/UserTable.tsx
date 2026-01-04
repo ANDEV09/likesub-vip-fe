@@ -12,6 +12,7 @@ import {
     SquarePen,
     Trash
 } from "lucide-react";
+import Link from "next/link";
 
 interface User {
     id: number;
@@ -249,9 +250,9 @@ function UserTable() {
 
                         {/* Table Body */}
                         <TableBody className="divide-y divide-gray-200 dark:divide-white/5">
-                            {tableData.map((order) => (
+                            {tableData.map((user) => (
                                 <TableRow
-                                    key={order.id}
+                                    key={user.id}
                                     className="
                                         transition-colors
                                         hover:bg-gray-100
@@ -265,16 +266,19 @@ function UserTable() {
                                                 <img
                                                     width={40}
                                                     height={40}
-                                                    src={order.user.image}
-                                                    alt={order.user.name}
+                                                    src={user.user.image}
+                                                    alt={user.user.name}
                                                 />
                                             </div>
                                             <div>
-                                                <span className="block font-bold text-gray-800 text-sm dark:text-white/90 hover:underline cursor-pointer">
-                                                    {order.user.name}
-                                                </span>
+                                                <Link
+                                                    href={`/admin/users/${user.id}/info`}
+                                                    className="block font-bold text-gray-800 text-sm dark:text-white/90 hover:underline cursor-pointer"
+                                                >
+                                                    {user.user.name}
+                                                </Link>
                                                 <span className="block text-gray-500 text-xs dark:text-gray-400">
-                                                    #{order.id}
+                                                    #{user.id}
                                                 </span>
                                             </div>
                                         </div>
@@ -282,27 +286,27 @@ function UserTable() {
 
                                     {/* Email */}
                                     <TableCell className="px-4 py-3 text-gray-600 text-start text-sm dark:text-gray-400 font-medium">
-                                        {order.email}
+                                        {user.email}
                                     </TableCell>
 
                                     {/* Balance */}
                                     <TableCell className="px-4 py-3 text-blue-600 text-start text-sm font-medium">
-                                        {order.balance}
+                                        {user.balance}
                                     </TableCell>
 
                                     {/* Total Deposit */}
                                     <TableCell className="px-4 py-3 text-red-500 text-start text-sm font-medium">
-                                        {order.totalDeposit}
+                                        {user.totalDeposit}
                                     </TableCell>
 
                                     {/* Role */}
                                     <TableCell className="px-4 py-3 text-gray-600 text-start text-xs dark:text-gray-400 font-medium">
-                                        {order.user.role}
+                                        {user.user.role}
                                     </TableCell>
 
                                     {/* Discount */}
                                     <TableCell className="px-4 py-3 text-gray-500 text-sm dark:text-gray-400">
-                                        {order.discount}
+                                        {user.discount}
                                     </TableCell>
 
                                     {/* Status */}
@@ -310,14 +314,14 @@ function UserTable() {
                                         <Badge
                                             size="xs"
                                             color={
-                                                order.status === "Active"
+                                                user.status === "Active"
                                                     ? "success"
-                                                    : order.status === "Pending"
+                                                    : user.status === "Pending"
                                                         ? "warning"
                                                         : "error"
                                             }
                                         >
-                                            {order.status}
+                                            {user.status}
                                         </Badge>
                                     </TableCell>
 
