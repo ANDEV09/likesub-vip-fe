@@ -1,68 +1,32 @@
 "use client"
 
-import { 
-    ChartNoAxesCombined,
-    CloudDownload,
-    KeyRound,
-    RotateCcw,
-    UserX
-} from "lucide-react";
-import { useState } from "react";
-
-import ProductTable from "@/components/admin/products/ProductTable";
+import Pagination from "@/components/shared/ui/pagination";
 import UsersNotice from "@/components/admin/users/UsersNotice";
 import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
-import Pagination from "@/components/shared/ui/pagination";
 import StatisticUserCards from "@/components/admin/users/StatisticUserCards";
-import StatisticUserModal from "@/components/admin/users/StatisticUserModal";
+import UserActions from "@/components/admin/users/UserActions";
 
-import { confirmAction } from "@/lib/alert";
+import {
+    CircleX,
+    Plus,
+    Search
+} from "lucide-react";
+
+import { Input } from "@/components/shared/ui/input";
+import { Label } from "@/components/shared/ui/label";
+import UserTable from "@/components/admin/users/UserTable";
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue
+} from "@/components/shared/ui/select";
 
 function Users() {
     const titlePage = "danh sách người dùng";
-    const [isShowStatisticUserModal, setIsShowStatisticUserModal] = useState(false);
-
-    const showResetAllDepositAlert = async () => {
-        const result = await confirmAction({
-            title: "Xác nhận reset tổng nạp",
-            html: `
-                <p style="margin-bottom: 12px;">Hệ thống sẽ reset tổng tiền đã nạp của <strong>toàn bộ thành viên</strong>.</p>
-                <p style="color: #ef4444; font-weight: 500;">⚠️ Hành động này không thể hoàn tác!</p>
-            `,
-        });
-    
-        if (result.isConfirmed) {
-            console.log("Clicked");
-        }
-    };
-
-    const showLogoutAllAlert = async () => {
-        const result = await confirmAction({
-            title: "Đăng xuất toàn bộ thành viên",
-            html: `
-                <p style="margin-bottom: 12px;">Hệ thống sẽ <strong>đăng xuất tất cả người dùng</strong> đang hoạt động.</p>
-                <p style="color: #f59e0b; font-weight: 500;">⚠️ Tất cả phiên đăng nhập sẽ bị hủy ngay lập tức!</p>
-            `,
-        });
-
-        if (result.isConfirmed) {
-            console.log("Clicked");
-        }
-    };
-
-    const showChangeAllApiKeys = async () => {
-        const result = await confirmAction({
-            title: "Cập nhật API Keys hàng loạt",
-            html: `
-                <p style="margin-bottom: 12px;">Toàn bộ API Keys hiện tại sẽ bị <strong>vô hiệu hóa và thay thế</strong>.</p>
-                <p style="color: #ef4444; font-weight: 500;">🔒 Các tích hợp đang dùng API cũ sẽ bị gián đoạn!</p>
-            `,
-        });
-
-        if (result.isConfirmed) {
-            console.log("Clicked");
-        }
-    };
 
     return (
         <div>
@@ -78,79 +42,275 @@ function Users() {
                 <UsersNotice />
 
                 {/* User Actions */}
-                <div className="flex items-center justify-end gap-2">
-                    {/* Statistic Button */}
-                    <button
-                        onClick={() => setIsShowStatisticUserModal(true)} 
-                        className="inline-flex items-center gap-1 text-white bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-sm transition-colors duration-300 cursor-pointer"
-                    >
-                        <ChartNoAxesCombined className="w-4 h-4" />
-                        <span className="text-xs font-bold">
-                            THỐNG KÊ
-                        </span>
-                    </button>
-
-                    {/* Email Download Button */}
-                    <button 
-                        className="inline-flex items-center gap-1 text-white bg-green-600 hover:bg-green-700 px-4 py-2 rounded-sm transition-colors duration-300 cursor-pointer"
-                    >
-                        <CloudDownload className="w-4 h-4" />
-                        <span className="text-xs font-bold">
-                            TẢI EMAIL USERS
-                        </span>
-                    </button>
-
-                    {/* Reset Button */}
-                    <button
-                        onClick={showResetAllDepositAlert}
-                        className="inline-flex items-center gap-1 text-white bg-cyan-500 hover:bg-cyan-600 px-4 py-2 rounded-sm transition-colors duration-300 cursor-pointer"
-                    >
-                        <RotateCcw className="w-4 h-4" />
-                        <span className="text-xs font-bold">
-                            RESET TỔNG NẠP
-                        </span>
-                    </button>
-
-                    {/* Logout All Button */}
-                    <button
-                        onClick={showLogoutAllAlert}
-                        className="inline-flex items-center gap-1 text-white bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-sm transition-colors duration-300 cursor-pointer"
-                    >
-                        <UserX className="w-4 h-4" />
-                        <span className="text-xs font-bold">
-                            ĐĂNG XUẤT TẤT CẢ
-                        </span>
-                    </button>
-
-                    {/* Change All API-KEYS Button */}
-                    <button 
-                        onClick={showChangeAllApiKeys}
-                        className="inline-flex items-center gap-1 text-white bg-purple-700 hover:bg-purple-800 px-4 py-2 rounded-sm transition-colors duration-300 cursor-pointer"
-                    >
-                        <KeyRound className="w-4 h-4" />
-                        <span className="text-xs font-bold">
-                            THAY ĐỔI API KEY TOÀN BỘ THÀNH VIÊN
-                        </span>
-                    </button>
-                </div>
-
-                {/* Modal & Alert */}
-                {isShowStatisticUserModal && 
-                    <StatisticUserModal setIsShowStatisticUserModal = {setIsShowStatisticUserModal} />}
+                <UserActions />
 
                 {/* Users */}
                 <div className="bg-white rounded-2xl border border-gray-200">
                     {/* Title Page */}
-                    <div className="px-6 py-4 flex items-center justify-between min-w-0 w-full border-b border-gray-200">
-                        <div className="flex flex-col items-start min-w-0">
+                    <div className="px-6 py-4 flex items-center justify-between w-full border-b border-gray-200">
+                        {/* Left Section - Title & Subtitle */}
+                        <div className="flex flex-col items-start">
                             <span className="text-lg font-medium text-slate-800">
                                 Danh sách người dùng
                             </span>
+                            <span className="text-[13px] text-gray-500">
+                                Theo dõi hoạt động và trạng thái của từng người dùng.
+                            </span>
+                        </div>
+
+                        {/* Right Section - Add Button */}
+                        <div className="relative flex items-center gap-4">
+                            <button
+                                className="flex items-center gap-2 cursor-pointer text-white px-4 py-2 bg-[#0f172a] hover:opacity-80 transition-opacity duration-300 rounded-lg"
+                            >
+                                <Plus className="w-4 h-4 text-white" />
+                                <span className="text-sm text-white font-medium">
+                                    Thêm thành viên
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Search & Filter */}
+                    <div className="flex flex-col items-start gap-4 py-3 px-6 border-b border-gray-200">
+                        {/* Row 1 - Search Input */}
+                        <div className="w-full mt-2 relative flex items-center justify-between gap-4">
+                            {/* Customer ID */}
+                            <div className="grid w-full items-center gap-3">
+                                <Input
+                                    type="number"
+                                    id="id"
+                                    placeholder="ID khách hàng "
+                                />
+                            </div>
+
+                            {/* Customer Username */}
+                            <div className="grid w-full items-center gap-3">
+                                <Input
+                                    type="text"
+                                    id="username"
+                                    placeholder="Tên khách hàng"
+                                />
+                            </div>
+
+                            {/* Customer Fullname */}
+                            <div className="grid w-full items-center gap-3">
+                                <Input
+                                    type="text"
+                                    id="fullname"
+                                    placeholder="Họ và tên"
+                                />
+                            </div>
+
+                            {/* Customer Email */}
+                            <div className="grid w-full items-center gap-3">
+                                <Input
+                                    type="email"
+                                    id="email"
+                                    placeholder="Email khách hàng"
+                                />
+                            </div>
+
+                            {/* Customer Phone */}
+                            <div className="grid w-full items-center gap-3">
+                                <Input
+                                    type="number"
+                                    id="phone"
+                                    placeholder="SĐT khách hàng"
+                                />
+                            </div>
+
+                            {/* Customer IP Address */}
+                            <div className="grid w-full items-center gap-3">
+                                <Input
+                                    type="text"
+                                    id="address"
+                                    placeholder="Địa chỉ IP"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Row 2 - Filter Select & Action Buttons */}
+                        <div className="relative flex items-center justify-between gap-4">
+                            {/* Trạng thái */}
+                            <div className="grid w-full items-center gap-3">
+                                <Select>
+                                    <SelectTrigger className="w-full">
+                                        <SelectValue placeholder="Trạng thái" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectLabel>
+                                                Trạng thái
+                                            </SelectLabel>
+                                            <SelectItem value="Apple">Đã bị chặn</SelectItem>
+                                            <SelectItem value="IOS">Đang hoạt động</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+                            {/* Vai trò */}
+                            <div className="grid w-full items-center gap-3">
+                                <Select>
+                                    <SelectTrigger className="w-full">
+                                        <SelectValue placeholder="Vai trò" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectLabel>
+                                                Vai trò
+                                            </SelectLabel>
+                                            <SelectItem value="Apple">Admin</SelectItem>
+                                            <SelectItem value="IOS">Người dùng</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+                            {/* Balance Sorting */}
+                            <div className="grid w-full items-center gap-3">
+                                <Select>
+                                    <SelectTrigger className="w-full">
+                                        <SelectValue placeholder="Sắp xếp số dư" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectLabel>
+                                                Sắp xếp số dư
+                                            </SelectLabel>
+                                            <SelectItem value="ascending">Tăng dần</SelectItem>
+                                            <SelectItem value="descending">Giảm dần</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+                            {/* Deposit Sorting */}
+                            <div className="grid w-full items-center gap-3">
+                                <Select>
+                                    <SelectTrigger className="w-full">
+                                        <SelectValue placeholder="Sắp xếp tổng nạp" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectLabel>
+                                                Sắp xếp tổng nạp
+                                            </SelectLabel>
+                                            <SelectItem value="ascending">Tăng dần</SelectItem>
+                                            <SelectItem value="descending">Giảm dần</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+                            {/* Discount Sorting */}
+                            <div className="grid w-full items-center gap-3">
+                                <Select>
+                                    <SelectTrigger className="w-full">
+                                        <SelectValue placeholder="Sắp xếp chiết khấu" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectLabel>
+                                                Sắp xếp chiết khấu
+                                            </SelectLabel>
+                                            <SelectItem value="ascending">Tăng dần</SelectItem>
+                                            <SelectItem value="descending">Giảm dần</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+                            {/* Buttons */}
+                            <div className="flex w-full items-center gap-2">
+                                {/* Search Button */}
+                                <button
+                                    className="min-w-30 flex items-center gap-2 cursor-pointer text-white px-4 py-2 bg-[#0f172a] hover:opacity-80 transition-opacity duration-300 rounded-lg"
+                                >
+                                    <Search className="w-4 h-4 text-white" />
+                                    <span className="text-sm text-white font-medium">
+                                        Tìm kiếm
+                                    </span>
+                                </button>
+
+                                {/* Clear Filter Button */}
+                                <button
+                                    className="min-w-28 flex items-center gap-2 cursor-pointer text-white px-4 py-2 bg-orange-600 hover:opacity-80 transition-opacity duration-300 rounded-lg"
+                                >
+                                    <CircleX className="w-4 h-4 text-white" />
+                                    <span className="text-sm text-white font-medium">
+                                        Làm mới
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Row 3 - Filter by Date (Select) */}
+                        <div className="my-2 w-full flex items-center justify-between">
+                            {/* Filter Select - Show Quantity */}
+                            <div className="flex items-center gap-3">
+                                <Label className="w-full" htmlFor="brand">
+                                    Số lượng hiển thị:
+                                </Label>
+                                <Select>
+                                    <SelectTrigger className="min-w-26">
+                                        <SelectValue placeholder="10" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectLabel>
+                                                Show
+                                            </SelectLabel>
+                                            <SelectItem value="5">5</SelectItem>
+                                            <SelectItem value="10">10</SelectItem>
+                                            <SelectItem value="20">20</SelectItem>
+                                            <SelectItem value="50">50</SelectItem>
+                                            <SelectItem value="100">100</SelectItem>
+                                            <SelectItem value="500">500</SelectItem>
+                                            <SelectItem value="1000">1.000</SelectItem>
+                                            <SelectItem value="5000">5000</SelectItem>
+                                            <SelectItem value="10000">10.000</SelectItem>
+                                            <SelectItem value="15000">15.000</SelectItem>
+                                            <SelectItem value="20000">20.000</SelectItem>
+                                            <SelectItem value="30000">30.000</SelectItem>
+                                            <SelectItem value="40000">40.000</SelectItem>
+                                            <SelectItem value="50000">50.000</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
+
+                            <div className="flex-1 bg-red-300" />
+
+                            {/* Filter Select - Sort by Date */}
+                            <div className="flex items-center gap-3">
+                                <Label className="w-full" htmlFor="brand">
+                                    Sắp xếp theo ngày:
+                                </Label>
+                                <Select>
+                                    <SelectTrigger className="min-w-26">
+                                        <SelectValue placeholder="Tất cả" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            <SelectLabel>
+                                                Sort by Date
+                                            </SelectLabel>
+                                            <SelectItem value="All">Tất cả</SelectItem>
+                                            <SelectItem value="Hôm nay">Hôm nay</SelectItem>
+                                            <SelectItem value="Hôm qua">Hôm qua</SelectItem>
+                                            <SelectItem value="Tuần này">Tuần này</SelectItem>
+                                            <SelectItem value="Tháng này">Tháng này</SelectItem>
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </div>
                         </div>
                     </div>
 
                     {/* Table */}
-                    <ProductTable />
+                    <UserTable />
 
                     {/* Bottom Table */}
                     <div className="flex items-center justify-between py-4 px-6 border-t border-gray-200">
