@@ -29,7 +29,7 @@ export default function UsersNotice() {
                 </div>
                 <div className="flex flex-col">
                     <span className="">
-                        Việc chỉnh sửa hoặc vô hiệu hóa người dùng có thể ảnh hưởng đến dữ liệu, đơn hàng và lịch sử giao dịch liên quan.
+                        Việc chỉnh sửa hoặc vô hiệu hóa thành viên có thể ảnh hưởng đến dữ liệu, đơn hàng và lịch sử giao dịch liên quan.
                     </span>
                     <span>
                         Vui lòng kiểm tra kỹ trước khi thực hiện.

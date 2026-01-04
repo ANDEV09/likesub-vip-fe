@@ -1,81 +1,82 @@
 import {
     Banknote,
+    CreditCard,
     Lock,
     Users,
     UserStar
 } from "lucide-react"
 
-function StatisticUserCards() {
+function StatisticUserDetailCards() {
     return (
         <div className="w-full flex items-center justify-between gap-6 rounded-lg">
-            {/* Total Users */}
+            {/* Total Amount */}
             <div className="w-full max-h-22 flex items-center gap-4 px-6 py-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
                 {/* icon */}
-                <div className="bg-purple-700 flex items-center justify-center min-w-11 h-11 rounded-md">
-                    <Users className="w-6 h-6 text-white" />
+                <div className="bg-purple-100 flex items-center justify-center min-w-11 h-11 rounded-md">
+                    <Users className="w-6 h-6 text-purple-700" />
                 </div>
 
                 {/* actual data */}
                 <div className="flex flex-col items-start gap-1 w-full">
-                    <span className="text-[28px] text-gray-800 font-bold">
-                        54
-                    </span>
                     <span className="text-[13px] text-gray-500 font-medium">
-                        Tổng thành viên
+                        Ví chính
+                    </span>
+                    <span className="text-lg text-purple-700 font-bold">
+                        0đ
                     </span>
                 </div>
             </div>
 
-            {/* Remaining Balance */}
+            {/* Total Deposit */}
             <div className="w-full max-h-22 flex items-center gap-4 px-6 py-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
                 {/* icon */}
-                <div className="bg-cyan-500 flex items-center justify-center min-w-11 h-11 rounded-md">
-                    <Banknote className="w-6 h-6 text-white" />
+                <div className="bg-green-100 flex items-center justify-center min-w-11 h-11 rounded-md">
+                    <Banknote className="w-6 h-6 text-green-700" />
                 </div>
 
                 {/* actual data */}
                 <div className="flex flex-col items-start gap-1 w-full">
-                    <span className="text-[28px] text-gray-800 font-bold">
-                        $8.002.410
-                    </span>
                     <span className="text-[13px] text-gray-500 font-medium">
-                        Số dư còn lại
+                        Tổng tiền nạp
+                    </span>
+                    <span className="text-lg text-green-700 font-bold">
+                        0đ
                     </span>
                 </div>
             </div>
 
-            {/* Admins */}
+            {/* Used */}
             <div className="w-full max-h-22 flex items-center gap-4 px-6 py-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
                 {/* icon */}
-                <div className="bg-yellow-500 flex items-center justify-center min-w-11 h-11 rounded-md">
-                    <UserStar className="w-6 h-6 text-white" />
+                <div className="bg-yellow-50 flex items-center justify-center min-w-11 h-11 rounded-md">
+                    <UserStar className="w-6 h-6 text-yellow-700" />
                 </div>
 
                 {/* actual data */}
                 <div className="flex flex-col items-start gap-1 w-full">
-                    <span className="text-[28px] text-gray-800 font-bold">
-                        2
-                    </span>
                     <span className="text-[13px] text-gray-500 font-medium">
-                        Nguời quản trị
+                        Đã sử dụng
+                    </span>
+                    <span className="text-lg text-yellow-700 font-bold">
+                        0đ
                     </span>
                 </div>
             </div>
 
-            {/* Banned Users */}
+            {/* Debt Amount */}
             <div className="w-full max-h-22 flex items-center gap-4 px-6 py-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
                 {/* icon */}
-                <div className="bg-orange-600 flex items-center justify-center min-w-11 h-11 rounded-md">
-                    <Lock className="w-6 h-6 text-white" />
+                <div className="bg-orange-50 flex items-center justify-center min-w-11 h-11 rounded-md">
+                    <CreditCard className="w-6 h-6 text-orange-600" />
                 </div>
 
                 {/* actual data */}
-                <div className="flex flex-col items-start gap-1 w-full">
-                    <span className="text-[28px] text-gray-800 font-bold">
-                        0
-                    </span>
+                <div className="flex flex-col items-start w-full">
                     <span className="text-[13px] text-gray-500 font-medium">
-                        Thành viên bị chặn
+                        Số tiền nợ
+                    </span>
+                    <span className="text-lg text-orange-600 font-bold">
+                        0đ
                     </span>
                 </div>
             </div>
@@ -83,4 +84,4 @@ function StatisticUserCards() {
     )
 }
 
-export default StatisticUserCards
+export default StatisticUserDetailCards;
