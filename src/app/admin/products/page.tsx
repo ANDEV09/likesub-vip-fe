@@ -13,7 +13,6 @@ import ProductTable from "@/components/admin/products/ProductTable";
 import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
 import StatisticProductCards from "@/components/admin/products/StatisticProductCards";
 
-
 function Products() {
     const titlePage = "danh sách sản phẩm";
 

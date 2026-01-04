@@ -1,7 +1,6 @@
 "use client"
 
 import Pagination from "@/components/shared/ui/pagination";
-import ProductTable from "@/components/admin/products/ProductTable";
 import UsersNotice from "@/components/admin/users/UsersNotice";
 import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
 import StatisticUserCards from "@/components/admin/users/StatisticUserCards";
@@ -13,6 +12,9 @@ import {
     Search
 } from "lucide-react";
 
+import { Input } from "@/components/shared/ui/input";
+import { Label } from "@/components/shared/ui/label";
+import UserTable from "@/components/admin/users/UserTable";
 import {
     Select,
     SelectContent,
@@ -22,8 +24,6 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/shared/ui/select";
-import { Input } from "@/components/shared/ui/input";
-import { Label } from "@/components/shared/ui/label";
 
 function Users() {
     const titlePage = "danh sách người dùng";
@@ -310,7 +310,7 @@ function Users() {
                     </div>
 
                     {/* Table */}
-                    <ProductTable />
+                    <UserTable />
 
                     {/* Bottom Table */}
                     <div className="flex items-center justify-between py-4 px-6 border-t border-gray-200">
