@@ -9,7 +9,7 @@ function StatisticUserCards() {
     return (
         <div className="w-full flex items-center justify-between gap-6 rounded-lg">
             {/* Total Users */}
-            <div className="w-full flex items-center gap-4 px-6 py-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+            <div className="w-full max-h-22 flex items-center gap-4 px-6 py-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
                 {/* icon */}
                 <div className="bg-purple-700 flex items-center justify-center min-w-11 h-11 rounded-md">
                     <Users className="w-6 h-6 text-white" />
@@ -27,7 +27,7 @@ function StatisticUserCards() {
             </div>
 
             {/* Remaining Balance */}
-            <div className="w-full flex items-center gap-4 px-6 py-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+            <div className="w-full max-h-22 flex items-center gap-4 px-6 py-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
                 {/* icon */}
                 <div className="bg-cyan-500 flex items-center justify-center min-w-11 h-11 rounded-md">
                     <Banknote className="w-6 h-6 text-white" />
@@ -45,7 +45,7 @@ function StatisticUserCards() {
             </div>
 
             {/* Admins */}
-            <div className="w-full flex items-center gap-4 px-6 py-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+            <div className="w-full max-h-22 flex items-center gap-4 px-6 py-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
                 {/* icon */}
                 <div className="bg-yellow-500 flex items-center justify-center min-w-11 h-11 rounded-md">
                     <UserStar className="w-6 h-6 text-white" />
@@ -63,7 +63,7 @@ function StatisticUserCards() {
             </div>
 
             {/* Banned Users */}
-            <div className="w-full flex items-center gap-4 px-6 py-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
+            <div className="w-full max-h-22 flex items-center gap-4 px-6 py-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200">
                 {/* icon */}
                 <div className="bg-orange-600 flex items-center justify-center min-w-11 h-11 rounded-md">
                     <Lock className="w-6 h-6 text-white" />
