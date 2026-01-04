@@ -39,26 +39,26 @@ const Badge: React.FC<BadgeProps> = ({
     // Define color styles for variants
     const variants = {
         light: {
-        primary:
-            "bg-blue-50 text-blue-500 dark:bg-blue-500/15 dark:text-blue-400",
-        success:
-            "bg-green-50 text-green-600 dark:bg-green-500/15 dark:text-green-500",
-        error:
-            "bg-red-50 text-red-600 dark:bg-red-500/15 dark:text-red-500",
-        warning:
-            "bg-orange-50 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400",
-        info: "bg-blue-light-50 text-blue-light-500 dark:bg-blue-light-500/15 dark:text-blue-light-500",
-        light: "bg-gray-100 text-gray-700 dark:bg-white/5 dark:text-white/80",
-        dark: "bg-gray-500 text-white dark:bg-white/5 dark:text-white",
+            primary:
+                "bg-blue-100 text-blue-500 dark:bg-blue-500/15 dark:text-blue-400",
+            success:
+                "bg-green-100 text-green-600 dark:bg-green-500/15 dark:text-green-500",
+            error:
+                "bg-red-100 text-red-600 dark:bg-red-500/15 dark:text-red-500",
+            warning:
+                "bg-orange-100 text-orange-600 dark:bg-orange-500/15 dark:text-orange-400",
+            info: "bg-blue-light-50 text-blue-light-500 dark:bg-blue-light-500/15 dark:text-blue-light-500",
+            light: "bg-gray-100 text-gray-700 dark:bg-white/5 dark:text-white/80",
+            dark: "bg-gray-500 text-white dark:bg-white/5 dark:text-white",
         },
         solid: {
-        primary: "bg-blue-500 text-white dark:text-white",
-        success: "bg-success-500 text-white dark:text-white",
-        error: "bg-error-500 text-white dark:text-white",
-        warning: "bg-warning-500 text-white dark:text-white",
-        info: "bg-blue-light-500 text-white dark:text-white",
-        light: "bg-gray-400 dark:bg-white/5 text-white dark:text-white/80",
-        dark: "bg-gray-700 text-white dark:text-white",
+            primary: "bg-blue-500 text-white dark:text-white",
+            success: "bg-success-500 text-white dark:text-white",
+            error: "bg-error-500 text-white dark:text-white",
+            warning: "bg-warning-500 text-white dark:text-white",
+            info: "bg-blue-light-500 text-white dark:text-white",
+            light: "bg-gray-400 dark:bg-white/5 text-white dark:text-white/80",
+            dark: "bg-gray-700 text-white dark:text-white",
         },
     };
 
@@ -68,9 +68,9 @@ const Badge: React.FC<BadgeProps> = ({
 
     return (
         <span className={`${baseStyles} ${sizeClass} ${colorStyles}`}>
-        {startIcon && <span className="mr-1">{startIcon}</span>}
-        {children}
-        {endIcon && <span className="ml-1">{endIcon}</span>}
+            {startIcon && <span className="mr-1">{startIcon}</span>}
+            {children}
+            {endIcon && <span className="ml-1">{endIcon}</span>}
         </span>
     );
 };
