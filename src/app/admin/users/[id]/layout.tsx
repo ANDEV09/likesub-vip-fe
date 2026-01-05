@@ -95,7 +95,7 @@ export default async function UserDetailLayout({
                         {/* Back to Users Button */}
                         <Link
                             href={"/admin/users"}
-                            className="flex items-center gap-2 cursor-pointer px-4 py-2 border border-gray-300 rounded-lg hover:bg-slate-100 transition-colors duration-300"
+                            className="flex items-center gap-2 cursor-pointer px-4 py-2 border border-gray-300 rounded-lg hover:bg-slate-100! transition-colors duration-300"
                         >
                             <MoveLeft className="w-4 h-4" />
                             <span className="text-sm">

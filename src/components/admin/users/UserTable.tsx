@@ -26,7 +26,7 @@ interface User {
     totalDeposit: string;
     discount: string;
     isAdmin: boolean;
-    status: "Active" | "Pending" | "Cancel";
+    status: "Hoạt động" | "Chờ duyệt" | "Hủy";
 }
 
 function UserTable() {
@@ -44,7 +44,7 @@ function UserTable() {
             totalDeposit: "0đ",
             discount: "0%",
             isAdmin: false,
-            status: "Active",
+            status: "Hoạt động",
         },
         {
             id: 53,
@@ -58,7 +58,7 @@ function UserTable() {
             totalDeposit: "200.000đ",
             discount: "2%",
             isAdmin: false,
-            status: "Pending",
+            status: "Chờ duyệt",
         },
         {
             id: 48,
@@ -72,7 +72,7 @@ function UserTable() {
             totalDeposit: "5.000.000đ",
             discount: "10%",
             isAdmin: true,
-            status: "Active",
+            status: "Hoạt động",
         },
         {
             id: 47,
@@ -86,7 +86,7 @@ function UserTable() {
             totalDeposit: "800.000đ",
             discount: "3%",
             isAdmin: false,
-            status: "Active",
+            status: "Hoạt động",
         },
         {
             id: 46,
@@ -100,7 +100,7 @@ function UserTable() {
             totalDeposit: "1.500.000đ",
             discount: "5%",
             isAdmin: false,
-            status: "Active",
+            status: "Hoạt động",
         },
         {
             id: 45,
@@ -114,7 +114,7 @@ function UserTable() {
             totalDeposit: "0đ",
             discount: "0%",
             isAdmin: false,
-            status: "Cancel",
+            status: "Hủy",
         },
         {
             id: 44,
@@ -128,7 +128,7 @@ function UserTable() {
             totalDeposit: "100.000đ",
             discount: "1%",
             isAdmin: false,
-            status: "Pending",
+            status: "Chờ duyệt",
         },
         {
             id: 43,
@@ -142,7 +142,7 @@ function UserTable() {
             totalDeposit: "20.000.000đ",
             discount: "15%",
             isAdmin: true,
-            status: "Active",
+            status: "Hoạt động",
         },
         {
             id: 42,
@@ -156,7 +156,7 @@ function UserTable() {
             totalDeposit: "500.000đ",
             discount: "2%",
             isAdmin: false,
-            status: "Active",
+            status: "Hoạt động",
         },
         {
             id: 41,
@@ -170,7 +170,7 @@ function UserTable() {
             totalDeposit: "50.000đ",
             discount: "0%",
             isAdmin: false,
-            status: "Pending",
+            status: "Chờ duyệt",
         },
     ];
 
@@ -300,23 +300,23 @@ function UserTable() {
                                     </TableCell>
 
                                     {/* Role */}
-                                    <TableCell className="px-4 py-3 text-gray-600 text-start text-xs dark:text-gray-400 font-medium">
+                                    <TableCell className="px-4 py-3 text-gray-600 text-start text-xs dark:text-gray-400 font-medium w-fit">
                                         {user.user.role}
                                     </TableCell>
 
                                     {/* Discount */}
-                                    <TableCell className="px-4 py-3 text-gray-500 text-sm dark:text-gray-400">
+                                    <TableCell className="px-6 py-3 text-gray-500 text-sm dark:text-gray-400">
                                         {user.discount}
                                     </TableCell>
 
                                     {/* Status */}
-                                    <TableCell className="px-4 py-3 text-gray-500 text-start text-sm dark:text-gray-400">
+                                    <TableCell className="px-0 py-3 text-gray-500 text-sm dark:text-gray-400 text-center w-full">
                                         <Badge
                                             size="xs"
                                             color={
-                                                user.status === "Active"
+                                                user.status === "Hoạt động"
                                                     ? "success"
-                                                    : user.status === "Pending"
+                                                    : user.status === "Chờ duyệt"
                                                         ? "warning"
                                                         : "error"
                                             }
