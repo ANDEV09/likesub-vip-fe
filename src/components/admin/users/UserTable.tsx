@@ -8,11 +8,11 @@ import {
     TableRow,
 } from "../../shared/ui/product-table";
 import {
-    LogIn,
     SquarePen,
     Trash
 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface User {
     id: number;
@@ -26,7 +26,7 @@ interface User {
     totalDeposit: string;
     discount: string;
     isAdmin: boolean;
-    status: "Active" | "Pending" | "Cancel";
+    status: "Hoạt động" | "Chờ duyệt" | "Hủy";
 }
 
 function UserTable() {
@@ -44,7 +44,7 @@ function UserTable() {
             totalDeposit: "0đ",
             discount: "0%",
             isAdmin: false,
-            status: "Active",
+            status: "Hoạt động",
         },
         {
             id: 53,
@@ -58,7 +58,7 @@ function UserTable() {
             totalDeposit: "200.000đ",
             discount: "2%",
             isAdmin: false,
-            status: "Pending",
+            status: "Chờ duyệt",
         },
         {
             id: 48,
@@ -72,7 +72,7 @@ function UserTable() {
             totalDeposit: "5.000.000đ",
             discount: "10%",
             isAdmin: true,
-            status: "Active",
+            status: "Hoạt động",
         },
         {
             id: 47,
@@ -86,7 +86,7 @@ function UserTable() {
             totalDeposit: "800.000đ",
             discount: "3%",
             isAdmin: false,
-            status: "Active",
+            status: "Hoạt động",
         },
         {
             id: 46,
@@ -100,7 +100,7 @@ function UserTable() {
             totalDeposit: "1.500.000đ",
             discount: "5%",
             isAdmin: false,
-            status: "Active",
+            status: "Hoạt động",
         },
         {
             id: 45,
@@ -114,7 +114,7 @@ function UserTable() {
             totalDeposit: "0đ",
             discount: "0%",
             isAdmin: false,
-            status: "Cancel",
+            status: "Hủy",
         },
         {
             id: 44,
@@ -128,7 +128,7 @@ function UserTable() {
             totalDeposit: "100.000đ",
             discount: "1%",
             isAdmin: false,
-            status: "Pending",
+            status: "Chờ duyệt",
         },
         {
             id: 43,
@@ -142,7 +142,7 @@ function UserTable() {
             totalDeposit: "20.000.000đ",
             discount: "15%",
             isAdmin: true,
-            status: "Active",
+            status: "Hoạt động",
         },
         {
             id: 42,
@@ -156,7 +156,7 @@ function UserTable() {
             totalDeposit: "500.000đ",
             discount: "2%",
             isAdmin: false,
-            status: "Active",
+            status: "Hoạt động",
         },
         {
             id: 41,
@@ -170,9 +170,11 @@ function UserTable() {
             totalDeposit: "50.000đ",
             discount: "0%",
             isAdmin: false,
-            status: "Pending",
+            status: "Chờ duyệt",
         },
     ];
+
+    const router = useRouter();
 
     return (
         <div className="overflow-hidden bg-white dark:divide-white/5 dark:bg-white/3">
@@ -201,7 +203,7 @@ function UserTable() {
                                 {/* Balance */}
                                 <TableCell
                                     isHeader
-                                    className="px-5 py-4 font-bold text-gray-500 text-start text-[13px] dark:text-gray-400"
+                                    className="px-5 py-4 font-bold text-gray-500 text-right text-[13px] dark:text-gray-400"
                                 >
                                     Số dư
                                 </TableCell>
@@ -209,7 +211,7 @@ function UserTable() {
                                 {/* Total Deposit */}
                                 <TableCell
                                     isHeader
-                                    className="px-5 py-4 font-bold text-gray-500 text-start text-[13px] dark:text-gray-400"
+                                    className="px-5 py-4 font-bold text-gray-500 text-right text-[13px] dark:text-gray-400"
                                 >
                                     Tổng nạp
                                 </TableCell>
@@ -217,7 +219,7 @@ function UserTable() {
                                 {/* Role */}
                                 <TableCell
                                     isHeader
-                                    className="px-5 py-4 font-bold text-gray-500 text-start text-[13px] dark:text-gray-400"
+                                    className="px-5 py-4 font-bold text-gray-500 text-center text-[13px] dark:text-gray-400"
                                 >
                                     Vai trò
                                 </TableCell>
@@ -225,7 +227,7 @@ function UserTable() {
                                 {/* Discount */}
                                 <TableCell
                                     isHeader
-                                    className="px-5 py-4 font-bold text-gray-500 text-start text-[13px] dark:text-gray-400"
+                                    className="px-0 py-4 font-bold text-gray-500 text-center text-[13px] dark:text-gray-400"
                                 >
                                     Chiết khấu
                                 </TableCell>
@@ -233,7 +235,7 @@ function UserTable() {
                                 {/* Status */}
                                 <TableCell
                                     isHeader
-                                    className="px-5 py-4 font-bold text-gray-500 text-start text-[13px] dark:text-gray-400"
+                                    className="px- py-4 font-bold text-gray-500 text-center text-[13px] dark:text-gray-400"
                                 >
                                     Trạng thái
                                 </TableCell>
@@ -290,33 +292,33 @@ function UserTable() {
                                     </TableCell>
 
                                     {/* Balance */}
-                                    <TableCell className="px-4 py-3 text-blue-600 text-start text-sm font-medium">
+                                    <TableCell className="px-4 py-3 text-[#0000FF] text-right text-[13px] font-bold">
                                         {user.balance}
                                     </TableCell>
 
                                     {/* Total Deposit */}
-                                    <TableCell className="px-4 py-3 text-red-500 text-start text-sm font-medium">
+                                    <TableCell className="px-4 py-3 text-[#FF0000] text-right text-[13px] font-bold">
                                         {user.totalDeposit}
                                     </TableCell>
 
                                     {/* Role */}
-                                    <TableCell className="px-4 py-3 text-gray-600 text-start text-xs dark:text-gray-400 font-medium">
+                                    <TableCell className="px-4 py-3 text-gray-600 text-center text-xs dark:text-gray-400 font-medium w-fit">
                                         {user.user.role}
                                     </TableCell>
 
                                     {/* Discount */}
-                                    <TableCell className="px-4 py-3 text-gray-500 text-sm dark:text-gray-400">
+                                    <TableCell className="px-6 py-3 text-gray-600 text-[13px] dark:text-gray-400 text-center font-bold">
                                         {user.discount}
                                     </TableCell>
 
                                     {/* Status */}
-                                    <TableCell className="px-4 py-3 text-gray-500 text-start text-sm dark:text-gray-400">
+                                    <TableCell className="px-0 py-3 text-gray-500 text-sm dark:text-gray-400 text-center">
                                         <Badge
                                             size="xs"
                                             color={
-                                                user.status === "Active"
+                                                user.status === "Hoạt động"
                                                     ? "success"
-                                                    : user.status === "Pending"
+                                                    : user.status === "Chờ duyệt"
                                                         ? "warning"
                                                         : "error"
                                             }
@@ -327,29 +329,20 @@ function UserTable() {
 
                                     {/* Actions */}
                                     <TableCell className="py-3 text-gray-500 text-start text-sm dark:text-gray-400">
-                                        <div className="flex items-center justify-between px-4 py-0 gap-2">
+                                        <div className="flex items-center justify-center px-4 py-0 gap-2">
                                             {/* View Button */}
-                                            <button className="flex items-center gap-1 p-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                                            <button
+                                                onClick={() => router.push(`/admin/users/${user.id}/info`)}
+                                                className="flex items-center gap-1 p-2 bg-[#846adf] text-white rounded-lg hover:bg-purple-700 transition cursor-pointer"
+                                            >
                                                 <SquarePen className="w-4 h-4" />
-                                                <span className="text-xs font-bold">
-                                                    Edit
-                                                </span>
                                             </button>
 
                                             {/* Edit Button */}
-                                            <button className="flex items-center gap-1 p-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition">
+                                            <button
+                                                className="flex items-center gap-1 p-2 bg-[#e6533c] text-white rounded-lg hover:bg-orange-700 transition cursor-pointer"
+                                            >
                                                 <Trash className="w-4 h-4" />
-                                                <span className="text-xs font-bold">
-                                                    Delete
-                                                </span>
-                                            </button>
-
-                                            {/* Delete Button */}
-                                            <button className="flex items-center gap-1 p-2 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition">
-                                                <LogIn className="w-4 h-4" />
-                                                <span className="text-xs font-bold">
-                                                    Login
-                                                </span>
                                             </button>
                                         </div>
                                     </TableCell>

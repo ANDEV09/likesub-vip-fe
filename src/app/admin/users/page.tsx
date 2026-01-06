@@ -1,16 +1,17 @@
 "use client"
 
-import Pagination from "@/components/shared/ui/pagination";
-import UsersNotice from "@/components/admin/users/UsersNotice";
-import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
-import StatisticUserCards from "@/components/admin/users/StatisticUserCards";
-import UserActions from "@/components/admin/users/UserActions";
-
+import { useState } from "react";
 import {
     CircleX,
     Plus,
     Search
 } from "lucide-react";
+
+import Pagination from "@/components/shared/ui/pagination";
+import UsersNotice from "@/components/admin/users/UsersNotice";
+import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
+import StatisticUserCards from "@/components/admin/users/StatisticUserCards";
+import UserActions from "@/components/admin/users/UserActions";
 
 import { Input } from "@/components/shared/ui/input";
 import { Label } from "@/components/shared/ui/label";
@@ -24,12 +25,21 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/shared/ui/select";
+import AddUserFormModal from "@/components/admin/users/AddUserFormModal";
 
 function Users() {
     const titlePage = "danh sách thành viên";
+    const [isShowAddUserFormModal, setIsShowAddUserFormModal] = useState(false);
 
     return (
         <div>
+            {/* Modal */}
+            {isShowAddUserFormModal &&
+                <AddUserFormModal
+                    setIsShowAddUserFormModal={setIsShowAddUserFormModal}
+                />
+            }
+
             {/* Page Breadcrumb */}
             <AdminSubHeader titlePage={titlePage} />
 
@@ -45,7 +55,7 @@ function Users() {
                 <UserActions />
 
                 {/* Users */}
-                <div className="bg-white rounded-2xl border border-gray-200">
+                <div className="bg-white rounded-md border border-gray-200">
                     {/* Title Page */}
                     <div className="px-6 py-4 flex items-center justify-between w-full border-b border-gray-200">
                         {/* Left Section - Title & Subtitle */}
@@ -61,7 +71,8 @@ function Users() {
                         {/* Right Section - Add Button */}
                         <div className="relative flex items-center gap-4">
                             <button
-                                className="flex items-center gap-2 cursor-pointer text-white px-4 py-2 bg-[#0f172a] hover:opacity-80 transition-opacity duration-300 rounded-lg"
+                                onClick={() => setIsShowAddUserFormModal(!isShowAddUserFormModal)}
+                                className="flex items-center gap-2 cursor-pointer text-white px-4 py-2 bg-[#0f172a] hover:opacity-80 transition-opacity duration-300 rounded-sm"
                             >
                                 <Plus className="w-4 h-4 text-white" />
                                 <span className="text-sm text-white font-medium">
@@ -74,13 +85,14 @@ function Users() {
                     {/* Search & Filter */}
                     <div className="flex flex-col items-start gap-4 py-3 px-6 border-b border-gray-200">
                         {/* Row 1 - Search Input */}
-                        <div className="w-full mt-2 relative flex items-center justify-between gap-4">
+                        <div className="w-full mt-2 relative flex items-center justify-between gap-4 text-sm!">
                             {/* User ID */}
                             <div className="grid w-full items-center gap-3">
                                 <Input
                                     type="number"
                                     id="id"
-                                    placeholder="ID thành viên "
+                                    placeholder="ID thành viên"
+                                    className="shadow-none"
                                 />
                             </div>
 
@@ -90,6 +102,7 @@ function Users() {
                                     type="text"
                                     id="username"
                                     placeholder="Tên thành viên"
+                                    className="shadow-none"
                                 />
                             </div>
 
@@ -99,6 +112,7 @@ function Users() {
                                     type="text"
                                     id="fullname"
                                     placeholder="Họ và tên"
+                                    className="shadow-none"
                                 />
                             </div>
 
@@ -108,6 +122,7 @@ function Users() {
                                     type="email"
                                     id="email"
                                     placeholder="Email thành viên"
+                                    className="shadow-none"
                                 />
                             </div>
 
@@ -117,6 +132,7 @@ function Users() {
                                     type="number"
                                     id="phone"
                                     placeholder="SĐT thành viên"
+                                    className="shadow-none"
                                 />
                             </div>
 
@@ -126,16 +142,17 @@ function Users() {
                                     type="text"
                                     id="address"
                                     placeholder="Địa chỉ IP"
+                                    className="shadow-none"
                                 />
                             </div>
                         </div>
 
                         {/* Row 2 - Filter Select & Action Buttons */}
-                        <div className="relative flex items-center justify-between gap-4">
+                        <div className="relative flex items-center justify-between gap-4 text-sm!">
                             {/* Trạng thái */}
                             <div className="grid w-full items-center gap-3">
                                 <Select>
-                                    <SelectTrigger className="w-full">
+                                    <SelectTrigger className="w-full shadow-none">
                                         <SelectValue placeholder="Trạng thái" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -153,7 +170,7 @@ function Users() {
                             {/* Vai trò */}
                             <div className="grid w-full items-center gap-3">
                                 <Select>
-                                    <SelectTrigger className="w-full">
+                                    <SelectTrigger className="w-full shadow-none">
                                         <SelectValue placeholder="Vai trò" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -171,7 +188,7 @@ function Users() {
                             {/* Balance Sorting */}
                             <div className="grid w-full items-center gap-3">
                                 <Select>
-                                    <SelectTrigger className="w-full">
+                                    <SelectTrigger className="w-full shadow-none">
                                         <SelectValue placeholder="Sắp xếp số dư" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -189,7 +206,7 @@ function Users() {
                             {/* Deposit Sorting */}
                             <div className="grid w-full items-center gap-3">
                                 <Select>
-                                    <SelectTrigger className="w-full">
+                                    <SelectTrigger className="w-full shadow-none">
                                         <SelectValue placeholder="Sắp xếp tổng nạp" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -207,7 +224,7 @@ function Users() {
                             {/* Discount Sorting */}
                             <div className="grid w-full items-center gap-3">
                                 <Select>
-                                    <SelectTrigger className="w-full">
+                                    <SelectTrigger className="w-full shadow-none">
                                         <SelectValue placeholder="Sắp xếp chiết khấu" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -226,7 +243,7 @@ function Users() {
                             <div className="flex w-full items-center gap-2">
                                 {/* Search Button */}
                                 <button
-                                    className="min-w-30 flex items-center gap-2 cursor-pointer text-white px-4 py-2 bg-[#0f172a] hover:opacity-80 transition-opacity duration-300 rounded-lg"
+                                    className="min-w-30 flex items-center gap-2 cursor-pointer text-white px-4 py-2 bg-[#0f172a] hover:opacity-80 transition-opacity duration-300 rounded-sm"
                                 >
                                     <Search className="w-4 h-4 text-white" />
                                     <span className="text-sm text-white font-medium">
@@ -236,7 +253,7 @@ function Users() {
 
                                 {/* Clear Filter Button */}
                                 <button
-                                    className="min-w-28 flex items-center gap-2 cursor-pointer text-white px-4 py-2 bg-orange-600 hover:opacity-80 transition-opacity duration-300 rounded-lg"
+                                    className="min-w-28 flex items-center gap-2 cursor-pointer text-white px-4 py-2 bg-[#e6533c] hover:opacity-80 transition-opacity duration-300 rounded-sm"
                                 >
                                     <CircleX className="w-4 h-4 text-white" />
                                     <span className="text-sm text-white font-medium">
@@ -247,14 +264,14 @@ function Users() {
                         </div>
 
                         {/* Row 3 - Filter by Date (Select) */}
-                        <div className="my-2 w-full flex items-center justify-between">
+                        <div className="my-2 w-full flex items-center justify-between text-sm!">
                             {/* Filter Select - Show Quantity */}
                             <div className="flex items-center gap-3">
                                 <Label className="w-full" htmlFor="brand">
                                     Số lượng hiển thị:
                                 </Label>
                                 <Select>
-                                    <SelectTrigger className="min-w-26">
+                                    <SelectTrigger className="min-w-26 shadow-none">
                                         <SelectValue placeholder="10" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -289,7 +306,7 @@ function Users() {
                                     Sắp xếp theo ngày:
                                 </Label>
                                 <Select>
-                                    <SelectTrigger className="min-w-26">
+                                    <SelectTrigger className="min-w-26 shadow-none">
                                         <SelectValue placeholder="Tất cả" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -329,7 +346,7 @@ function Users() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Users;

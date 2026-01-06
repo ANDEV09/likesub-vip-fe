@@ -1,4 +1,6 @@
-import { 
+"use client";
+
+import {
     ChartNoAxesCombined,
     CloudDownload,
     KeyRound,
@@ -11,46 +13,62 @@ import StatisticUserModal from "./StatisticUserModal";
 import { confirmAction } from "@/lib/alert";
 
 function UserActions() {
+    const customStyles = {
+        container: 'border-radius: 12px; padding: 1.5rem;',
+        title: 'font-size: 1.25rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;',
+        text: 'font-size: 0.95rem; color: #4b5563; line-height: 1.5;',
+        warningBox: 'margin-top: 1rem; padding: 0.75rem; border-radius: 8px; font-size: 0.875rem; display: flex; align-items: start; gap: 8px;'
+    };
+
     const showResetAllDepositAlert = async () => {
         const result = await confirmAction({
-            title: "Xác nhận reset tổng nạp",
+            title: '<span style="' + customStyles.title + '">Xác nhận reset tổng nạp</span>',
             html: `
-                <p style="margin-bottom: 12px;">Hệ thống sẽ reset tổng tiền đã nạp của <strong>toàn bộ thành viên</strong>.</p>
-                <p style="color: #ef4444; font-weight: 500;">⚠️ Hành động này không thể hoàn tác!</p>
-            `,
+            <div style="${customStyles.text}">
+                Hệ thống sẽ đặt lại số dư tổng nạp của <span style="font-weight: 600; color: #111827;">tất cả thành viên</span> về mức 0.
+            </div>
+            <div style="${customStyles.warningBox} background-color: #fef2f2; color: #991b1b; border: 1px solid #fee2e2;">
+                <span>⚠️</span>
+                <span>Hành động này mang tính vĩnh viễn và không thể hoàn tác.</span>
+            </div>
+        `,
         });
-    
-        if (result.isConfirmed) {
-            console.log("Clicked");
-        }
+
+        if (result.isConfirmed) console.log("Resetting deposits...");
     };
 
     const showLogoutAllAlert = async () => {
         const result = await confirmAction({
-            title: "Đăng xuất toàn bộ thành viên",
+            title: '<span style="' + customStyles.title + '">Đăng xuất toàn hệ thống</span>',
             html: `
-                <p style="margin-bottom: 12px;">Hệ thống sẽ <strong>đăng xuất tất cả người dùng</strong> đang hoạt động.</p>
-                <p style="color: #f59e0b; font-weight: 500;">⚠️ Tất cả phiên đăng nhập sẽ bị hủy ngay lập tức!</p>
-            `,
+            <div style="${customStyles.text}">
+                Bạn có chắc chắn muốn kết thúc phiên làm việc của <span style="font-weight: 600; color: #111827;">tất cả người dùng</span> hiện tại?
+            </div>
+            <div style="${customStyles.warningBox} background-color: #fffbeb; color: #92400e; border: 1px solid #fef3c7;">
+                <span>💡</span>
+                <span>Người dùng sẽ phải đăng nhập lại để tiếp tục sử dụng.</span>
+            </div>
+        `,
         });
 
-        if (result.isConfirmed) {
-            console.log("Clicked");
-        }
+        if (result.isConfirmed) console.log("Logging out all users...");
     };
 
     const showChangeAllApiKeys = async () => {
         const result = await confirmAction({
-            title: "Cập nhật API Keys hàng loạt",
+            title: '<span style="' + customStyles.title + '">Cập nhật API Keys hàng loạt</span>',
             html: `
-                <p style="margin-bottom: 12px;">Toàn bộ API Keys hiện tại sẽ bị <strong>vô hiệu hóa và thay thế</strong>.</p>
-                <p style="color: #ef4444; font-weight: 500;">🔒 Các tích hợp đang dùng API cũ sẽ bị gián đoạn!</p>
-            `,
+            <div style="${customStyles.text}">
+                Toàn bộ API Keys sẽ được làm mới. Các hệ thống bên thứ ba đang kết nối sẽ bị <span style="font-weight: 600; color: #111827;">ngắt quãng ngay lập tức</span>.
+            </div>
+            <div style="${customStyles.warningBox} background-color: #fef2f2; color: #991b1b; border: 1px solid #fee2e2;">
+                <span>🔒</span>
+                <span>Vui lòng cập nhật key mới cho các tích hợp sau khi thực hiện.</span>
+            </div>
+        `,
         });
 
-        if (result.isConfirmed) {
-            console.log("Clicked");
-        }
+        if (result.isConfirmed) console.log("Updating API Keys...");
     };
 
     const [isShowStatisticUserModal, setIsShowStatisticUserModal] = useState(false);
@@ -58,9 +76,9 @@ function UserActions() {
     return (
         <>
             {/* Modal */}
-            {isShowStatisticUserModal && 
-                <StatisticUserModal 
-                    setIsShowStatisticUserModal = {setIsShowStatisticUserModal} 
+            {isShowStatisticUserModal &&
+                <StatisticUserModal
+                    setIsShowStatisticUserModal={setIsShowStatisticUserModal}
                 />
             }
 
@@ -68,8 +86,8 @@ function UserActions() {
             <div className="flex items-center justify-end gap-2">
                 {/* Statistic Button */}
                 <button
-                    onClick={() => setIsShowStatisticUserModal(true)} 
-                    className="inline-flex items-center gap-1 text-white bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-sm transition-colors duration-300 cursor-pointer"
+                    onClick={() => setIsShowStatisticUserModal(true)}
+                    className="inline-flex items-center gap-1 text-white bg-[#e6533c] hover:bg-orange-700 px-4 py-2 rounded-sm transition-colors duration-300 cursor-pointer"
                 >
                     <ChartNoAxesCombined className="w-4 h-4" />
                     <span className="text-xs font-bold">
@@ -78,7 +96,7 @@ function UserActions() {
                 </button>
 
                 {/* Email Download Button */}
-                <button 
+                <button
                     className="inline-flex items-center gap-1 text-white bg-green-600 hover:bg-green-700 px-4 py-2 rounded-sm transition-colors duration-300 cursor-pointer"
                 >
                     <CloudDownload className="w-4 h-4" />
@@ -110,9 +128,9 @@ function UserActions() {
                 </button>
 
                 {/* Change All API-KEYS Button */}
-                <button 
+                <button
                     onClick={showChangeAllApiKeys}
-                    className="inline-flex items-center gap-1 text-white bg-purple-700 hover:bg-purple-800 px-4 py-2 rounded-sm transition-colors duration-300 cursor-pointer"
+                    className="inline-flex items-center gap-1 text-white bg-[#846adf]  hover:bg-purple-800 px-4 py-2 rounded-sm transition-colors duration-300 cursor-pointer"
                 >
                     <KeyRound className="w-4 h-4" />
                     <span className="text-xs font-bold">
