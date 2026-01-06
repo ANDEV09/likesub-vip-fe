@@ -3,14 +3,17 @@ import StatisticUserDetailCards from "@/components/admin/users/StatisticUserDeta
 import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
 
 import {
+    BadgeCent,
     Calendar,
-    Headset,
-    Minus,
-    MoveLeft,
-    Plus,
+    ExternalLink,
+    History,
     ShieldUser
 } from "lucide-react";
-import Link from "next/link";
+
+import { ActivityHistoryTable } from "@/components/admin/users/ActivityHistoryTable";
+import { BalanceFluctuations } from "@/components/admin/users/BalanceFluctuations";
+import ScrollToTop from "@/components/shared/ScrollToTop";
+import UserDetailActions from "@/components/admin/users/UserDetailActions";
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -24,17 +27,29 @@ export default async function UserDetailLayout({
     params,
 }: LayoutProps) {
     const { id } = await params;
+
     const titlePage = "thông tin thành viên";
+    const nextTitle = "danh sách thành viên";
+    const urlPrevTitle = `/admin/users`
+
+    // const [isShowAddUserFormModal, setIsShowAddUserFormModal] = useState(false);
 
     return (
         <div>
+            {/* Auto scroll to top */}
+            <ScrollToTop />
+
             {/* Page Breadcrumb */}
-            <AdminSubHeader titlePage={titlePage} />
+            <AdminSubHeader
+                titlePage={titlePage}
+                nextTitle={nextTitle}
+                urlPrevTitle={urlPrevTitle}
+            />
 
             {/* Main Content */}
             <div className="p-6 w-full flex flex-col gap-6">
                 {/* User Review */}
-                <div className="bg-white p-6 rounded-2xl border border-gray-200 flex justify-between">
+                <div className="bg-white p-6 rounded-md border border-gray-200 flex justify-between">
                     {/* User Info */}
                     <div className="flex items-center gap-6 justify-center">
                         {/* Left Side - Avatar */}
@@ -91,58 +106,14 @@ export default async function UserDetailLayout({
                     </div>
 
                     {/* User Actions */}
-                    <div className="flex flex-col items-end justify-center gap-4">
-                        {/* Back to Users Button */}
-                        <Link
-                            href={"/admin/users"}
-                            className="flex items-center gap-2 cursor-pointer px-4 py-2 border border-gray-300 rounded-lg hover:bg-slate-100! transition-colors duration-300"
-                        >
-                            <MoveLeft className="w-4 h-4" />
-                            <span className="text-sm">
-                                Quay lại
-                            </span>
-                        </Link>
-
-                        {/* Actions */}
-                        <div className="flex items-center gap-2">
-                            {/* Add Button */}
-                            <button
-                                className="flex items-center gap-2 cursor-pointer text-white px-4 py-2 bg-green-700 hover:opacity-80 transition-opacity duration-300 rounded-lg"
-                            >
-                                <Plus className="w-4 h-4 text-white" />
-                                <span className="text-sm text-white font-medium">
-                                    Cộng tiền
-                                </span>
-                            </button>
-
-                            {/* Minus Button */}
-                            <button
-                                className="flex items-center gap-2 cursor-pointer text-white px-4 py-2 bg-orange-600 hover:opacity-80 transition-opacity duration-300 rounded-lg"
-                            >
-                                <Minus className="w-4 h-4 text-white" />
-                                <span className="text-sm text-white font-medium">
-                                    Trừ tiền
-                                </span>
-                            </button>
-
-                            {/* Create Ticket Button */}
-                            <button
-                                className="flex items-center gap-2 cursor-pointer text-white px-4 py-2 bg-blue-400 hover:opacity-80 transition-opacity duration-300 rounded-lg"
-                            >
-                                <Headset className="w-4 h-4 text-white" />
-                                <span className="text-sm text-white font-medium">
-                                    Tạo ticket
-                                </span>
-                            </button>
-                        </div>
-                    </div>
+                    <UserDetailActions />
                 </div>
 
                 {/* Statistic Container */}
                 <StatisticUserDetailCards />
 
                 {/* Main Information */}
-                <div className="bg-white flex flex-col gap-6 px-6 py-6 rounded-2xl border border-gray-200">
+                <div className="bg-white flex flex-col gap-6 px-6 py-6 rounded-md border border-gray-200">
                     {/* Nav Container */}
                     <NavContainerUserDetail id={id} />
 
@@ -150,8 +121,54 @@ export default async function UserDetailLayout({
                     {children}
                 </div>
 
-                {/* User History & Activity */}
-                <div></div>
+                {/* User History & Balance Fluctuations */}
+                <div className="flex justify-between gap-6">
+                    {/* User Activity History */}
+                    <div className="w-full bg-white rounded-md shadow-sm">
+                        {/* Title */}
+                        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+                            <div className="flex items-center gap-3">
+                                <div className="w-1 h-6 bg-purple-200 rounded-full" />
+                                <History className="w-4 h-4 text-gray-700" />
+                                <h2 className="text-[15px] font-bold text-gray-800 uppercase">
+                                    Nhật ký hoạt động gần nhất
+                                </h2>
+                            </div>
+                            <button className="flex items-center gap-1 px-3 py-1.5 text-xs! font-medium text-purple-600 border border-purple-600 rounded-sm hover:bg-purple-600 hover:text-white cursor-pointer duration-400 transition-all">
+                                <ExternalLink className="w-3 h-3" />
+                                Xem tất cả
+                            </button>
+                        </div>
+
+                        {/* Table */}
+                        <div className="px-6 py-2 pb-4">
+                            <ActivityHistoryTable />
+                        </div>
+                    </div>
+
+                    {/* Balance Fluctuations */}
+                    <div className="w-full bg-white rounded-md shadow-sm">
+                        {/* Title */}
+                        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+                            <div className="flex items-center gap-3">
+                                <div className="w-1 h-6 bg-purple-200 rounded-full" />
+                                <BadgeCent className="w-4 h-4 text-gray-700" />
+                                <h2 className="text-[15px] font-bold text-gray-800 uppercase">
+                                    Biến động số dư gần nhất
+                                </h2>
+                            </div>
+                            <button className="flex items-center gap-1 px-3 py-1.5 text-xs! font-medium text-purple-600 border border-purple-600 rounded-sm hover:bg-purple-600 hover:text-white cursor-pointer duration-400 transition-all">
+                                <ExternalLink className="w-3 h-3" />
+                                Xem tất cả
+                            </button>
+                        </div>
+
+                        {/* Table */}
+                        <div className="px-6 py-2">
+                            <BalanceFluctuations />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

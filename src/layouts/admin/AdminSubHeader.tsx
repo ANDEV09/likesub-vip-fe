@@ -6,20 +6,42 @@ const capitalizeFirst = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-function AdminSubHeader({ titlePage }: { titlePage: string }) {
+function AdminSubHeader({
+    titlePage,
+    nextTitle,
+    urlPrevTitle,
+}: {
+    titlePage: string,
+    nextTitle?: string,
+    urlPrevTitle?: string,
+}) {
     return (
         <div className="bg-white shadow-sm flex items-center justify-between z-50 px-6 py-2">
             <span className="font-bold text-slate-700 uppercase">
                 {titlePage}
             </span>
             <div className="flex items-center justify-center gap-2">
-                <Link 
-                    href="/admin/dashboard" 
+                <Link
+                    href="/admin/dashboard"
                     className="hover:underline text-sm font-medium"
                 >
                     Trang chủ
                 </Link>
                 <ChevronRightIcon className="w-3.5 h-3.5 text-gray-500" />
+
+                {/* Sub link */}
+                {nextTitle && (
+                    <>
+                        <Link
+                            href={`${urlPrevTitle}`}
+                            className="hover:underline text-sm font-medium"
+                        >
+                            {capitalizeFirst(nextTitle)}
+                        </Link>
+                        <ChevronRightIcon className="w-3.5 h-3.5 text-gray-500" />
+                    </>
+                )}
+
                 <span className="first-letter:uppercase text-sm text-gray-500 font-medium">
                     {capitalizeFirst(titlePage)}
                 </span>
