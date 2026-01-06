@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
@@ -9,32 +11,32 @@ interface QuantityInputProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
     onChange?: (value: number) => void;
 }
 
-const QuantityInput = React.forwardRef<HTMLDivElement, QuantityInputProps>(({ 
-    value = 1, 
-    min = 1, 
-    max = 100, 
-    step = 1, 
-    onChange, 
-    className, 
+const QuantityInput = React.forwardRef<HTMLDivElement, QuantityInputProps>(({
+    value = 1,
+    min = 1,
+    max = 100,
+    step = 1,
+    onChange,
+    className,
     ...props
 }, ref) => {
     const [count, setCount] = React.useState<number>(value);
 
     const handleDecrement = () => {
         setCount((prev) => {
-        const newValue = Math.max(prev - step, min);
-        onChange?.(newValue);
+            const newValue = Math.max(prev - step, min);
+            onChange?.(newValue);
 
-        return newValue;
+            return newValue;
         });
     };
 
     const handleIncrement = () => {
         setCount((prev) => {
-        const newValue = Math.min(prev + step, max);
-        onChange?.(newValue);
+            const newValue = Math.min(prev + step, max);
+            onChange?.(newValue);
 
-        return newValue;
+            return newValue;
         });
     };
 
@@ -83,8 +85,8 @@ const QuantityInput = React.forwardRef<HTMLDivElement, QuantityInputProps>(({
                 +
             </button>
         </div>
-        );
-    }
+    );
+}
 );
 
 QuantityInput.displayName = "QuantityInput";
