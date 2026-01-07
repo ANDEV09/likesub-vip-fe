@@ -101,7 +101,7 @@ body {
 
 /* Text content */
 .custom-swal-text {
-  font-size: 15px !important;
+  font-size: 12px !important;
   color: #6b7280 !important;
   line-height: 1.6 !important;
   margin-bottom: 24px !important;
@@ -128,7 +128,7 @@ body {
 
 /* Confirm button */
 .custom-swal-confirm {
-  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  background-color: #846adf !important;
   color: white !important;
   border: none !important;
   padding: 12px 32px !important;
@@ -137,12 +137,12 @@ body {
   font-weight: 600 !important;
   cursor: pointer !important;
   transition: all 0.3s ease !important;
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+  box-shadow: none;
 }
 
 .custom-swal-confirm:hover {
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4) !important;
+  box-shadow: none;
 }
 
 .custom-swal-confirm:active {
@@ -176,7 +176,6 @@ body {
 .custom-swal-confirm:focus,
 .custom-swal-cancel:focus {
   outline: none !important;
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
 }
 
 /* Backdrop */
