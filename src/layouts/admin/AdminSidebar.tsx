@@ -10,7 +10,6 @@ import {
     LayoutDashboard,
     Users,
     Package,
-    BarChart3,
     Headset,
     Dot,
     History,
@@ -94,12 +93,12 @@ const adminServiceItems: NavItemType[] = [
             },
             {
                 name: "Chuyên mục con",
-                path: "/admin/services/childs",
+                path: "/admin/services/children",
                 icon: <Dot size={18} />
             },
             {
                 name: "Gói dịch vụ",
-                path: "/admin/services/items",
+                path: "/admin/services/packages",
                 icon: <Dot size={18} />
             },
         ],

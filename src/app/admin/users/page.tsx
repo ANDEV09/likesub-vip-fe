@@ -12,6 +12,7 @@ import UsersNotice from "@/components/admin/users/UsersNotice";
 import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
 import StatisticUserCards from "@/components/admin/users/StatisticUserCards";
 import UserActions from "@/components/admin/users/UserActions";
+import AddUserFormModal from "@/components/admin/users/AddUserFormModal";
 
 import { Input } from "@/components/shared/ui/input";
 import { Label } from "@/components/shared/ui/label";
@@ -25,7 +26,6 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/shared/ui/select";
-import AddUserFormModal from "@/components/admin/users/AddUserFormModal";
 
 function Users() {
     const titlePage = "danh sách thành viên";
