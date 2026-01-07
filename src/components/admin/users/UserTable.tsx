@@ -264,6 +264,7 @@ function UserTable() {
                                     {/* Username */}
                                     <TableCell className="px-5 py-4 sm:px-6 text-start">
                                         <div className="flex items-center gap-3">
+                                            {/* User Image */}
                                             <div className="w-10 h-10 overflow-hidden rounded-full">
                                                 <img
                                                     width={40}
@@ -272,6 +273,8 @@ function UserTable() {
                                                     alt={user.user.name}
                                                 />
                                             </div>
+
+                                            {/* User ID */}
                                             <div>
                                                 <Link
                                                     href={`/admin/users/${user.id}/info`}

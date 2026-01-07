@@ -168,7 +168,7 @@ function SecurityUser() {
                         Xác minh Google 2FA
                     </label>
                     <Select>
-                        <SelectTrigger className="border border-gray-300 rounded-sm shadow-none py-2.5! px-4 w-full text-[13px]!">
+                        <SelectTrigger className="border border-gray-300 rounded-sm shadow-none py-2.5! h-9! px-4 w-full text-[13px]!">
                             <SelectValue placeholder="Xác minh Google 2FA" />
                         </SelectTrigger>
                         <SelectContent>
@@ -189,7 +189,7 @@ function SecurityUser() {
                         Xác minh OTP
                     </label>
                     <Select>
-                        <SelectTrigger className="border border-gray-300 rounded-sm shadow-none py-2.5! px-4 w-full text-[13px]!">
+                        <SelectTrigger className="border border-gray-300 rounded-sm shadow-none py-2.5! h-9! px-4 w-full text-[13px]!">
                             <SelectValue placeholder="Xác minh OTP" />
                         </SelectTrigger>
                         <SelectContent>
