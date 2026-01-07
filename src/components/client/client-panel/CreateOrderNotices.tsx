@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Send, X } from "lucide-react";
 import { useState } from "react";
@@ -34,7 +34,13 @@ export default function CreateOrderNotices() {
         <div className="p-6 flex flex-col gap-4">
             {/* Dismissible Notification Banner 1 */}
             <div
-                className={`${isHidden.c1 ? "hidden" : "flex"} items-start justify-between gap-2 bg-white shadow-md border-2 border-blue-200 rounded-sm p-4 h-[90px] ${isClosing.c1 ? "opacity-0 transition-colors duration-500 -translate-y-2" : "opacity-100 translate-y-0"}`}
+                className={`${
+                    isHidden.c1 ? "hidden" : "flex"
+                } items-start justify-between gap-2 bg-white shadow-md border-2 border-blue-200 rounded-sm p-4 ${
+                    isClosing.c1
+                        ? "opacity-0 transition-colors duration-500 -translate-y-2"
+                        : "opacity-100 translate-y-0"
+                }`}
             >
                 <span className="text-blue-800 text-sm">
                     Hệ thống hiện đang vận hành bình thường, mọi thứ đều ổn. Nếu
@@ -49,7 +55,13 @@ export default function CreateOrderNotices() {
 
             {/* Dismissible Notification Banner 2 */}
             <div
-                className={`${isHidden.c2 ? "hidden" : "flex"} items-center justify-between gap-2 bg-amber-50 shadow-md rounded-sm px-4 py-2 ${isClosing.c2 ? "opacity-0 transition-colors duration-500 -translate-y-2" : "opacity-100 translate-y-0"}`}
+                className={`${
+                    isHidden.c2 ? "hidden" : "flex"
+                } items-center justify-between gap-2 bg-amber-50 shadow-md rounded-sm px-4 py-2 ${
+                    isClosing.c2
+                        ? "opacity-0 transition-colors duration-500 -translate-y-2"
+                        : "opacity-100 translate-y-0"
+                }`}
             >
                 <div className="flex flex-col items-start space-y-2 px-4 pt-2 py-2">
                     <div className="text-black text-[16px] font-bold flex gap-2 items-center">
