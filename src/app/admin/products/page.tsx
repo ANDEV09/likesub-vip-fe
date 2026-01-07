@@ -1,7 +1,7 @@
-import { 
-    Download, 
-    Plus, 
-    Search, 
+import {
+    Download,
+    Plus,
+    Search,
     Settings2
 } from "lucide-react";
 import Link from "next/link";
@@ -11,7 +11,7 @@ import Pagination from "@/components/shared/ui/pagination";
 
 import ProductTable from "@/components/admin/products/ProductTable";
 import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
-
+import StatisticProductCards from "@/components/admin/products/StatisticProductCards";
 
 function Products() {
     const titlePage = "danh sách sản phẩm";
@@ -24,7 +24,7 @@ function Products() {
             {/* Main Table */}
             <div className="p-6 w-full flex flex-col gap-6">
                 {/* Statistic Card */}
-                {/* <StatisticProductCards /> */}
+                <StatisticProductCards />
 
                 {/* Products */}
                 <div className="bg-white rounded-2xl border border-gray-200">
@@ -67,12 +67,12 @@ function Products() {
                     <div className="py-4 px-6 relative flex items-center justify-between border-b border-gray-200">
                         {/* Search Bar */}
                         <div>
-                            <Search 
-                                className="w-5 h-5 text-gray-500 absolute -translate-y-1.2 top-6 left-8" 
+                            <Search
+                                className="w-5 h-5 text-gray-500 absolute -translate-y-1.2 top-6 left-8"
                             />
-                            <Input 
-                                placeholder="Tìm kiếm sản phẩm" 
-                                className="pl-10 bg-white rounded-sm shadow-sm w-[300px]" 
+                            <Input
+                                placeholder="Tìm kiếm sản phẩm"
+                                className="pl-10 bg-white rounded-sm shadow-sm w-75"
                             />
                         </div>
 

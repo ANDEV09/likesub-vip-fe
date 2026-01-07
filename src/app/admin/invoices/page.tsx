@@ -1,13 +1,13 @@
-import { 
-    Download, 
-    Plus, 
-    Search, 
+import {
+    Download,
+    Plus,
+    Search,
     Settings2
 } from "lucide-react";
 
 import { Input } from "@/components/shared/ui/input";
 import Pagination from "@/components/shared/ui/pagination";
-import StatisticInvoiceCards from "@/components/admin/StatisticInvoiceCards";
+import StatisticInvoiceCards from "@/components/admin/invoices/StatisticInvoiceCards";
 import InvoiceTable from "@/components/admin/invoices/InvoiceTable";
 import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
 import Link from "next/link";
@@ -62,12 +62,12 @@ function Invoices() {
                         <div className="relative flex items-center gap-4">
                             {/* Search Bar */}
                             <div>
-                                <Search 
-                                    className="w-5 h-5 text-gray-500 absolute -translate-y-1.2 top-2 left-3" 
+                                <Search
+                                    className="w-5 h-5 text-gray-500 absolute -translate-y-1.2 top-2 left-3"
                                 />
-                                <Input 
-                                    placeholder="Tìm kiếm đơn hàng" 
-                                    className="pl-10 bg-white rounded-lg w-[300px] border-gray-300" 
+                                <Input
+                                    placeholder="Tìm kiếm đơn hàng"
+                                    className="pl-10 bg-white rounded-lg w-[300px] border-gray-300"
                                 />
                             </div>
 

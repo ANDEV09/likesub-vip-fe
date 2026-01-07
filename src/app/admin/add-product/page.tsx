@@ -52,9 +52,9 @@ function AddProduct() {
                             <Label htmlFor="email">
                                 Tên sản phẩm
                             </Label>
-                            <Input 
-                                type="email" 
-                                id="email" 
+                            <Input
+                                type="email"
+                                id="email"
                                 placeholder="Nhập tên sản phẩm"
                             />
                         </div>
@@ -70,14 +70,14 @@ function AddProduct() {
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectGroup>
-                                    <SelectLabel>
-                                        Doanh mục
-                                    </SelectLabel>
-                                    <SelectItem value="apple">Laptop</SelectItem>
-                                    <SelectItem value="banana">MacBook</SelectItem>
-                                    <SelectItem value="blueberry">Phone</SelectItem>
-                                    <SelectItem value="grapes">Watch</SelectItem>
-                                    <SelectItem value="pineapple">Electronics</SelectItem>
+                                        <SelectLabel>
+                                            Doanh mục
+                                        </SelectLabel>
+                                        <SelectItem value="apple">Laptop</SelectItem>
+                                        <SelectItem value="banana">MacBook</SelectItem>
+                                        <SelectItem value="blueberry">Phone</SelectItem>
+                                        <SelectItem value="grapes">Watch</SelectItem>
+                                        <SelectItem value="pineapple">Electronics</SelectItem>
                                     </SelectGroup>
                                 </SelectContent>
                             </Select>
@@ -112,7 +112,7 @@ function AddProduct() {
                         {/* Product Color */}
                         <div className="grid w-full items-center gap-3">
                             <Label htmlFor="email">
-                                Màu 
+                                Màu
                             </Label>
                             <Select>
                                 <SelectTrigger className="w-full">
@@ -143,9 +143,9 @@ function AddProduct() {
                             <InputGroup>
                                 <InputGroupTextarea placeholder="Nhập mô tả của sản phẩm (tùy chọn)" />
                                 <InputGroupAddon align="block-end">
-                                <InputGroupText className="text-muted-foreground text-xs">
-                                    1200 characters left
-                                </InputGroupText>
+                                    <InputGroupText className="text-muted-foreground text-xs">
+                                        1200 characters left
+                                    </InputGroupText>
                                 </InputGroupAddon>
                             </InputGroup>
                         </div>
@@ -170,9 +170,9 @@ function AddProduct() {
                             <Label htmlFor="brand">
                                 Trọng lượng (KG)
                             </Label>
-                            <Input 
-                                type="number" 
-                                id="weight" 
+                            <Input
+                                type="number"
+                                id="weight"
                                 placeholder="15"
                             />
                         </div>
@@ -180,11 +180,11 @@ function AddProduct() {
                         {/* Product Length */}
                         <div className="grid w-full items-center gap-3">
                             <Label htmlFor="email">
-                                Dài (CM) 
+                                Dài (CM)
                             </Label>
-                            <Input 
-                                type="number" 
-                                id="length" 
+                            <Input
+                                type="number"
+                                id="length"
                                 placeholder="120"
                             />
                         </div>
@@ -192,11 +192,11 @@ function AddProduct() {
                         {/* Product Width */}
                         <div className="grid w-full items-center gap-3">
                             <Label htmlFor="email">
-                                Rộng (CM) 
+                                Rộng (CM)
                             </Label>
-                            <Input 
-                                type="number" 
-                                id="width" 
+                            <Input
+                                type="number"
+                                id="width"
                                 placeholder="23"
                             />
                         </div>
@@ -209,9 +209,9 @@ function AddProduct() {
                             <Label htmlFor="brand">
                                 Số lượng có sẵn
                             </Label>
-                            <Input 
-                                type="number" 
-                                id="status" 
+                            <Input
+                                type="number"
+                                id="status"
                                 placeholder="0"
                             />
                         </div>
