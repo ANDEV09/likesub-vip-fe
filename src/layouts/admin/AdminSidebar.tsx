@@ -15,7 +15,8 @@ import {
     Wallet,
     Link2,
     BarChart3,
-    Package2
+    Package2,
+    Headset
 } from "lucide-react";
 import { useSidebar } from "@/contexts/shared/SidebarContext";
 
@@ -39,11 +40,12 @@ const adminMenuItems: NavItemType[] = [
     {
         name: "Quản lý người dùng",
         icon: <Users size={16} />,
-        subItems: [
-            { name: "Danh sách người dùng", path: "/admin/users" },
-            { name: "Vai trò & phân quyền", path: "/admin/roles" },
-            { name: "Tài khoản bị khóa", path: "/admin/users/banned" },
-        ],
+        path: "/admin/users"
+    },
+    {
+        name: "Tickets",
+        icon: <Headset size={16} />,
+        path: "/admin/tickets"
     },
     {
         name: "Quản lý sản phẩm",
@@ -51,7 +53,6 @@ const adminMenuItems: NavItemType[] = [
         subItems: [
             { name: "Danh sách sản phẩm", path: "/admin/products" },
             { name: "Thêm mới sản phẩm", path: "/admin/add-product" },
-            { name: "Sản phẩm hết hạn", path: "/admin/products/expired" },
         ],
     },
     {
@@ -161,30 +162,32 @@ function AdminSidebar() {
 
     // check if current path matches any submenu item
     useEffect(() => {
-        let subMenuMatched = false;        
+        let subMenuMatched = false;
 
         ["menu", "services", "support"].map(type => {
-            const items = type === "menu" 
-                ? adminMenuItems 
-                : type === "services" ? adminServiceItems 
-                : adminSupportItems;
+            const items = type === "menu"
+                ? adminMenuItems
+                : type === "services" ? adminServiceItems
+                    : adminSupportItems;
 
             items.map((nav, index) => {
                 if (nav.subItems) {
                     nav.subItems.forEach((subItem) => {
-                    if (isActive(subItem.path)) {
-                        setOpenSubmenu({
-                            type: type as "menu" | "services" | "support",
-                            index
-                        });
-                        subMenuMatched = true;
-                }
-            })};
-        });
+                        if (isActive(subItem.path)) {
+                            setOpenSubmenu({
+                                type: type as "menu" | "services" | "support",
+                                index
+                            });
+                            subMenuMatched = true;
+                        }
+                    })
+                };
+            });
 
-        if (!subMenuMatched) setOpenSubmenu(null);
+            if (!subMenuMatched) setOpenSubmenu(null);
 
-    })}, [pathname, isActive]);
+        })
+    }, [pathname, isActive]);
 
     // Set the height of the submenu items when the submenu is opened
     useEffect(() => {
@@ -211,49 +214,46 @@ function AdminSidebar() {
                         {nav.subItems ? (
                             <button
                                 onClick={() => handleSubmenuToggle(index, menuType)}
-                                className={`relative hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-3 font-normal rounded-lg text-[14px] group text-slate-300 ${
-                                    openSubmenu?.type === menuType && openSubmenu?.index === index
-                                        ? "bg-slate-800 text-blue-400"
-                                        : "text-slate-300 group-hover:text-slate-400"
-                                    } cursor-pointer ${
-                                        !isExpanded && !isHovered
-                                            ? "justify-center"
-                                            : "justify-start"
+                                className={`relative hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-3 font-normal rounded-lg text-[14px] group text-slate-300 cursor-pointer ${openSubmenu?.type === menuType && openSubmenu?.index === index
+                                    ? "bg-slate-800 text-blue-400"
+                                    : "text-slate-300 group-hover:text-slate-400"
+                                    } cursor-pointer ${!isExpanded && !isHovered
+                                        ? "justify-center"
+                                        : "justify-start"
                                     }`}
                             >
-                                <span 
-                                    className={`${openSubmenu?.type === menuType && openSubmenu?.index === index 
+                                <span
+                                    className={`${openSubmenu?.type === menuType && openSubmenu?.index === index
                                         ? "text-blue-400"
-                                        : "text-slate-300 group-hover:text-slate-400" 
-                                    }`}
+                                        : "text-slate-300 group-hover:text-slate-400"
+                                        }`}
                                 >
                                     {nav.icon}
                                 </span>
                                 {(isExpanded || isHovered) && (
                                     <span
-                                        className={`${openSubmenu?.type === menuType && openSubmenu?.index === index 
-                                        ? "text-blue-400"
-                                        : "text-slate-300 group-hover:text-slate-400" 
-                                    }`}    
+                                        className={`${openSubmenu?.type === menuType && openSubmenu?.index === index
+                                            ? "text-blue-400"
+                                            : "text-slate-300 group-hover:text-slate-400"
+                                            }`}
                                     >
                                         {nav.name}
                                     </span>
                                 )}
                                 {(isExpanded || isHovered) && (
                                     <ChevronDownIcon
-                                        className={`ml-auto w-5 h-5 transition-transform duration-200 ${
-                                            openSubmenu?.type === menuType &&
+                                        className={`ml-auto w-5 h-5 transition-transform duration-200 ${openSubmenu?.type === menuType &&
                                             openSubmenu?.index === index
                                             ? "rotate-180 text-blue-400"
                                             : ""
-                                        }`}
+                                            }`}
                                     />
                                 )}
                             </button>
                         ) : (
                             nav.path && (
                                 <Link
-                                    className={`hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-3 font-normal rounded-lg text-[14px] group text-slate-300 
+                                    className={`hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-3 font-normal rounded-lg text-md! group text-slate-300 cursor-pointer 
                                         ${isActive(nav.path)
                                             ? "bg-slate-800"
                                             : ""
@@ -261,16 +261,16 @@ function AdminSidebar() {
                                     `}
                                     href={nav.path}
                                 >
-                                    <span className={`${isActive(nav.path) 
+                                    <span className={`${isActive(nav.path)
                                         ? "text-blue-400"
-                                        : "text-slate-300 group-hover:text-slate-400" 
-                                    }`}>
+                                        : "text-slate-300 group-hover:text-slate-400"
+                                        }`}>
                                         {nav.icon}
                                     </span>
-                                    <span className={`${isActive(nav.path) 
+                                    <span className={`${isActive(nav.path)
                                         ? "text-blue-400"
-                                        : "text-slate-300 group-hover:text-slate-400" 
-                                    }`}>
+                                        : "text-slate-300 group-hover:text-slate-400"
+                                        }`}>
                                         {nav.name}
                                     </span>
                                 </Link>
@@ -295,10 +295,10 @@ function AdminSidebar() {
                                     {nav.subItems.map(subItem => (
                                         <li key={subItem.name}>
                                             <Link
-                                                className={`hover:bg-slate-800! flex items-center w-full gap-3 px-3! py-2! font-normal rounded-lg text-[14px] group text-slate-300 
-                                                    ${isActive(subItem.path) 
+                                                className={`hover:bg-slate-800! flex items-center w-full gap-3 px-3 py-2 h-10! font-normal rounded-lg text-[14px]! group text-slate-300 
+                                                    ${isActive(subItem.path)
                                                         ? "bg-slate-800 text-blue-400!"
-                                                        : "text-slate-300 group-hover:text-slate-400" 
+                                                        : "text-slate-300 group-hover:text-slate-400"
                                                     }`}
                                                 href={subItem.path}
                                             >
@@ -321,9 +321,9 @@ function AdminSidebar() {
         <aside className="sticky mt-1 lg:mt-0 flex flex-col top-0 px-5 left-0 w-72 bg-[#0f172a] text-gray-900 border-r border-gray-200 h-screen transition-all duration-300 ease-in-out z-50">
             {/* Logo */}
             <Link href={"/"} className="h-18 py-3 px-6 mb-4">
-                <img 
-                    src="/images/logo.png" 
-                    alt="" 
+                <img
+                    src="/images/logo.png"
+                    alt=""
                     className="w-auto h-auto"
                 />
             </Link>
