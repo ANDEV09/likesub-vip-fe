@@ -1,19 +1,6 @@
 import { CirclePlay, CircleX, Clock3, LaptopMinimalCheck } from "lucide-react";
 
-interface StatusSummary {
-    completed: number;
-    pending: number;
-    cancelled: number;
-    running: number;
-}
-
-interface OrderStatusCardsProps {
-    statusSummary: StatusSummary;
-}
-
-export default function OrderStatusCards({
-    statusSummary,
-}: OrderStatusCardsProps) {
+export default function OrderStatusCards() {
     return (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
             <div className="bg-white rounded p-4 border border-gray-200 shadow-sm">
@@ -22,9 +9,7 @@ export default function OrderStatusCards({
                         <LaptopMinimalCheck />
                     </div>
                     <div className="pl-4">
-                        <p className="text-xl font-semibold text-gray-900">
-                            {statusSummary.completed}
-                        </p>
+                        <p className="text-xl font-semibold text-gray-900">0</p>
                         <p className="text-sm text-gray-600">
                             Đơn hàng hoàn tốt
                         </p>
@@ -38,9 +23,7 @@ export default function OrderStatusCards({
                         <Clock3 />
                     </div>
                     <div className="pl-4">
-                        <p className="text-xl font-semibold text-gray-900">
-                            {statusSummary.pending}
-                        </p>
+                        <p className="text-xl font-semibold text-gray-900">5</p>
                         <p className="text-sm text-gray-600">
                             Đơn hàng đang chờ xử lý
                         </p>
@@ -54,9 +37,7 @@ export default function OrderStatusCards({
                         <CircleX />
                     </div>
                     <div className="pl-4">
-                        <p className="text-xl font-semibold text-gray-900">
-                            {statusSummary.cancelled}
-                        </p>
+                        <p className="text-xl font-semibold text-gray-900">1</p>
                         <p className="text-sm text-gray-600">Đơn hàng bị hủy</p>
                     </div>
                 </div>
@@ -68,9 +49,7 @@ export default function OrderStatusCards({
                         <CirclePlay />
                     </div>
                     <div className="pl-4">
-                        <p className="text-xl font-semibold text-gray-900">
-                            {statusSummary.running}
-                        </p>
+                        <p className="text-xl font-semibold text-gray-900">2</p>
                         <p className="text-sm text-gray-600">
                             Đơn hàng đang chạy
                         </p>

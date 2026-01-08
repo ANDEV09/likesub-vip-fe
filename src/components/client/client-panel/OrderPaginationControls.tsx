@@ -1,27 +1,9 @@
-interface OrderPaginationControlsProps {
-    itemsPerPage: number;
-    sortBy: string;
-    onItemsPerPageChange: (value: number) => void;
-    onSortByChange: (value: string) => void;
-}
-
-export default function OrderPaginationControls({
-    itemsPerPage,
-    sortBy,
-    onItemsPerPageChange,
-    onSortByChange,
-}: OrderPaginationControlsProps) {
+export default function OrderPaginationControls() {
     return (
-        <div className="flex flex-col md:flex-row items-center px-4 justify-between gap-4 mb-4">
+        <div className="flex flex-col md:flex-row items-center px-4 justify-between gap-4 mb-6">
             <div className="flex items-center gap-2">
                 <label className="text-sm text-gray-600">Hiển thị:</label>
-                <select
-                    value={itemsPerPage}
-                    onChange={(e) =>
-                        onItemsPerPageChange(Number(e.target.value))
-                    }
-                    className="px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
+                <select className="px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value={10}>10</option>
                     <option value={20}>20</option>
                     <option value={50}>50</option>
@@ -33,11 +15,7 @@ export default function OrderPaginationControls({
                 <label className="text-sm text-gray-600">
                     Sắp xếp theo ngày:
                 </label>
-                <select
-                    value={sortBy}
-                    onChange={(e) => onSortByChange(e.target.value)}
-                    className="px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
+                <select className="px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="default">Tất cả</option>
                     <option value="newest">Mới nhất</option>
                     <option value="oldest">Cũ nhất</option>
