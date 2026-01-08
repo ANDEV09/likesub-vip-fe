@@ -1,6 +1,9 @@
 "use client"
 
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { confirmAction } from "@/lib/alert";
+
 import {
     ChevronDown,
     Edit2,
@@ -17,16 +20,16 @@ import {
 } from 'lucide-react';
 
 import AdminSubHeader from '@/layouts/admin/AdminSubHeader';
-import Link from 'next/link';
 
 interface SubService {
+    id: number;
     name: string;
     services: number;
     enabled: boolean;
 }
 
 interface Service {
-    id: string;
+    id: number;
     name: string;
     icon: keyof typeof ServiceIcons;
     packages: number;
@@ -108,160 +111,161 @@ const ServiceIcons = {
 const ParentServices: React.FC = () => {
     const titlePage = "quản lý chuyên mục cha";
 
-    const [expandedServices, setExpandedServices] = useState<string[]>([]);
+    const [expandedServices, setExpandedServices] = useState<number[]>([]);
     const [activeTab, setActiveTab] = useState<'all' | 'open' | ''>('');
+    const [isShowCreateCategoryModal, setIsShowCreateCategoryModal] = useState(false);
 
     const services: Service[] = [
         {
-            id: 'facebook',
+            id: 1,
             name: 'Dịch vụ Facebook',
             icon: 'facebook',
             packages: 45,
             tasks: 14,
             enabled: true,
             subServices: [
-                { name: 'Facebook | Like bài viết (Lên nhanh)', services: 12, enabled: true },
-                { name: 'Facebook | Comment Likes | Tăng likes bình luận', services: 1, enabled: true },
-                { name: 'Facebook | Live stream | Tăng mắt Live Stream', services: 11, enabled: true },
-                { name: 'Facebook | Tăng theo dõi (Profile)', services: 10, enabled: true },
-                { name: 'Facebook | Tăng Like Page / Follow Page', services: 11, enabled: true },
-                { name: 'Facebook | Tăng Share bài viết', services: 7, enabled: true },
-                { name: 'Facebook | Tăng Mem Group', services: 7, enabled: true },
-                { name: 'Facebook | Tăng View Video / Reel', services: 11, enabled: true },
-                { name: 'Facebook | View Story', services: 1, enabled: true },
-                { name: 'Facebook | Đánh giá Fanpage 5 sao', services: 5, enabled: true },
-                { name: 'Facebook | Vip Like theo tháng', services: 8, enabled: true },
-                { name: 'Facebook | Checkpoint / Mở khóa tài khoản', services: 3, enabled: true }
+                { id: 1, name: 'Facebook | Like bài viết (Lên nhanh)', services: 12, enabled: true },
+                { id: 2, name: 'Facebook | Comment Likes | Tăng likes bình luận', services: 1, enabled: true },
+                { id: 3, name: 'Facebook | Live stream | Tăng mắt Live Stream', services: 11, enabled: true },
+                { id: 4, name: 'Facebook | Tăng theo dõi (Profile)', services: 10, enabled: true },
+                { id: 5, name: 'Facebook | Tăng Like Page / Follow Page', services: 11, enabled: true },
+                { id: 6, name: 'Facebook | Tăng Share bài viết', services: 7, enabled: true },
+                { id: 7, name: 'Facebook | Tăng Mem Group', services: 7, enabled: true },
+                { id: 8, name: 'Facebook | Tăng View Video / Reel', services: 11, enabled: true },
+                { id: 9, name: 'Facebook | View Story', services: 1, enabled: true },
+                { id: 10, name: 'Facebook | Đánh giá Fanpage 5 sao', services: 5, enabled: true },
+                { id: 11, name: 'Facebook | Vip Like theo tháng', services: 8, enabled: true },
+                { id: 12, name: 'Facebook | Checkpoint / Mở khóa tài khoản', services: 3, enabled: true }
             ]
         },
         {
-            id: 'tiktok',
+            id: 2,
             name: 'Dịch vụ TikTok',
             icon: 'tiktok',
             packages: 24,
             tasks: 8,
             enabled: true,
             subServices: [
-                { name: 'TikTok | Tăng Follower (Bao tụt)', services: 6, enabled: true },
-                { name: 'TikTok | Tăng Tim (Like) bài viết', services: 8, enabled: true },
-                { name: 'TikTok | Tăng View Video (Cực nhanh)', services: 4, enabled: true },
-                { name: 'TikTok | Tăng Comment nội dung tùy chỉnh', services: 3, enabled: true },
-                { name: 'TikTok | Tăng Share bài viết', services: 2, enabled: true },
-                { name: 'TikTok | Tăng Mắt Livestream', services: 5, enabled: true },
-                { name: 'TikTok | Tăng Save (Lưu bài viết)', services: 2, enabled: true }
+                { id: 13, name: 'TikTok | Tăng Follower (Bao tụt)', services: 6, enabled: true },
+                { id: 14, name: 'TikTok | Tăng Tim (Like) bài viết', services: 8, enabled: true },
+                { id: 15, name: 'TikTok | Tăng View Video (Cực nhanh)', services: 4, enabled: true },
+                { id: 16, name: 'TikTok | Tăng Comment nội dung tùy chỉnh', services: 3, enabled: true },
+                { id: 17, name: 'TikTok | Tăng Share bài viết', services: 2, enabled: true },
+                { id: 18, name: 'TikTok | Tăng Mắt Livestream', services: 5, enabled: true },
+                { id: 19, name: 'TikTok | Tăng Save (Lưu bài viết)', services: 2, enabled: true }
             ]
         },
         {
-            id: 'youtube',
+            id: 3,
             name: 'Dịch vụ Youtube',
             icon: 'youtube',
             packages: 56,
             tasks: 7,
             enabled: true,
             subServices: [
-                { name: 'Youtube | Tăng Subscribe (Đăng ký channel)', services: 15, enabled: true },
-                { name: 'Youtube | Tăng View (Video thường)', services: 20, enabled: true },
-                { name: 'Youtube | Tăng View Shorts', services: 10, enabled: true },
-                { name: 'Youtube | Tăng Like Video', services: 5, enabled: true },
-                { name: 'Youtube | Tăng Giờ xem (4000h kiếm tiền)', services: 3, enabled: true },
-                { name: 'Youtube | Tăng Mắt Livestream', services: 3, enabled: true }
+                { id: 20, name: 'Youtube | Tăng Subscribe (Đăng ký channel)', services: 15, enabled: true },
+                { id: 21, name: 'Youtube | Tăng View (Video thường)', services: 20, enabled: true },
+                { id: 22, name: 'Youtube | Tăng View Shorts', services: 10, enabled: true },
+                { id: 23, name: 'Youtube | Tăng Like Video', services: 5, enabled: true },
+                { id: 24, name: 'Youtube | Tăng Giờ xem (4000h kiếm tiền)', services: 3, enabled: true },
+                { id: 25, name: 'Youtube | Tăng Mắt Livestream', services: 3, enabled: true }
             ]
         },
         {
-            id: 'instagram',
+            id: 4,
             name: 'Dịch vụ Instagram',
             icon: 'instagram',
             packages: 15,
             tasks: 6,
             enabled: true,
             subServices: [
-                { name: 'Instagram | Tăng Follower (Global/Việt)', services: 5, enabled: true },
-                { name: 'Instagram | Tăng Like bài viết', services: 4, enabled: true },
-                { name: 'Instagram | Tăng View Video / Reels', services: 3, enabled: true },
-                { name: 'Instagram | Tăng Comment', services: 2, enabled: true },
-                { name: 'Instagram | Tăng View Story', services: 1, enabled: true }
+                { id: 26, name: 'Instagram | Tăng Follower (Global/Việt)', services: 5, enabled: true },
+                { id: 27, name: 'Instagram | Tăng Like bài viết', services: 4, enabled: true },
+                { id: 28, name: 'Instagram | Tăng View Video / Reels', services: 3, enabled: true },
+                { id: 29, name: 'Instagram | Tăng Comment', services: 2, enabled: true },
+                { id: 30, name: 'Instagram | Tăng View Story', services: 1, enabled: true }
             ]
         },
         {
-            id: 'telegram',
+            id: 5,
             name: 'Dịch vụ Telegram',
             icon: 'telegram',
             packages: 6,
             tasks: 5,
             enabled: false,
             subServices: [
-                { name: 'Telegram | Tăng Mem Channel/Group', services: 3, enabled: true },
-                { name: 'Telegram | Tăng View Post (5-10-20 posts)', services: 2, enabled: true },
-                { name: 'Telegram | Tăng Reaction (Cảm xúc biểu tượng)', services: 1, enabled: true }
+                { id: 31, name: 'Telegram | Tăng Mem Channel/Group', services: 3, enabled: true },
+                { id: 32, name: 'Telegram | Tăng View Post (5-10-20 posts)', services: 2, enabled: true },
+                { id: 33, name: 'Telegram | Tăng Reaction (Cảm xúc biểu tượng)', services: 1, enabled: true }
             ]
         },
         {
-            id: 'twitter',
+            id: 6,
             name: 'Dịch vụ Twitter (X)',
             icon: 'twitter',
             packages: 9,
             tasks: 4,
             enabled: false,
             subServices: [
-                { name: 'Twitter | Tăng Follower', services: 4, enabled: true },
-                { name: 'Twitter | Tăng Like (Favorite)', services: 2, enabled: true },
-                { name: 'Twitter | Tăng Retweet (Chia sẻ)', services: 2, enabled: true },
-                { name: 'Twitter | Tăng View Video', services: 1, enabled: true }
+                { id: 34, name: 'Twitter | Tăng Follower', services: 4, enabled: true },
+                { id: 35, name: 'Twitter | Tăng Like (Favorite)', services: 2, enabled: true },
+                { id: 36, name: 'Twitter | Tăng Retweet (Chia sẻ)', services: 2, enabled: true },
+                { id: 37, name: 'Twitter | Tăng View Video', services: 1, enabled: true }
             ]
         },
         {
-            id: 'threads',
+            id: 7,
             name: 'Dịch vụ Threads',
             icon: 'threads',
             packages: 3,
             tasks: 3,
             enabled: true,
             subServices: [
-                { name: 'Threads | Tăng Follower', services: 1, enabled: true },
-                { name: 'Threads | Tăng Like', services: 1, enabled: true },
-                { name: 'Threads | Tăng Repost / Quotes', services: 1, enabled: true }
+                { id: 38, name: 'Threads | Tăng Follower', services: 1, enabled: true },
+                { id: 39, name: 'Threads | Tăng Like', services: 1, enabled: true },
+                { id: 40, name: 'Threads | Tăng Repost / Quotes', services: 1, enabled: true }
             ]
         },
         {
-            id: 'google',
+            id: 8,
             name: 'Dịch vụ Google',
             icon: 'google',
             packages: 5,
             tasks: 2,
             enabled: false,
             subServices: [
-                { name: 'Google | Đánh giá Maps (Local SEO)', services: 3, enabled: true },
-                { name: 'Google | Tăng Search (Entity)', services: 2, enabled: true }
+                { id: 41, name: 'Google | Đánh giá Maps (Local SEO)', services: 3, enabled: true },
+                { id: 42, name: 'Google | Tăng Search (Entity)', services: 2, enabled: true }
             ]
         },
         {
-            id: 'shopee',
+            id: 9,
             name: 'Dịch vụ Shopee',
             icon: 'shopee',
             packages: 4,
             tasks: 1,
             enabled: false,
             subServices: [
-                { name: 'Shopee | Tăng Follower Shop', services: 2, enabled: true },
-                { name: 'Shopee | Tăng Like sản phẩm', services: 2, enabled: true }
+                { id: 43, name: 'Shopee | Tăng Follower Shop', services: 2, enabled: true },
+                { id: 44, name: 'Shopee | Tăng Like sản phẩm', services: 2, enabled: true }
             ]
         },
         {
-            id: 'lazada',
+            id: 10,
             name: 'Dịch vụ Lazada',
             icon: 'lazada',
             packages: 1,
             tasks: 1,
             enabled: true,
             subServices: [
-                { name: 'Lazada | Tăng Follower Shop', services: 1, enabled: true }
+                { id: 45, name: 'Lazada | Tăng Follower Shop', services: 1, enabled: true }
             ]
         }
     ];
 
     const [servicesData, setServicesData] = useState<Service[]>(services);
 
-    const toggleService = (serviceId: string) => {
+    const toggleService = (serviceId: number) => {
         setExpandedServices(prev =>
             prev.includes(serviceId)
                 ? prev.filter(id => id !== serviceId)
@@ -286,7 +290,7 @@ const ParentServices: React.FC = () => {
         return Icon ? <Icon /> : null;
     };
 
-    const handleToggleSubService = (serviceId: string, subIdx: number) => {
+    const handleToggleSubService = (serviceId: number, subIdx: number) => {
         setServicesData(prevServices => {
             return prevServices.map(service => {
                 if (service.id === serviceId) {
@@ -306,6 +310,47 @@ const ParentServices: React.FC = () => {
         });
     };
 
+    const customStyles = {
+        container: 'border-radius: 12px; padding: 1.5rem;',
+        title: 'font-size: 1.25rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;',
+        text: 'font-size: 0.95rem; color: #4b5563; line-height: 1.5;',
+        warningBox: 'margin-top: 1rem; padding: 0.75rem; border-radius: 8px; font-size: 0.875rem; display: flex; align-items: start; gap: 8px;'
+    };
+
+    const showDeleteParentServiceWarningAlert = async (id: number) => {
+        const result = await confirmAction({
+            title: '<span style="' + customStyles.title + '">Cảnh báo</span>',
+            html: `
+            <div style="${customStyles.text}">
+                Bạn có chắc chắn muốn xóa chuyên mục cha ID ${id} này không?
+            </div>
+            <div style="${customStyles.warningBox} background-color: #fef2f2; color: #991b1b; border: 1px solid #fee2e2;">
+                <span>⚠️</span>
+                <span>Hành động này mang tính vĩnh viễn và không thể hoàn tác.</span>
+            </div>
+        `,
+        });
+
+        if (result.isConfirmed) console.log("Resetting deposits...");
+    };
+
+    const showDeleteChildServiceWarningAlert = async (id: number) => {
+        const result = await confirmAction({
+            title: '<span style="' + customStyles.title + '">Cảnh báo</span>',
+            html: `
+            <div style="${customStyles.text}">
+                Bạn có chắc chắn muốn xóa chuyên mục con ID ${id} này không?
+            </div>
+            <div style="${customStyles.warningBox} background-color: #fef2f2; color: #991b1b; border: 1px solid #fee2e2;">
+                <span>⚠️</span>
+                <span>Hành động này mang tính vĩnh viễn và không thể hoàn tác.</span>
+            </div>
+        `,
+        });
+
+        if (result.isConfirmed) console.log("Resetting deposits...");
+    };
+
     return (
         <>
             {/* Page Breadcrumb */}
@@ -315,33 +360,48 @@ const ParentServices: React.FC = () => {
                 {/* Main Content */}
                 <div className="bg-white px-6 py-4 rounded-md">
                     {/* Action Buttons */}
-                    <div className="flex gap-3 mb-6">
-                        <button
-                            className={`flex items-center px-2 py-1 rounded-sm border font-medium transition-colors duration-500 cursor-pointer hover:text-white hover:bg-cyan-500
+                    <div className="flex items-center justify-between mb-6">
+                        {/* Close & Open Button */}
+                        <div className='flex items-center gap-3'>
+                            <button
+                                className={`flex items-center px-2 py-1 rounded-sm border font-medium transition-colors duration-500 cursor-pointer hover:text-white hover:bg-cyan-500
                                 ${activeTab === 'all'
-                                    ? 'border-cyan-300 text-cyan-500 bg-cyan-50'
-                                    : 'border-cyan-400 text-cyan-500 bg-white hover:text-white hover:bg-cyan-500'
-                                }`}
-                            onClick={closeAll}
-                        >
-                            <ChevronsUp className='w-4 h-4' />
-                            <span className='text-xs font-bold ml-1'>
-                                Đóng tất cả
-                            </span>
-                        </button>
-                        <button
-                            className={`flex items-center gap-2 px-2 py-1 rounded-sm border text-sm font-medium transition-colors duration-500 cursor-pointer hover:bg-[#846adf] hover:text-white
+                                        ? 'border-cyan-300 text-cyan-500 bg-cyan-50'
+                                        : 'border-cyan-400 text-cyan-500 bg-white hover:text-white hover:bg-cyan-500'
+                                    }`}
+                                onClick={closeAll}
+                            >
+                                <ChevronsUp className='w-4 h-4' />
+                                <span className='text-xs font-bold ml-1'>
+                                    Đóng tất cả
+                                </span>
+                            </button>
+                            <button
+                                className={`flex items-center gap-2 px-2 py-1 rounded-sm border text-sm font-medium transition-colors duration-500 cursor-pointer hover:bg-[#846adf] hover:text-white
                                 ${activeTab === 'open'
-                                    ? 'border-[#846adf] text-[#846adf] bg-purple-50'
-                                    : 'border-[#846adf] text-[#846adf] bg-white hover:text-white hover:bg-[#846adf]'
-                                }`}
-                            onClick={openAll}
+                                        ? 'border-[#846adf] text-[#846adf] bg-purple-50'
+                                        : 'border-[#846adf] text-[#846adf] bg-white hover:text-white hover:bg-[#846adf]'
+                                    }`}
+                                onClick={openAll}
+                            >
+                                <Menu className='w-3 h-3' />
+                                <span className="mr-1 text-xs font-bold">
+                                    Mở tất cả
+                                </span>
+                            </button>
+                        </div>
+
+                        {/* Create Button */}
+                        <Link
+                            href="/admin/services/parents/add"
+                            onClick={() => setIsShowCreateCategoryModal(!isShowCreateCategoryModal)}
+                            className="flex items-center gap-2 px-2 py-1.5 rounded-sm border text-sm font-medium transition-opacity duration-300 cursor-pointer bg-[#846adf]! text-white! hover:opacity-90"
                         >
-                            <Menu className='w-3 h-3' />
+                            <Plus className='w-3 h-3' />
                             <span className="mr-1 text-xs font-bold">
-                                Mở tất cả
+                                Thêm chuyên mục cha
                             </span>
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Services List */}
@@ -424,22 +484,37 @@ const ParentServices: React.FC = () => {
                                     <div className="border-t border-gray-200 p-4 bg-white">
                                         {/* Sub-services actions */}
                                         <div className="flex items-center justify-between gap-2 mb-4 mt-2">
-                                            <button className="flex items-center justify-center gap-1 w-full px-2 py-1 bg-white border border-[#846adf] text-[#846adf] rounded text-xs! font-medium hover:bg-[#846adf] hover:text-white transition-colors cursor-pointer duration-600">
+                                            {/* Add Button */}
+                                            <Link
+                                                href="/admin/services/children/add"
+                                                className="flex items-center justify-center gap-1 w-full px-2 py-1 bg-white border border-[#846adf] text-[#846adf] rounded-sm text-xs! font-medium hover:bg-[#846adf]! hover:text-white! transition-colors cursor-pointer duration-600">
                                                 <Plus className='w-3.5 h-3.5' />
                                                 Thêm chuyên mục con
-                                            </button>
+                                            </Link>
+
+                                            {/* List Button */}
                                             <Link
-                                                className="flex items-center justify-center gap-1 w-full px-2 py-1 bg-white border text-[#26BF94] rounded text-xs! font-medium border-[#26BF94] transition-colors cursor-pointer hover:bg-[#26BF94] hover:text-white duration-600"
+                                                className="flex items-center justify-center gap-1 w-full px-2 py-1 bg-white border text-[#26BF94] rounded text-xs! font-medium border-[#26BF94] transition-colors cursor-pointer hover:bg-[#26BF94]! hover:text-white! duration-600"
                                                 href="/admin/services/children"
                                             >
                                                 <Menu className='w-3.5 h-3.5' />
                                                 DANH SÁCH CHUYÊN MỤC CON
                                             </Link>
-                                            <button className="flex items-center justify-center gap-1 w-full px-2 py-1 bg-white border text-[#49B6F5] rounded text-xs! font-medium border-[#49B6F5] transition-colors cursor-pointer hover:bg-[#49B6F5] hover:text-white duration-600">
+
+                                            {/* Category Edit Button */}
+                                            <Link
+                                                href={`/admin/services/parents/edit/${service.id}`}
+                                                className="flex items-center justify-center gap-1 w-full px-2 py-1 bg-white border text-[#49B6F5] rounded text-xs! font-medium border-[#49B6F5] transition-colors cursor-pointer hover:bg-[#49B6F5]! hover:text-white! duration-600"
+                                            >
                                                 <SquarePen className='w-3.5 h-3.5' />
                                                 Sửa
-                                            </button>
-                                            <button className="flex items-center justify-center gap-1 w-full px-2 py-1 bg-white border text-red-600 rounded text-xs! font-medium border-red-600 transition-colors cursor-pointer hover:bg-red-600 hover:text-white duration-600">
+                                            </Link>
+
+                                            {/* Delete button */}
+                                            <button
+                                                onClick={() => showDeleteParentServiceWarningAlert(service.id)}
+                                                className="flex items-center justify-center gap-1 w-full px-2 py-1 bg-white border text-red-600 rounded text-xs! font-medium border-red-600 transition-colors cursor-pointer hover:bg-red-600! hover:text-white! duration-600"
+                                            >
                                                 <Trash className='w-3.5 h-3.5' />
                                                 Xóa
                                             </button>
@@ -450,11 +525,21 @@ const ParentServices: React.FC = () => {
                                             <table className="w-full">
                                                 <thead className="bg-gray-100 border-b border-gray-200">
                                                     <tr>
-                                                        <th className="px-4 py-3 text-left text-sm font-bold text-black">Chuyên mục con</th>
-                                                        <th className="px-4 py-3 text-center text-sm font-bold text-black">Ảnh</th>
-                                                        <th className="px-4 py-3 text-center text-sm font-bold text-black">Dịch vụ</th>
-                                                        <th className="px-4 py-3 text-center text-sm font-bold text-black">Trạng thái</th>
-                                                        <th className="px-4 py-3 text-center text-sm font-bold text-black">Thao tác</th>
+                                                        <th className="px-4 py-3 text-left text-sm font-bold text-black">
+                                                            Chuyên mục con
+                                                        </th>
+                                                        <th className="px-4 py-3 text-center text-sm font-bold text-black">
+                                                            Ảnh
+                                                        </th>
+                                                        <th className="px-4 py-3 text-center text-sm font-bold text-black">
+                                                            Dịch vụ
+                                                        </th>
+                                                        <th className="px-4 py-3 text-center text-sm font-bold text-black">
+                                                            Trạng thái
+                                                        </th>
+                                                        <th className="px-4 py-3 text-center text-sm font-bold text-black">
+                                                            Thao tác
+                                                        </th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -463,7 +548,9 @@ const ParentServices: React.FC = () => {
                                                             <td className="px-4 py-3">
                                                                 <div className="flex items-center gap-2">
                                                                     <GripVertical className="w-4 h-4 text-gray-400 cursor-move" />
-                                                                    <span className="text-[13px] text-gray-700 font-bold">{sub.name}</span>
+                                                                    <span className="text-[13px] text-gray-700 font-bold">
+                                                                        {sub.name}
+                                                                    </span>
                                                                 </div>
                                                             </td>
                                                             <td className="px-4 py-3 text-center"></td>
@@ -486,13 +573,22 @@ const ParentServices: React.FC = () => {
                                                             </td>
                                                             <td className="px-4 py-3">
                                                                 <div className="flex items-center justify-center gap-2">
-                                                                    <button className="p-2 bg-[#846adf] hover:opacity-90 text-white rounded transition-colors cursor-pointer">
+                                                                    <Link
+                                                                        href="/admin/services/packages"
+                                                                        className="p-2 bg-[#846adf]! hover:opacity-90 text-white! rounded transition-colors cursor-pointer"
+                                                                    >
                                                                         <Menu className="w-4 h-4" />
-                                                                    </button>
-                                                                    <button className="p-2 bg-[#49b6f5] hover:bg-cyan-600 text-white rounded transition-colors cursor-pointer">
+                                                                    </Link>
+                                                                    <Link
+                                                                        href={`/admin/services/children/edit/${sub.id}`}
+                                                                        className="p-2 bg-[#49b6f5]! hover:bg-cyan-600 text-white! rounded transition-colors cursor-pointer"
+                                                                    >
                                                                         <Edit2 className="w-4 h-4" />
-                                                                    </button>
-                                                                    <button className="p-2 bg-[#E6533C] hover:bg-red-600 text-white rounded transition-colors cursor-pointer">
+                                                                    </Link>
+                                                                    <button
+                                                                        onClick={() => showDeleteChildServiceWarningAlert(sub.id)}
+                                                                        className="p-2 bg-[#E6533C] hover:bg-red-600 text-white rounded transition-colors cursor-pointer"
+                                                                    >
                                                                         <Trash2 className="w-4 h-4" />
                                                                     </button>
                                                                 </div>
