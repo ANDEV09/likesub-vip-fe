@@ -31,11 +31,15 @@ function isValidDate(date: Date | undefined) {
     return !isNaN(date.getTime())
 }
 
-export function DatePicker({ className }: { className?: string }) {
+export function DatePicker({
+    className,
+    placeholder
+}: {
+    className?: string,
+    placeholder?: string,
+}) {
     const [open, setOpen] = React.useState(false)
-    const [date, setDate] = React.useState<Date | undefined>(
-        new Date("2025-06-01")
-    )
+    const [date, setDate] = React.useState<Date | undefined>()
     const [month, setMonth] = React.useState<Date | undefined>(date)
     const [value, setValue] = React.useState(formatDate(date))
 
@@ -45,7 +49,7 @@ export function DatePicker({ className }: { className?: string }) {
                 <Input
                     id="date"
                     value={value}
-                    placeholder="June 01, 2025"
+                    placeholder={placeholder}
                     className={`pr-10`}
                     onChange={(e) => {
                         const date = new Date(e.target.value)

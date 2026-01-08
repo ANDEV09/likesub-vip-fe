@@ -16,7 +16,8 @@ import {
     Calendar,
     PlusCircle,
     Ban,
-    MessageSquareText
+    MessageSquareText,
+    ShieldCheck
 } from "lucide-react";
 import { useSidebar } from "@/contexts/shared/SidebarContext";
 
@@ -115,6 +116,72 @@ const adminManagementsItems: NavItemType[] = [
         name: "Tickets",
         icon: <Headset size={18} />,
         path: "/admin/tickets"
+    },
+    {
+        name: "Admin Role",
+        icon: <ShieldCheck size={18} />,
+        path: "/admin/roles"
+    },
+    {
+        name: "Nạp tiền",
+        icon: <ShoppingCart size={18} />,
+        subItems: [
+            {
+                name: "Ngân hàng",
+                path: "/admin/recharge/bank",
+                icon: <Dot size={18} />
+            },
+            {
+                name: "Nạp thẻ cào",
+                path: "/admin/recharge/scratch-card",
+                icon: <Dot size={18} />
+            },
+            {
+                name: "Crypto USDT",
+                path: "/admin/recharge/crypto-usdt",
+                icon: <Dot size={18} />
+            },
+            {
+                name: "Ví THESIEURE",
+                path: "/admin/recharge/thesieure",
+                icon: <Dot size={18} />
+            },
+            {
+                name: "Paypal",
+                path: "/admin/recharge/paypal",
+                icon: <Dot size={18} />
+            },
+            {
+                name: "XiPay (AliPay, WechatPay)",
+                path: "/admin/recharge/xipay",
+                icon: <Dot size={18} />
+            },
+            {
+                name: "Korapay Africa",
+                path: "/admin/recharge/korapay",
+                icon: <Dot size={18} />
+            },
+            {
+                name: "Tmweasyapi Thailand",
+                path: "/admin/recharge/tmweasyapi",
+                icon: <Dot size={18} />
+            },
+            {
+                name: "OpenPix Brazil",
+                path: "/admin/recharge/open-pix",
+                icon: <Dot size={18} />
+            },
+            {
+                name: "Bakong Wallet Cambodia",
+                path: "/admin/recharge/bakong-wallet",
+                icon: <Dot size={18} />
+            },
+            {
+                name: "Manual Payment",
+                path: "/admin/recharge/manual-payment",
+                icon: <Dot size={18} />
+            },
+        ],
     },
     {
         name: "Sản phẩm",
