@@ -24,7 +24,7 @@ async function Page({ params }: LayoutProps) {
     const { id } = await params;
 
     const titlePage = "thông tin yêu cầu hỗ trợ";
-    const nextTitle = "danh sách yêu cầu hỗ trợ";
+    const prevTitle = "danh sách yêu cầu hỗ trợ";
     const urlPrevTitle = `/admin/tickets`
 
     const ticketData = {
@@ -65,7 +65,7 @@ async function Page({ params }: LayoutProps) {
             {/* Page Breadcrumb */}
             <AdminSubHeader
                 titlePage={titlePage}
-                nextTitle={nextTitle}
+                prevTitle={prevTitle}
                 urlPrevTitle={urlPrevTitle}
             />
 

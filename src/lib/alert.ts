@@ -8,7 +8,7 @@ export const confirmAction = (
   confirmButtonText: "Đồng ý",
   cancelButtonText: "Hủy bỏ",
   reverseButtons: true,
-  
+
   // Custom styling
   customClass: {
     popup: 'custom-swal-popup',
@@ -18,10 +18,10 @@ export const confirmAction = (
     cancelButton: 'custom-swal-cancel',
     icon: 'custom-swal-icon'
   },
-  
+
   // Button styling
   buttonsStyling: false,
-  
+
   // Animation
   showClass: {
     popup: 'animate__animated animate__fadeInDown animate__faster'
@@ -29,6 +29,6 @@ export const confirmAction = (
   hideClass: {
     popup: 'animate__animated animate__fadeOutUp animate__faster'
   },
-  
+
   ...options,
 });
