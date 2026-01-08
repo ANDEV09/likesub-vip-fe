@@ -72,7 +72,7 @@ const adminMenuItems: NavItemType[] = [
     {
         name: "Block IP",
         icon: <Ban size={18} />,
-        path: "/admin/automating"
+        path: "/admin/block-ip"
     },
     // {
     //     name: "AI Chat",
