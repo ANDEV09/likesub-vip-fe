@@ -2,10 +2,11 @@ import Backdrop from '../../layouts/shared/Backdrop';
 import ScrollToTopButton from '@/components/shared/ScrollToTopButton';
 import AdminSidebar from '@/layouts/admin/AdminSidebar';
 import AdminHeader from '@/layouts/admin/AdminHeader';
+import AdminFooter from '@/layouts/admin/AdminFooter';
 
-export default function AdminLayout({ 
+export default function AdminLayout({
     children
-} : {
+}: {
     children: React.ReactNode
 }) {
     return (
@@ -23,6 +24,9 @@ export default function AdminLayout({
                 <div className='flex-1 bg-slate-100 overflow-y-auto'>
                     {children}
                 </div>
+
+                {/* Footer */}
+                <AdminFooter />
             </div>
 
             <ScrollToTopButton />

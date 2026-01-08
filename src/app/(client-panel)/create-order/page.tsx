@@ -1,5 +1,3 @@
-
-
 import CreateOrderNotices from "@/components/client/client-panel/CreateOrderNotices";
 import UserSubHeader from "@/layouts/client/client-panel/UserSubHeader";
 
@@ -18,9 +16,9 @@ function CreateOrder() {
         <div>
             <UserSubHeader titlePage={titlePage} />
             <CreateOrderNotices />
-            <div className="pr-6 pl-6 flex flex-col gap-4 mb-6">
-                <div className="flex flex-col lg:flex-row gap-6">
-                    <div className="flex-1 bg-white rounded-lg shadow p-6 border border-slate-200">
+            <div className="flex flex-col lg:flex-row gap-6 items-start m-6">
+                <div className="w-full lg:w-2/3">
+                    <div className="w-full bg-white rounded-lg shadow p-6 border border-slate-200">
                         <div className="mb-4">
                             <label className="block font-semibold mb-1">
                                 Tìm nhanh dịch vụ
@@ -118,123 +116,116 @@ function CreateOrder() {
                     </div>
                 </div>
 
-                {/* Content */}
-                <div className="flex-1">
-                  { /* Main Content */ }
-                    <div className="w-1/3 flex flex-col gap-4">
-                        <div className="w-full bg-white rounded-lg shadow p-6 border border-slate-200 flex flex-col gap-4">
-                            <div className="flex items-center gap-6 mb-2">
-                                <div className="relative shrink-0">
-                                    <div className="w-25 h-25 rounded-full bg-blue-500 border-4 flex items-center justify-center text-3xl font-bold text-white select-none">
-                                        AN
-                                    </div>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="font-semibold text-lg mb-3">
-                                        Andev
-                                    </div>
-                                    <div className="flex flex-col gap-1">
-                                        <div className="flex items-center justify-between text-sm border-b border-solid border-gray-300 pb-2">
-                                            <div className="flex items-center gap-2 text-gray-500">
-                                                <CreditCard className="w-5 h-5 text-gray-500" />
-                                                Số dư:
-                                            </div>
-                                            <div className="font-semibold text-sm text-gray-800">
-                                                8.002.410đ
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center justify-between text-sm border-b border-solid border-gray-300 py-2">
-                                            <div className="flex items-center gap-2 text-gray-500">
-                                                <Banknote className="w-5 h-5 text-gray-500" />
-                                                Tổng nạp:
-                                            </div>
-                                            <div className="font-semibold text-sm text-green-600">
-                                                0đ
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center justify-between text-sm pt-2">
-                                            <div className="flex items-center gap-2 text-gray-500">
-                                                <ShieldPlus className="w-5 h-5 text-gray-500" />
-                                                Cấp bậc:
-                                            </div>
-                                            <div className="font-semibold text-sm text-blue-500 cursor-pointer hover:underline">
-                                                Thành viên
-                                            </div>
-                                        </div>
-                                        <div className="flex gap-2 mt-2">
-                                            <button className="bg-black hover:bg-gray-800 text-white px-4 py-1.5 rounded text-sm font-semibold">
-                                                <Wallet className="w-3.5 h-3.5 inline mb-0.5 mr-1" />
-                                                Nạp tiền
-                                            </button>
-                                            <button className="border border-blue-400 text-blue-600 px-4 py-1.5 rounded text-sm font-semibold hover:bg-blue-50">
-                                                <ContactRound className="w-3.5 h-3.5 inline mb-1 mr-1" />
-                                                Tài khoản
-                                            </button>
-                                        </div>
-                                    </div>
+                {/* Main Content */}
+                <div className="w-1/3 flex flex-col gap-4">
+                    <div className="w-full bg-white rounded-lg shadow p-6 border border-slate-200 flex flex-col gap-4">
+                        <div className="flex items-center gap-6 mb-2">
+                            <div className="relative shrink-0">
+                                <div className="w-25 h-25 rounded-full bg-blue-500 border-4 flex items-center justify-center text-3xl font-bold text-white select-none">
+                                    AN
                                 </div>
                             </div>
-                            <div className="mt-2">
-                                <div className="flex justify-between items-center mb-1">
-                                    <span className="text-xs text-gray-500">
-                                        Tiến độ lên hạng
-                                    </span>
-                                    <span className="bg-gray-100 px-2 py-1 rounded-full text-xs text-gray-800">
-                                        Hạng tiếp theo: <b>Cộng tác viên</b>
-                                    </span>
+                            <div className="flex-1">
+                                <div className="font-semibold text-lg mb-3">
+                                    Andev
                                 </div>
-                                <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                                    <div
-                                        className="bg-blue-500 h-full"
-                                        style={{ width: "40%" }}
-                                    ></div>
-                                </div>
-                                <div className="text-xs text-gray-500 mt-2">
-                                    Chỉ cần nạp thêm <b>500.000đ</b> nữa để
-                                    thăng hạng <b>Cộng tác viên</b>!
+                                <div className="flex flex-col gap-1">
+                                    <div className="flex items-center justify-between text-sm border-b border-solid border-gray-300 pb-2">
+                                        <div className="flex items-center gap-2 text-gray-500">
+                                            <CreditCard className="w-5 h-5 text-gray-500" />
+                                            Số dư:
+                                        </div>
+                                        <div className="font-semibold text-sm text-gray-800">
+                                            8.002.410đ
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center justify-between text-sm border-b border-solid border-gray-300 py-2">
+                                        <div className="flex items-center gap-2 text-gray-500">
+                                            <Banknote className="w-5 h-5 text-gray-500" />
+                                            Tổng nạp:
+                                        </div>
+                                        <div className="font-semibold text-sm text-green-600">
+                                            0đ
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center justify-between text-sm pt-2">
+                                        <div className="flex items-center gap-2 text-gray-500">
+                                            <ShieldPlus className="w-5 h-5 text-gray-500" />
+                                            Cấp bậc:
+                                        </div>
+                                        <div className="font-semibold text-sm text-blue-500 cursor-pointer hover:underline">
+                                            Thành viên
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-2 mt-2">
+                                        <button className="bg-black hover:bg-gray-800 text-white px-4 py-1.5 rounded text-sm font-semibold">
+                                            <Wallet className="w-3.5 h-3.5 inline mb-0.5 mr-1" />
+                                            Nạp tiền
+                                        </button>
+                                        <button className="border border-blue-400 text-blue-600 px-4 py-1.5 rounded text-sm font-semibold hover:bg-blue-50">
+                                            <ContactRound className="w-3.5 h-3.5 inline mb-1 mr-1" />
+                                            Tài khoản
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full bg-white rounded-lg shadow p-6 border border-slate-200 mt-4">
-                            <div className="grid grid-cols-[140px_1fr] gap-y-2 text-sm">
-                                <span className="text-slate-500">
-                                    ID dịch vụ:
+                        <div className="mt-2">
+                            <div className="flex justify-between items-center mb-1">
+                                <span className="text-xs text-gray-500">
+                                    Tiến độ lên hạng
                                 </span>
-                                <span className="font-semibold text-blue-500">
-                                    11906
-                                </span>
-
-                                <span className="text-slate-500">
-                                    Tên dịch vụ:
-                                </span>
-                                <span className="font-semibold text-black break-normal">
-                                    Tăng Like Cho Bình Luận | Account Việt Nam |
-                                    Speed 2k/day
-                                </span>
-
-                                <span className="text-slate-500">
-                                    Loại dịch vụ:
-                                </span>
-                                <span>
-                                    <span className="inline-flex bg-blue-500 text-white px-3 py-0.5 rounded text-xs font-semibold">
-                                        Default
-                                    </span>
-                                </span>
-
-                                <span className="text-slate-500">
-                                    Giới hạn số lượng:
-                                </span>
-                                <span className="font-semibold text-black">
-                                    50 - 50.000
-                                </span>
-
-                                <span className="text-slate-500">
-                                    Giá mỗi 1000:
-                                </span>
-                                <span className="font-bold text-red-500 text-base">
-                                    46.200đ
+                                <span className="bg-gray-100 px-2 py-1 rounded-full text-xs text-gray-800">
+                                    Hạng tiếp theo: <b>Cộng tác viên</b>
                                 </span>
                             </div>
+                            <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                                <div
+                                    className="bg-blue-500 h-full"
+                                    style={{ width: "40%" }}
+                                ></div>
+                            </div>
+                            <div className="text-xs text-gray-500 mt-2">
+                                Chỉ cần nạp thêm <b>500.000đ</b> nữa để thăng
+                                hạng <b>Cộng tác viên</b>!
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-full bg-white rounded-lg shadow p-6 border border-slate-200 mt-4">
+                        <div className="grid grid-cols-[140px_1fr] gap-y-2 text-sm">
+                            <span className="text-slate-500">ID dịch vụ:</span>
+                            <span className="font-semibold text-blue-500">
+                                11906
+                            </span>
+
+                            <span className="text-slate-500">Tên dịch vụ:</span>
+                            <span className="font-semibold text-black break-normal">
+                                Tăng Like Cho Bình Luận | Account Việt Nam |
+                                Speed 2k/day
+                            </span>
+
+                            <span className="text-slate-500">
+                                Loại dịch vụ:
+                            </span>
+                            <span>
+                                <span className="inline-flex bg-blue-500 text-white px-3 py-0.5 rounded text-xs font-semibold">
+                                    Default
+                                </span>
+                            </span>
+
+                            <span className="text-slate-500">
+                                Giới hạn số lượng:
+                            </span>
+                            <span className="font-semibold text-black">
+                                50 - 50.000
+                            </span>
+
+                            <span className="text-slate-500">
+                                Giá mỗi 1000:
+                            </span>
+                            <span className="font-bold text-red-500 text-base">
+                                46.200đ
+                            </span>
                         </div>
                     </div>
                 </div>
