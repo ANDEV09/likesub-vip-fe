@@ -1,29 +1,11 @@
 "use client";
-
-import { useState } from "react";
 import UserSubHeader from "@/layouts/client/client-panel/UserSubHeader";
-import type { DateRange } from "react-day-picker";
+import type { OrderItem } from "@/types/order";
 import OrderStatusCards from "@/components/client/client-panel/OrderStatusCards";
 import OrderFilters from "@/components/client/client-panel/OrderFilters";
 import OrderPaginationControls from "@/components/client/client-panel/OrderPaginationControls";
 import OrderHistoriesTable from "@/components/client/client-panel/OrderHistoriesTable";
 import OrderRevenueSummary from "@/components/client/client-panel/OrderRevenueSummary";
-
-interface OrderItem {
-    id: string;
-    orderCode: string;
-    datetime: string;
-    serviceId: string;
-    serviceName: string;
-    link: string;
-    comment: string;
-    status: "Hoàn thành" | "Đang chờ" | "Đã hủy" | "Đang chạy";
-    payment: number;
-    quantity: number;
-    revenue: number;
-    remaining: number;
-    updated: string;
-}
 
 const MOCK_ORDERS: OrderItem[] = [
     {
@@ -121,133 +103,26 @@ const MOCK_ORDERS: OrderItem[] = [
 export default function OrderHistoriesClient() {
     const titlePage = "đơn hàng đã đặt";
 
-    const [orders, setOrders] = useState<OrderItem[]>(MOCK_ORDERS);
-    const [searchOrderCode, setSearchOrderCode] = useState("");
-    const [searchServiceId, setSearchServiceId] = useState("");
-    const [searchServiceName, setSearchServiceName] = useState("");
-    const [searchLink, setSearchLink] = useState("");
-    const [itemsPerPage, setItemsPerPage] = useState(10);
-    const [sortBy, setSortBy] = useState("default");
-    const [statusFilter, setStatusFilter] = useState("all");
-    const [dateRange, setDateRange] = useState<DateRange | undefined>(
-        undefined
-    );
-
-    const filteredOrders = orders.filter((order) => {
-        const matchCode = order.orderCode
-            .toLowerCase()
-            .includes(searchOrderCode.toLowerCase());
-        const matchServiceId = order.serviceId
-            .toLowerCase()
-            .includes(searchServiceId.toLowerCase());
-        const matchServiceName = order.serviceName
-            .toLowerCase()
-            .includes(searchServiceName.toLowerCase());
-        const matchLink = order.link
-            .toLowerCase()
-            .includes(searchLink.toLowerCase());
-        const matchStatus =
-            statusFilter === "all" || order.status === statusFilter;
-
-        const orderTime = new Date(order.datetime).getTime();
-        const fromTime = dateRange?.from ? dateRange.from.getTime() : null;
-        const toTime = dateRange?.to
-            ? new Date(dateRange.to).setHours(23, 59, 59, 999)
-            : null;
-        const matchDateFrom = fromTime ? orderTime >= fromTime : true;
-        const matchDateTo = toTime ? orderTime <= toTime : true;
-
-        return (
-            matchCode &&
-            matchServiceId &&
-            matchServiceName &&
-            matchLink &&
-            matchStatus &&
-            matchDateFrom &&
-            matchDateTo
-        );
-    });
-
-    const sortedOrders = [...filteredOrders].sort((a, b) => {
-        if (sortBy === "newest") {
-            return (
-                new Date(b.datetime).getTime() - new Date(a.datetime).getTime()
-            );
-        }
-        if (sortBy === "oldest") {
-            return (
-                new Date(a.datetime).getTime() - new Date(b.datetime).getTime()
-            );
-        }
-        return 0;
-    });
-
-    const statusSummary = {
-        completed: filteredOrders.filter((o) => o.status === "Hoàn thành")
-            .length,
-        pending: filteredOrders.filter((o) => o.status === "Đang chờ").length,
-        cancelled: filteredOrders.filter((o) => o.status === "Đã hủy").length,
-        running: filteredOrders.filter((o) => o.status === "Đang chạy").length,
-    };
-
-    const handleClearFilters = () => {
-        setSearchOrderCode("");
-        setSearchServiceId("");
-        setSearchServiceName("");
-        setSearchLink("");
-        setStatusFilter("all");
-        setDateRange(undefined);
-        setSortBy("default");
-    };
-
-    const handleDelete = (id: string) => {
-        setOrders(orders.filter((o) => o.id !== id));
-    };
-
-    const totalRevenue = sortedOrders.reduce(
-        (sum, order) => sum + order.revenue,
-        0
-    );
-
     return (
         <div className="min-h-screen bg-gray-50">
             <UserSubHeader titlePage={titlePage} />
 
             <div className="max-w-full mx-auto px-6 py-6">
-                <OrderStatusCards statusSummary={statusSummary} />
+                <OrderStatusCards />
 
-                <div className="bg-white rounded  border border-gray-200 shadow-sm mb-6">
-                    <OrderFilters
-                        searchOrderCode={searchOrderCode}
-                        searchServiceId={searchServiceId}
-                        searchServiceName={searchServiceName}
-                        searchLink={searchLink}
-                        statusFilter={statusFilter}
-                        dateRange={dateRange}
-                        onSearchOrderCodeChange={setSearchOrderCode}
-                        onSearchServiceIdChange={setSearchServiceId}
-                        onSearchServiceNameChange={setSearchServiceName}
-                        onSearchLinkChange={setSearchLink}
-                        onStatusFilterChange={setStatusFilter}
-                        onDateRangeChange={setDateRange}
-                        onClearFilters={handleClearFilters}
-                    />
+                <div className="bg-white rounded shadow-sm">
+                    <OrderFilters />
 
-                    <OrderPaginationControls
-                        itemsPerPage={itemsPerPage}
-                        sortBy={sortBy}
-                        onItemsPerPageChange={setItemsPerPage}
-                        onSortByChange={setSortBy}
-                    />
+                    <OrderPaginationControls />
 
                     <div className="overflow-x-auto max-h-200 overflow-y-auto">
                         <OrderHistoriesTable
-                            orders={sortedOrders}
-                            itemsPerPage={itemsPerPage}
+                            orders={MOCK_ORDERS}
+                            itemsPerPage={10}
                         />
                     </div>
 
-                    <OrderRevenueSummary totalRevenue={totalRevenue} />
+                    <OrderRevenueSummary />
                 </div>
             </div>
         </div>

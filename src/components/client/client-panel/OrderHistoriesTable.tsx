@@ -1,24 +1,8 @@
 "use client";
-
 import { FlagOff } from "lucide-react";
 import { STATUS_CONFIG } from "@/lib/utils";
 import { useState } from "react";
-
-interface OrderItem {
-    id: string;
-    orderCode: string;
-    datetime: string;
-    serviceId: string;
-    serviceName: string;
-    link: string;
-    comment: string;
-    status: "Hoàn thành" | "Đang chờ" | "Đã hủy" | "Đang chạy";
-    payment: number;
-    quantity: number;
-    revenue: number;
-    remaining: number;
-    updated: string;
-}
+import type { OrderItem } from "@/types/order";
 
 interface OrderHistoriesTableProps {
     orders: OrderItem[];
@@ -46,9 +30,7 @@ export default function OrderHistoriesTable({
                 document.execCommand("copy");
                 document.body.removeChild(textarea);
             }
-        } catch (e) {
-            // noop
-        }
+        } catch (e) {}
     }
 
     const handleCopy = async (link: string, id: string) => {
