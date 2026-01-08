@@ -1,9 +1,20 @@
 "use client"
 
 import React, { useState } from 'react';
-import { Menu, Edit2, Trash2, Search, X, GripVertical, Folder, ArrowUp10, CircleQuestionMark, Trash, TrashIcon } from 'lucide-react';
+
+import {
+    Menu,
+    Edit2,
+    Trash2,
+    Search,
+    GripVertical,
+    TrashIcon
+} from 'lucide-react';
+
 import AdminSubHeader from '@/layouts/admin/AdminSubHeader';
 import Pagination from '@/components/shared/ui/pagination';
+import { confirmAction } from '@/lib/alert';
+import Link from 'next/link';
 
 interface ChildService {
     id: number;
@@ -75,67 +86,28 @@ const ChildServices: React.FC = () => {
         });
     };
 
-    const renderPagination = () => {
-        const pages = [];
+    const customStyles = {
+        container: 'border-radius: 12px; padding: 1.5rem;',
+        title: 'font-size: 1.25rem; font-weight: 600; color: #1f2937; margin-bottom: 0.5rem;',
+        text: 'font-size: 0.95rem; color: #4b5563; line-height: 1.5;',
+        warningBox: 'margin-top: 1rem; padding: 0.75rem; border-radius: 8px; font-size: 0.875rem; display: flex; align-items: start; gap: 8px;'
+    };
 
-        pages.push(
-            <button
-                key={1}
-                onClick={() => setCurrentPage(1)}
-                className={`w-10 h-10 rounded flex items-center justify-center text-sm font-medium transition-colors ${currentPage === 1
-                    ? 'bg-[#846adf] text-white'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-                    }`}
-            >
-                1
-            </button>
-        );
+    const showDeleteChildServiceWarningAlert = async (id: number) => {
+        const result = await confirmAction({
+            title: '<span style="' + customStyles.title + '">Cảnh báo</span>',
+            html: `
+                <div style="${customStyles.text}">
+                    Bạn có chắc chắn muốn xóa chuyên mục con ID ${id} này không?
+                </div>
+                <div style="${customStyles.warningBox} background-color: #fef2f2; color: #991b1b; border: 1px solid #fee2e2;">
+                    <span>⚠️</span>
+                    <span>Hành động này mang tính vĩnh viễn và không thể hoàn tác.</span>
+                </div>
+            `,
+        });
 
-        if (currentPage > 3) {
-            pages.push(
-                <button
-                    key={2}
-                    onClick={() => setCurrentPage(2)}
-                    className="w-10 h-10 rounded flex items-center justify-center text-sm font-medium bg-white text-gray-700 hover:bg-gray-100 border border-gray-300 transition-colors"
-                >
-                    2
-                </button>
-            );
-        }
-
-        if (currentPage > 4) {
-            pages.push(
-                <button
-                    key={3}
-                    onClick={() => setCurrentPage(3)}
-                    className="w-10 h-10 rounded flex items-center justify-center text-sm font-medium bg-white text-gray-700 hover:bg-gray-100 border border-gray-300 transition-colors"
-                >
-                    3
-                </button>
-            );
-        }
-
-        if (currentPage > 5) {
-            pages.push(
-                <span key="dots1" className="w-10 h-10 flex items-center justify-center text-gray-500">
-                    ...
-                </span>
-            );
-        }
-
-        if (totalPages > 1) {
-            pages.push(
-                <button
-                    key={17}
-                    onClick={() => setCurrentPage(17)}
-                    className="w-10 h-10 rounded flex items-center justify-center text-sm font-medium bg-white text-gray-700 hover:bg-gray-100 border border-gray-300 transition-colors"
-                >
-                    17
-                </button>
-            );
-        }
-
-        return pages;
+        if (result.isConfirmed) console.log("Resetting deposits...");
     };
 
     return (
@@ -269,19 +241,22 @@ const ChildServices: React.FC = () => {
                                             </td>
                                             <td className="px-4 py-3">
                                                 <div className="flex items-center justify-center gap-2">
-                                                    <button
-                                                        className="p-2 bg-[#846adf] hover:bg-[#7356d1] text-white rounded transition-colors cursor-pointer"
+                                                    <Link
+                                                        href="/admin/services/packages"
+                                                        className="p-2 bg-[#846adf]! hover:bg-[#7356d1] text-white! rounded transition-colors cursor-pointer"
                                                         title="Chi tiết"
                                                     >
                                                         <Menu className="w-4 h-4" />
-                                                    </button>
-                                                    <button
-                                                        className="p-2 bg-[#49b6f5] hover:bg-[#3aa5e3] text-white rounded transition-colors cursor-pointer"
+                                                    </Link>
+                                                    <Link
+                                                        href={`/admin/services/children/edit/${service.id}`}
+                                                        className="p-2 bg-[#49b6f5]! hover:bg-[#3aa5e3] text-white! rounded transition-colors cursor-pointer"
                                                         title="Sửa"
                                                     >
                                                         <Edit2 className="w-4 h-4" />
-                                                    </button>
+                                                    </Link>
                                                     <button
+                                                        onClick={() => showDeleteChildServiceWarningAlert(service.id)}
                                                         className="p-2 bg-red-600 hover:bg-red-700 text-white rounded transition-colors cursor-pointer"
                                                         title="Xóa"
                                                     >

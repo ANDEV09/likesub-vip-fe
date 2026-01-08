@@ -29,10 +29,8 @@ export default async function UserDetailLayout({
     const { id } = await params;
 
     const titlePage = "thông tin thành viên";
-    const nextTitle = "danh sách thành viên";
+    const prevTitle = "danh sách thành viên";
     const urlPrevTitle = `/admin/users`
-
-    // const [isShowAddUserFormModal, setIsShowAddUserFormModal] = useState(false);
 
     return (
         <div>
@@ -42,7 +40,7 @@ export default async function UserDetailLayout({
             {/* Page Breadcrumb */}
             <AdminSubHeader
                 titlePage={titlePage}
-                nextTitle={nextTitle}
+                prevTitle={prevTitle}
                 urlPrevTitle={urlPrevTitle}
             />
 

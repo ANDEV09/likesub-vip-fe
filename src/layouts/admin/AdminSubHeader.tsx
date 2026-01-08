@@ -8,11 +8,11 @@ const capitalizeFirst = (str: string) => {
 
 function AdminSubHeader({
     titlePage,
-    nextTitle,
+    prevTitle,
     urlPrevTitle,
 }: {
     titlePage: string,
-    nextTitle?: string,
+    prevTitle?: string,
     urlPrevTitle?: string,
 }) {
     return (
@@ -30,13 +30,13 @@ function AdminSubHeader({
                 <ChevronRightIcon className="w-3.5 h-3.5 text-gray-500" />
 
                 {/* Sub link */}
-                {nextTitle && (
+                {prevTitle && (
                     <>
                         <Link
                             href={`${urlPrevTitle}`}
                             className="hover:underline text-sm font-medium"
                         >
-                            {capitalizeFirst(nextTitle)}
+                            {capitalizeFirst(prevTitle)}
                         </Link>
                         <ChevronRightIcon className="w-3.5 h-3.5 text-gray-500" />
                     </>
