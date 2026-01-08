@@ -1,6 +1,6 @@
 
 
-import { 
+import {
     Check,
     Clock,
     HouseHeart,
@@ -103,7 +103,7 @@ function SupportRequestPage() {
                     {/* Table Tittle */}
                     <div className="flex items-center justify-between py-4 px-4 border-b border-gray-200">
                         <div className="flex items-center gap-4">
-                            <TicketCheck className="w-5 h-5 text-slate-800" />  
+                            <TicketCheck className="w-5 h-5 text-slate-800" />
                             <span className="font-medium uppercase">
                                 DANH SÁCH TICKETS
                             </span>
@@ -121,35 +121,35 @@ function SupportRequestPage() {
                         {/* Row 1 */}
                         <div className="w-full flex items-center justify-between gap-4">
                             {/* Search Input */}
-                            <Input 
-                                placeholder="Tìm theo tiêu đề" 
-                                className="bg-slate-100 rounded-sm" 
+                            <Input
+                                placeholder="Tìm theo tiêu đề"
+                                className=""
                             />
 
                             {/* Select Input */}
                             <ClientOnly>
                                 <Select>
-                                <SelectTrigger className="w-full">
-                                    <SelectValue placeholder="Trạng thái" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="all">
-                                        Tất cả trạng thái
-                                    </SelectItem>
-                                    <SelectItem value="opening">
-                                        Đang mở
-                                    </SelectItem>
-                                    <SelectItem value="waiting">
-                                        Chờ xử lí
-                                    </SelectItem>
-                                    <SelectItem value="answered">
-                                        Đã trả lời
-                                    </SelectItem>
-                                    <SelectItem value="closing">
-                                        Đã đóng
-                                    </SelectItem>
-                                </SelectContent>
-                            </Select>
+                                    <SelectTrigger className="w-full shadow-none">
+                                        <SelectValue placeholder="Trạng thái" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectItem value="all">
+                                            Tất cả trạng thái
+                                        </SelectItem>
+                                        <SelectItem value="opening">
+                                            Đang mở
+                                        </SelectItem>
+                                        <SelectItem value="waiting">
+                                            Chờ xử lí
+                                        </SelectItem>
+                                        <SelectItem value="answered">
+                                            Đã trả lời
+                                        </SelectItem>
+                                        <SelectItem value="closing">
+                                            Đã đóng
+                                        </SelectItem>
+                                    </SelectContent>
+                                </Select>
                             </ClientOnly>
                         </div>
 
@@ -158,7 +158,7 @@ function SupportRequestPage() {
                             {/* Select Input */}
                             <ClientOnly>
                                 <Select>
-                                    <SelectTrigger className="w-full">
+                                    <SelectTrigger className="w-full shadow-none">
                                         <SelectValue placeholder="Chủ đề" />
                                     </SelectTrigger>
                                     <SelectContent>
@@ -185,7 +185,7 @@ function SupportRequestPage() {
                             </ClientOnly>
 
                             {/* Date Input */}
-                            <DatePicker />
+                            <DatePicker className="shadow-none" />
                         </div>
 
                         {/* Row 3 */}

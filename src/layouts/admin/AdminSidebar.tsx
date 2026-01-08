@@ -38,47 +38,47 @@ const adminMenuItems: NavItemType[] = [
         icon: <LayoutDashboard size={18} />,
         path: "/admin/dashboard",
     },
-    {
-        name: "Lịch sử",
-        icon: <History size={18} />,
-        subItems: [
-            {
-                name: "Nhật ký hoạt động",
-                path: "/admin/history/activities",
-                icon: <Dot size={18} />
-            },
-            {
-                name: "Biến động số dư",
-                path: "/admin/history/balance-fluctuations",
-                icon: <Dot size={18} />
-            },
-            {
-                name: "Nhật ký Bot Telegram",
-                path: "/admin/history/bot-telegram",
-                icon: <Dot size={18} />
-            },
-        ],
-    },
-    {
-        name: "Tự động hoá",
-        icon: <Calendar size={18} />,
-        path: "/admin/automating"
-    },
+    // {
+    //     name: "Lịch sử",
+    //     icon: <History size={18} />,
+    //     subItems: [
+    //         {
+    //             name: "Nhật ký hoạt động",
+    //             path: "/admin/history/activities",
+    //             icon: <Dot size={18} />
+    //         },
+    //         {
+    //             name: "Biến động số dư",
+    //             path: "/admin/history/balance-fluctuations",
+    //             icon: <Dot size={18} />
+    //         },
+    //         {
+    //             name: "Nhật ký Bot Telegram",
+    //             path: "/admin/history/bot-telegram",
+    //             icon: <Dot size={18} />
+    //         },
+    //     ],
+    // },
+    // {
+    //     name: "Tự động hoá",
+    //     icon: <Calendar size={18} />,
+    //     path: "/admin/automating"
+    // },
     {
         name: "Addons",
         icon: <PlusCircle size={18} />,
-        path: "/admin/addons"
+        path: "/admin/addons/all"
     },
     {
         name: "Block IP",
         icon: <Ban size={18} />,
-        path: "/admin/automating"
+        path: "/admin/block-ip"
     },
-    {
-        name: "AI Chat",
-        icon: <MessageSquareText size={18} />,
-        path: "/admin/automating"
-    },
+    // {
+    //     name: "AI Chat",
+    //     icon: <MessageSquareText size={18} />,
+    //     path: "/admin/automating"
+    // },
 ];
 
 const adminServiceItems: NavItemType[] = [
