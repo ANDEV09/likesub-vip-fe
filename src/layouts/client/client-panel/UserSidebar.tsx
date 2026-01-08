@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useSidebar } from "@/contexts/shared/SidebarContext";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -42,12 +42,12 @@ const navItems: NavItemType[] = [
     {
         name: "Nạp tiền",
         icon: <Wallet size={20} />,
-        path: "/top-up",
+        path: "/recharge",
     },
     {
         name: "Đơn hàng đã mua",
         icon: <PackageCheck size={20} />,
-        path: "/orders",
+        path: "/order-histories",
     },
     {
         name: "Bảng giá dịch vụ",
@@ -155,17 +155,17 @@ function UserSidebar() {
             if (!path) return false;
             return pathname === path;
         },
-        [pathname],
+        [pathname]
     );
 
     const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({}); // to get real height
     const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
-        {},
+        {}
     ); // to get current height
 
     const handleSubmenuToggle = (
         index: number,
-        menuType: "menu" | "others" | "services",
+        menuType: "menu" | "others" | "services"
     ) => {
         setOpenSubmenu((prev) => {
             if (prev && prev.type === menuType && prev.index === index) {
@@ -188,8 +188,8 @@ function UserSidebar() {
                 type === "menu"
                     ? navItems
                     : type === "others"
-                      ? othersItems
-                      : servicesItems;
+                    ? othersItems
+                    : servicesItems;
 
             items.map((nav, index) => {
                 if (nav.subItems) {
@@ -225,7 +225,7 @@ function UserSidebar() {
 
     const renderMenuItems = (
         navItems: NavItemType[],
-        menuType: "menu" | "others" | "services",
+        menuType: "menu" | "others" | "services"
     ) => {
         return (
             <ul className="flex flex-col gap-2">
@@ -327,7 +327,11 @@ function UserSidebar() {
                                     height:
                                         openSubmenu?.type === menuType &&
                                         openSubmenu?.index === index
-                                            ? `${subMenuHeight[`${menuType}-${index}`]}px`
+                                            ? `${
+                                                  subMenuHeight[
+                                                      `${menuType}-${index}`
+                                                  ]
+                                              }px`
                                             : "0px",
                                 }}
                             >
