@@ -25,7 +25,7 @@ function ToolAddonCards() {
             <div className="flex justify-center">
                 <Link
                     href="/admin/addons/all"
-                    className="px-6 py-2.5 border-2 border-[#846adf] text-[#846adf] font-medium rounded-lg hover:bg-[#846adf] hover:text-white transition-colors duration-300 cursor-pointer"
+                    className="px-6 py-2.5 border-2 border-[#846adf] text-[#846adf] font-medium rounded-lg hover:bg-[#846adf]! hover:text-white! transition-colors duration-300 cursor-pointer"
                 >
                     Xem tất cả addon
                 </Link>
