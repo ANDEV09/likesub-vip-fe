@@ -22,7 +22,7 @@ import { DatePicker } from "@/components/shared/ui/date-picker";
 import RechartBankTable from "@/components/recharge-bank/RechartBankTable";
 import Summary from "@/components/recharge-bank/Summary";
 
-function page() {
+function RechartBankPage() {
     const titlePage = "Nạp tiền ngân hàng";
 
     return (
@@ -196,4 +196,4 @@ function page() {
     );
 }
 
-export default page;
+export default RechartBankPage;

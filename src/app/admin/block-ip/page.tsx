@@ -24,7 +24,7 @@ import {
 } from "@/components/shared/ui/select";
 import AddIPFormModal from "@/components/admin/block-ip/AddIPFormModal";
 
-function page() {
+function BlockIPPage() {
     const titlePage = "danh sách ip bị chặn";
 
     const [isShowAddIPFormModal, setIsShowAddIPFormModal] = useState(false);
@@ -185,4 +185,4 @@ function page() {
     );
 }
 
-export default page
+export default BlockIPPage
