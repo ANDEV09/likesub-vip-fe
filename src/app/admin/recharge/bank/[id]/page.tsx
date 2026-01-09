@@ -164,8 +164,8 @@ export default async function InvoiceDetail({ params }: LayoutProps) {
                                 </div>
 
                                 {/* Thông tin thanh toán */}
-                                <div className="bg-white rounded-md shadow-sm px-6">
-                                    <div className="py-4 border-t border-gray-200">
+                                <div className="bg-white rounded-md px-6 border border-gray-200">
+                                    <div className="py-4">
                                         <h2 className="flex items-center gap-2 text-sm font-bold text-[#26BF94]">
                                             <Building2 className="w-4 h-4" />
                                             THÔNG TIN THANH TOÁN
@@ -224,7 +224,7 @@ export default async function InvoiceDetail({ params }: LayoutProps) {
                                             Trạng thái hóa đơn
                                         </label>
                                         <select
-                                            className="w-full px-4 py-1.5 border border-gray-300 rounded-sm text-sm font-medium text-gray-700"
+                                            className="w-full px-4 py-1.5 border border-gray-200 rounded-sm text-sm font-medium text-gray-700"
                                         >
                                             <option value="paid">Chờ thanh toán</option>
                                             <option value="pending">Đã thanh toán</option>
@@ -244,7 +244,7 @@ export default async function InvoiceDetail({ params }: LayoutProps) {
                                         </label>
                                         <textarea
                                             placeholder="Nhập ghi chú cho hóa đơn này (không bắt buộc)"
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-md text-sm! font-medium placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
+                                            className="w-full px-4 py-3 border border-gray-200 rounded-md text-sm! font-medium placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
                                             rows={4}
                                         />
                                         <p className="text-xs text-gray-500 flex items-center gap-1">
@@ -261,7 +261,7 @@ export default async function InvoiceDetail({ params }: LayoutProps) {
                                         </button>
                                         <Link
                                             href="/admin/recharge/bank"
-                                            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white border border-gray-300 text-gray-700 text-sm font-semibold rounded-sm hover:bg-gray-100! transition-colors cursor-pointer"
+                                            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-white border border-gray-200 text-gray-700 text-sm font-semibold rounded-sm hover:bg-gray-100! transition-colors cursor-pointer"
                                         >
                                             <ArrowLeft className="w-4 h-4" />
                                             Quay lại danh sách
