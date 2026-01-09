@@ -188,7 +188,7 @@ function RechartBankTable() {
                                     <td className="px-6 py-3">
                                         <div className="flex items-center justify-center gap-2">
                                             <Link
-                                                href={`/admin/services/packages/edit/${deposit.id}`}
+                                                href={`/admin/recharge/bank/${deposit.id}`}
                                                 className="p-2 bg-[#49b6f5]! hover:bg-[#3aa5e3] text-white! rounded transition-colors cursor-pointer"
                                                 title="Sửa"
                                             >
