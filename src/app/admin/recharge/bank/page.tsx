@@ -4,8 +4,8 @@ import {
 } from "lucide-react";
 
 import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
-import StatisticsCards from "@/components/recharge-bank/StatisticsCards";
-import DepositChart from "@/components/recharge-bank/DepositChart";
+import StatisticsCards from "@/components/admin/recharge-bank/StatisticsCards";
+import DepositChart from "@/components/admin/recharge-bank/DepositChart";
 
 import { Input } from "@/components/shared/ui/input";
 import { Label } from "@/components/shared/ui/label";
@@ -19,8 +19,8 @@ import {
     SelectValue
 } from "@/components/shared/ui/select";
 import { DatePicker } from "@/components/shared/ui/date-picker";
-import RechartBankTable from "@/components/recharge-bank/RechartBankTable";
-import Summary from "@/components/recharge-bank/Summary";
+import RechartBankTable from "@/components/admin/recharge-bank/RechartBankTable";
+import Summary from "@/components/admin/recharge-bank/Summary";
 
 function RechartBankPage() {
     const titlePage = "Nạp tiền ngân hàng";
