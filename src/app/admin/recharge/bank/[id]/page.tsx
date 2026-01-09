@@ -1,5 +1,3 @@
-"use client"
-
 import Link from 'next/link';
 import {
     ArrowLeft,
@@ -11,8 +9,8 @@ import {
     CheckCircle,
     CircleQuestionMark,
     Lightbulb
-} from 'lucide-react'
-    ;
+} from 'lucide-react';
+
 import ScrollToTop from '@/components/shared/ScrollToTop';
 import AdminSubHeader from '@/layouts/admin/AdminSubHeader';
 
@@ -22,11 +20,10 @@ interface LayoutProps {
     };
 }
 
-export default function InvoiceDetail({ params }: LayoutProps) {
-    // const { id } = await params;
-    // const titlePage = `Chi tiết hoá đơn #${id}`;
+export default async function InvoiceDetail({ params }: LayoutProps) {
+    const { id } = await params;
 
-    const titlePage = `chi tiết hoá đơn ...`;
+    const titlePage = `Chi tiết hoá đơn #${id}`;
     const prevTitle = "nạp tiền ngân hàng";
     const urlPrevTitle = `/admin/recharge/bank`;
 
