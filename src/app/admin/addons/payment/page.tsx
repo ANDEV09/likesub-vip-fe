@@ -88,7 +88,7 @@ function PaymentAddonCards() {
                 {addons.map((addon) => (
                     <div
                         key={addon.id}
-                        className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow  duration-300 flex flex-col h-full"
+                        className="bg-white rounded-sm shadow-md hover:shadow-xl transition-shadow  duration-300 flex flex-col h-full"
                     >
                         {/* Image Section */}
                         <div className="relative overflow-hidden">
