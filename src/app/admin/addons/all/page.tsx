@@ -1,6 +1,13 @@
 import { Check, ShoppingCart } from 'lucide-react';
 
-function AllAddonCards() {
+async function getAddonData() {
+    await new Promise((resolve) => setTimeout(resolve, 1200));
+    return { title: "Addons" };
+}
+
+async function AllAddonCards() {
+    const data = await getAddonData();
+
     const addons = [
         {
             id: 1,

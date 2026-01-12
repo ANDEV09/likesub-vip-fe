@@ -20,6 +20,8 @@ interface PermissionGroup {
 
 function AddRoleForm() {
     const titlePage = "thêm mới vai trò";
+    const prevTitle = "danh sách vai trò";
+    const urlPrevTitle = "/admin/roles";
 
     const [roleName, setRoleName] = useState('');
     const [selectAll, setSelectAll] = useState(false);
@@ -216,7 +218,11 @@ function AddRoleForm() {
     return (
         <>
             {/* Page Breadcrumb */}
-            <AdminSubHeader titlePage={titlePage} />
+            <AdminSubHeader
+                titlePage={titlePage}
+                prevTitle={prevTitle}
+                urlPrevTitle={urlPrevTitle}
+            />
 
             <div className="p-6 w-full flex flex-col gap-6">
                 {/* Role Name Input */}
