@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 
-import { 
+import {
     Award,
     BriefcaseBusiness,
     Check,
@@ -16,7 +16,7 @@ import {
     Trophy,
     User,
     Wallet,
-    X
+    X,
 } from "lucide-react";
 import UserSubHeader from "@/layouts/client/client-panel/UserSubHeader";
 
@@ -39,7 +39,7 @@ function ServicePricingPage() {
                     <div className="flex flex-col h-full w-full bg-white shadow-sm rounded-xl p-4 gap-4 hover:scale-105 transition-all duration-400 ease-in-out cursor-pointer border hover:border-blue-400">
                         {/* Icon Service */}
                         <div className="flex items-center justify-center relative">
-                            <div className="p-6 rounded-full bg-gradient-to-r from-blue-400 to-blue-500">
+                            <div className="p-6 rounded-full bg-linear-to-r from-blue-400 to-blue-500">
                                 <User className="text-white w-10 h-10" />
                             </div>
                             <div className="absolute top-0 right-0 flex bg-black items-center justify-center gap-2 py-1.5 px-3 rounded-xl z-10">
@@ -308,7 +308,8 @@ function ServicePricingPage() {
                                         Dịch vụ độc quyền
                                     </span>
                                     <span className="text-xs text-gray-400 font-medium">
-                                        Dịch vụ độc quyền chỉ dành riêng cho khách hàng VIP
+                                        Dịch vụ độc quyền chỉ dành riêng cho
+                                        khách hàng VIP
                                     </span>
                                 </div>
                             </div>
@@ -323,7 +324,8 @@ function ServicePricingPage() {
                                         Hỗ trợ riêng 24/7
                                     </span>
                                     <span className="text-xs text-gray-400 font-medium">
-                                        Chúng tôi sẽ luôn sẵn sàng giúp đỡ bạn mọi lúc, mọi nơi
+                                        Chúng tôi sẽ luôn sẵn sàng giúp đỡ bạn
+                                        mọi lúc, mọi nơi
                                     </span>
                                 </div>
                             </div>
@@ -368,39 +370,42 @@ function ServicePricingPage() {
                         {/* Service Title */}
                         <div className="mx-auto max-w-lg flex items-center justify-center mb-7">
                             <span className="font-bold text-3xl text-center text-gray-800">
-                                Các gói dịch vụ thiết kế riêng phù hợp với nhu cầu độc đáo!
+                                Các gói dịch vụ thiết kế riêng phù hợp với nhu
+                                cầu độc đáo!
                             </span>
                         </div>
 
                         {/* Services Option */}
                         <div className="relative inline-flex mx-auto bg-gray-200 rounded-full z-1 p-1 mb-8">
-                            <span className={`absolute top-1/2 -z-1 h-11 w-[120px] -translate-y-1/2 rounded-full bg-white shadow-md duration-300 ease-linear ${
-                                isActiveOption === "monthly" 
-                                    ? "translate-x-0"
-                                    : "translate-x-full"
-                            }`} />
+                            <span
+                                className={`absolute top-1/2 -z-1 h-11 w-30 -translate-y-1/2 rounded-full bg-white shadow-md duration-300 ease-linear ${
+                                    isActiveOption === "monthly"
+                                        ? "translate-x-0"
+                                        : "translate-x-full"
+                                }`}
+                            />
                             <button
-                                className={`flex h-11 w-[120px] items-center justify-center text-sm font-medium text-gray-500 hover:text-gray-800 cursor-pointer ${
-                                    isActiveOption === "monthly" 
+                                className={`flex h-11 w-30 items-center justify-center text-sm font-medium text-gray-500 hover:text-gray-800 cursor-pointer ${
+                                    isActiveOption === "monthly"
                                         ? "text-gray-800 font-bold"
                                         : ""
                                 }`}
                                 onClick={() => {
-                                    seIsActiveOption("monthly")
-                                    setIsAnnually(false)
+                                    seIsActiveOption("monthly");
+                                    setIsAnnually(false);
                                 }}
                             >
                                 Monthly
                             </button>
-                            <button 
-                                className={`flex h-11 w-[120px] items-center justify-center text-sm font-medium text-gray-500 hover:text-gray-800 cursor-pointer ${
-                                    isActiveOption === "annually" 
+                            <button
+                                className={`flex h-11 w-30 items-center justify-center text-sm font-medium text-gray-500 hover:text-gray-800 cursor-pointer ${
+                                    isActiveOption === "annually"
                                         ? "text-gray-800 font-bold"
                                         : ""
                                 }`}
                                 onClick={() => {
-                                    seIsActiveOption("annually")
-                                    setIsAnnually(true)
+                                    seIsActiveOption("annually");
+                                    setIsAnnually(true);
                                 }}
                             >
                                 Annually
@@ -420,11 +425,11 @@ function ServicePricingPage() {
                                             </span>
                                             <div>
                                                 <span className="font-bold text-3xl">
-                                                    {isAnnually ? "$99.00" : "$59.99"}
+                                                    {isAnnually
+                                                        ? "$99.00"
+                                                        : "$59.99"}
                                                 </span>
-                                                <span>
-                                                    / Lifetime
-                                                </span>
+                                                <span>/ Lifetime</span>
                                             </div>
                                         </div>
                                         <div className="bg-blue-100 p-3 rounded-md">
@@ -493,9 +498,7 @@ function ServicePricingPage() {
                                 </div>
 
                                 {/* Choose Button */}
-                                <button 
-                                    className="flex w-full items-center justify-center rounded-lg bg-[#0f172a] p-3.5 text-xs font-medium text-white shadow-sm transition-colors duration-300 hover:bg-blue-600 cursor-pointer"
-                                >
+                                <button className="flex w-full items-center justify-center rounded-lg bg-[#0f172a] p-3.5 text-xs font-medium text-white shadow-sm transition-colors duration-300 hover:bg-blue-600 cursor-pointer">
                                     Choose Starter
                                 </button>
                             </div>
@@ -511,11 +514,11 @@ function ServicePricingPage() {
                                             </span>
                                             <div>
                                                 <span className="font-bold text-3xl">
-                                                    {isAnnually ? "$199.00" : "$99.99"}
+                                                    {isAnnually
+                                                        ? "$199.00"
+                                                        : "$99.99"}
                                                 </span>
-                                                <span>
-                                                    / Lifetime
-                                                </span>
+                                                <span>/ Lifetime</span>
                                             </div>
                                         </div>
                                         <div className="bg-blue-100 p-3 rounded-md">
@@ -584,9 +587,7 @@ function ServicePricingPage() {
                                 </div>
 
                                 {/* Choose Button */}
-                                <button 
-                                    className="flex w-full items-center justify-center rounded-lg bg-blue-600 p-3.5 text-xs font-medium text-white shadow-sm transition-colors duration-300 hover:bg-blue-800 cursor-pointer"
-                                >
+                                <button className="flex w-full items-center justify-center rounded-lg bg-blue-600 p-3.5 text-xs font-medium text-white shadow-sm transition-colors duration-300 hover:bg-blue-800 cursor-pointer">
                                     Choose This Plan
                                 </button>
                             </div>
@@ -602,11 +603,11 @@ function ServicePricingPage() {
                                             </span>
                                             <div>
                                                 <span className="font-bold text-3xl">
-                                                    {isAnnually ? "$799.00" : "$599.99"}
+                                                    {isAnnually
+                                                        ? "$799.00"
+                                                        : "$599.99"}
                                                 </span>
-                                                <span>
-                                                    / Lifetime
-                                                </span>
+                                                <span>/ Lifetime</span>
                                             </div>
                                         </div>
                                         <div className="bg-blue-100 p-3 rounded-md">
@@ -675,9 +676,7 @@ function ServicePricingPage() {
                                 </div>
 
                                 {/* Choose Button */}
-                                <button 
-                                    className="flex w-full items-center justify-center rounded-lg bg-[#0f172a] p-3.5 text-xs font-medium text-white shadow-sm transition-colors duration-300 hover:bg-blue-600 cursor-pointer"
-                                >
+                                <button className="flex w-full items-center justify-center rounded-lg bg-[#0f172a] p-3.5 text-xs font-medium text-white shadow-sm transition-colors duration-300 hover:bg-blue-600 cursor-pointer">
                                     Choose Starter
                                 </button>
                             </div>
@@ -689,7 +688,7 @@ function ServicePricingPage() {
                 <div></div>
             </div>
         </div>
-    )
+    );
 }
 
-export default ServicePricingPage
+export default ServicePricingPage;
