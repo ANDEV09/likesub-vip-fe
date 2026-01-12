@@ -8,13 +8,13 @@ import dynamic from "next/dynamic";
 import Dropdown from "@/components/shared/ui/dropdown";
 import DropdownItem from "@/components/shared/ui/dropdown-item";
 
-const ReactApexChart = dynamic(() => import("react-apexcharts") , {
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
     ssr: false
 });
 
 function MonthlySalesChartAdmin() {
     const options: ApexOptions = {
-        colors: ["#465fff"],
+        colors: ["#49B6f5"],
         chart: {
             fontFamily: "Outfit, sans-serif",
             type: "bar",

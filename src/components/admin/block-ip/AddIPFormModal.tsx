@@ -1,18 +1,15 @@
-"use client"
-
 import { useEffect, useState } from "react";
 import { X, Plus } from "lucide-react";
 
-function AddUserFormModal({
-    setIsShowAddUserFormModal
+function AddIPFormModal({
+    setIsShowAddIPFormModal
 }: {
-    setIsShowAddUserFormModal: (value: boolean) => void
+    setIsShowAddIPFormModal: (value: boolean) => void
 }) {
     const [isMounted, setIsMounted] = useState(false);
     const [formData, setFormData] = useState({
-        username: "",
-        password: "",
-        email: ""
+        ipAddress: "",
+        reason: ""
     });
 
     useEffect(() => {
@@ -26,12 +23,11 @@ function AddUserFormModal({
     const handleClose = () => {
         setIsMounted(false);
         setTimeout(() => {
-            setIsShowAddUserFormModal(false);
+            setIsShowAddIPFormModal(false);
         }, 300);
     };
 
     const handleSubmit = () => {
-        // Handle form submission
         console.log("Form submitted:", formData);
         handleClose();
     };
@@ -69,12 +65,13 @@ function AddUserFormModal({
             >
                 {/* Header */}
                 <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-                    <h2 className="text-lg font-bold text-gray-800">
-                        Thêm thành viên mới
+                    <h2 className="text-lg font-bold text-gray-800 flex items-center gap-2">
+                        <Plus className="w-5 h-5" />
+                        Thêm IP cần Block
                     </h2>
                     <button
                         onClick={handleClose}
-                        className="text-gray-400 hover:text-gray-600 transition-colors"
+                        className="text-gray-400 hover:text-gray-600 transition-colors cursor-pointer"
                     >
                         <X className="w-6 h-6" />
                     </button>
@@ -82,18 +79,18 @@ function AddUserFormModal({
 
                 {/* Content */}
                 <div className="p-6 space-y-6">
-                    {/* Username */}
-                    <div className="grid grid-cols-3 gap-4 items-center">
+                    {/* IP Address */}
+                    <div className="space-y-2 flex flex-col">
                         <label className="text-sm font-semibold text-gray-800">
-                            Username
+                            Địa chỉ IP cần Block <span className="text-red-500">(*)</span>
                         </label>
-                        <input
-                            type="text"
-                            value={formData.username}
-                            onChange={(e) => handleChange("username", e.target.value)}
-                            placeholder="Nhập tên đăng nhập"
+                        <textarea
+                            value={formData.ipAddress}
+                            onChange={(e) => handleChange("ipAddress", e.target.value)}
+                            placeholder="Nhập địa chỉ IP cần Block, mỗi địa chỉ một dòng"
+                            rows={8}
                             className="
-                                col-span-2
+                                w-full
                                 px-4 py-3
                                 border border-gray-300
                                 rounded-md
@@ -104,22 +101,23 @@ function AddUserFormModal({
                                 focus:ring-1
                                 focus:ring-gray-200
                                 transition-colors
+                                resize-none
                             "
                         />
                     </div>
 
-                    {/* Password */}
-                    <div className="grid grid-cols-3 gap-4 items-center">
+                    {/* Reason */}
+                    <div className="space-y-2 flex flex-col">
                         <label className="text-sm font-semibold text-gray-800">
-                            Password
+                            Lý do chặn (nếu có)
                         </label>
-                        <input
-                            type="password"
-                            value={formData.password}
-                            onChange={(e) => handleChange("password", e.target.value)}
-                            placeholder="Nhập mật khẩu"
+                        <textarea
+                            value={formData.reason}
+                            onChange={(e) => handleChange("reason", e.target.value)}
+                            placeholder="Nhập lý do block ip nếu có"
+                            rows={5}
                             className="
-                                col-span-2
+                                w-full
                                 px-4 py-3
                                 border border-gray-300
                                 rounded-md
@@ -130,32 +128,7 @@ function AddUserFormModal({
                                 focus:ring-1
                                 focus:ring-gray-200
                                 transition-colors
-                            "
-                        />
-                    </div>
-
-                    {/* Email */}
-                    <div className="grid grid-cols-3 gap-4 items-center">
-                        <label className="text-sm font-semibold text-gray-800">
-                            Email
-                        </label>
-                        <input
-                            type="email"
-                            value={formData.email}
-                            onChange={(e) => handleChange("email", e.target.value)}
-                            placeholder="Nhập địa chỉ email"
-                            className="
-                                col-span-2
-                                px-4 py-3
-                                border border-gray-300
-                                rounded-md
-                                text-sm
-                                placeholder:text-gray-400
-                                focus:outline-none
-                                focus:border-gray-400
-                                focus:ring-1
-                                focus:ring-gray-200
-                                transition-colors
+                                resize-none
                             "
                         />
                     </div>
@@ -171,10 +144,10 @@ function AddUserFormModal({
                     </button>
                     <button
                         onClick={handleSubmit}
-                        className="px-4 py-1.5 bg-[#846adf] hover:bg-purple-800 text-white text-sm font-medium rounded-md transition-colors flex items-center gap-2 cursor-pointer"
+                        className="px-4 py-2.5 bg-[#846adf] hover:bg-purple-800 text-white text-sm font-medium rounded-md transition-colors flex items-center gap-2 cursor-pointer"
                     >
                         <Plus className="w-4 h-4" />
-                        Thêm mới
+                        Xác nhận
                     </button>
                 </div>
             </div>
@@ -182,4 +155,4 @@ function AddUserFormModal({
     );
 }
 
-export default AddUserFormModal;
+export default AddIPFormModal;
