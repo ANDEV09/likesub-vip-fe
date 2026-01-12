@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Footer() {
   return (
     <div className="flex items-center justify-center bg-gray-100 bg-amber-500">
@@ -8,12 +10,12 @@ export default function Footer() {
             <div className="col-span-full mb-10 lg:col-span-2 lg:mb-0">
               <a href="https://tuanori.vn" target="_blank"
                 className="flex justify-center items-center lg:justify-start text-3xl font-bold">
-                <img
-                    src="/images/logo.png" 
-                    alt="LIKESUB-VIP" 
-                    className="h-14 w-auto"
-                    width={30}
-                    height={30}
+                <Image
+                  src="/images/logo.png"
+                  alt="LIKESUB-VIP"
+                  className="h-14 w-auto"
+                  width={200}
+                  height={50}
                 />
               </a>
               <p className="py-8 text-gray-400 lg:max-w-xs text-center lg:text-left">
@@ -41,7 +43,7 @@ export default function Footer() {
               <h4 className="text-lg text-gray-200 font-bold mb-7">Products</h4>
               <ul className=" transition-all duration-500">
                 <li className="mb-6"><a href="javascript:void(0)" className="text-gray-400 hover:text-gray-500">Figma UI
-                    System</a></li>
+                  System</a></li>
                 <li className="mb-6"><a href="javascript:void(0)" className="text-gray-400 hover:text-gray-500">Icons Assets</a>
                 </li>
                 <li><a href="javascript:void(0)" className="text-gray-400 hover:text-gray-500">Responsive Blocks</a></li>
@@ -53,10 +55,10 @@ export default function Footer() {
               <h4 className="text-lg text-gray-200 font-bold mb-7">Support</h4>
               <ul className=" transition-all duration-500">
                 <li className="mb-6"><a href="javascript:void(0)" className="text-gray-400 hover:text-gray-500">Customer
-                    Support</a>
+                  Support</a>
                 </li>
                 <li className="mb-6"><a href="javascript:void(0)" className=" text-gray-400 hover:text-gray-500">Terms &
-                    Conditions</a>
+                  Conditions</a>
                 </li>
                 <li><a href="javascript:void(0)" className=" text-gray-400 hover:text-gray-500">Privacy Policy</a></li>
               </ul>
@@ -72,7 +74,7 @@ export default function Footer() {
               </p>
               <a href="javascript:void(0)"
                 className="flex items-center justify-center gap-2 border border-cyan-400 rounded-full py-3 px-6 w-fit lg:mx-0  text-cyan-400 font-semibold transition-all duration-500 hover:bg-cyan-400 hover:text-white">
-                  Subscribe
+                Subscribe
                 <svg
                   width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -87,8 +89,8 @@ export default function Footer() {
           <div className="py-7 border-t border-gray-200">
             <div className="flex items-center justify-center flex-col lg:justify-between lg:flex-row">
               <span className="text-gray-500 ">©<a href="https://tuanori.vn" target="_blank"
-                  className="text-cyan-400">
-                    Tuanori</a> 2026, All rights reserved.
+                className="text-cyan-400">
+                Tuanori</a> 2026, All rights reserved.
               </span>
               <div className="flex mt-4 space-x-4 sm:justify-center lg:mt-0 ">
                 <a href="javascript:void(0)"

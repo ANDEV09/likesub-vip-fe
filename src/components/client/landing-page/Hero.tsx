@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero() {
@@ -31,10 +32,12 @@ export default function Hero() {
         </div>
         {/* Right: Image */}
         <div className="md:w-1/2 w-full flex justify-center">
-          <img
+          <Image
             src="/images/who-we-are.png"
             alt="image"
             className="w-full max-w-xl h-auto object-contain drop-shadow-xl animate-float"
+            height={300}
+            width={300}
           />
         </div>
       </div>

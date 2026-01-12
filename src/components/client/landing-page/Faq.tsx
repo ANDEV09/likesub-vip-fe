@@ -1,6 +1,7 @@
 "use client"
 
 import { ChevronRight } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Faq() {
@@ -76,10 +77,12 @@ export default function Faq() {
 
           {/* Right: Illustration */}
           <div className="flex items-center justify-end h-full">
-            <img
-              src="images/faq.png"
+            <Image
+              src="/images/faq.png"
               alt="FAQ illustration"
               className="w-full max-w-full h-auto object-contain"
+              width={200}
+              height={200}
             />
           </div>
         </div>

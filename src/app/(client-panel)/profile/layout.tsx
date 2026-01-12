@@ -1,6 +1,6 @@
 "use client"
 
-import { 
+import {
     CircleArrowUp,
     CreditCard,
     Sparkles,
@@ -11,10 +11,11 @@ import {
 import { useCallback } from "react"
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
-function UserProfile({ 
+function UserProfile({
     children
-} : {
+}: {
     children: React.ReactNode
 }) {
     const pathName = usePathname();
@@ -29,16 +30,17 @@ function UserProfile({
             {/* Background Layer */}
             <div className="absolute inset-0 z-0">
                 <div className="h-80 w-full relative overflow-hidden">
-                    <img 
-                        src="/images/profile-background.jpg" 
-                        alt="" 
+                    <Image
+                        src="/images/profile-background.jpg"
+                        alt=""
+                        fill
                         className="w-full object-cover h-full"
                     />
                     <div className="absolute inset-0 bg-black/60" />
                 </div>
 
-                <div 
-                    className="w-full"     
+                <div
+                    className="w-full"
                     style={{ height: 'calc(100vh - 320px)' }}
                 />
             </div>
@@ -54,8 +56,10 @@ function UserProfile({
                             <div className="w-50 h-full flex items-center justify-center">
                                 <div className="avatar">
                                     <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
-                                        <img
+                                        <Image
+                                            alt="avatar"
                                             src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=387&auto=format&fit=crop"
+                                            fill
                                             className="w-24 h-24 rounded-full object-cover"
                                         />
                                     </div>
@@ -86,7 +90,7 @@ function UserProfile({
                                     </div>
                                     <div className="flex items-center justify-between py-2 border-b border-gray-200">
                                         <div className="flex items-center justify-between gap-2">
-                                            <CircleArrowUp className="w-3 h-3 text-gray-500"/>
+                                            <CircleArrowUp className="w-3 h-3 text-gray-500" />
                                             <span className="text-sm text-gray-500 ">
                                                 Tổng nạp:
                                             </span>
@@ -179,10 +183,9 @@ function UserProfile({
 }
 
 const navClass = ({ isActive }: { isActive: boolean }) =>
-    `py-4 px-2 text-sm font-medium transition-all duration-300 ${
-        isActive
-            ? "border-b-2 border-slate-800 text-slate-800"
-            : "text-blue-600 hover:text-blue-900"
+    `py-4 px-2 text-sm font-medium transition-all duration-300 ${isActive
+        ? "border-b-2 border-slate-800 text-slate-800"
+        : "text-blue-600 hover:text-blue-900"
     }`;
 
 export default UserProfile
