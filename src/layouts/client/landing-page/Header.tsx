@@ -47,7 +47,7 @@ export default function Header() {
               <span className="pointer-events-none absolute left-0 -bottom-0.5 w-0 h-px bg-black rounded transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </nav>
-          <Link href="/create-order" className="bg-linear-to-r from-cyan-400 to-green-300 hover:from-cyan-500 hover:to-green-400 text-black px-4 py-2 rounded-full font-semibold shadow transition text-xs">
+          <Link href="/home" className="bg-linear-to-r from-cyan-400 to-green-300 hover:from-cyan-500 hover:to-green-400 text-black px-4 py-2 rounded-full font-semibold shadow transition text-xs">
             SỬ DỤNG NGAY
           </Link>
         </div>

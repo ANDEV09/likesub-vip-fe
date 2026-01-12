@@ -20,6 +20,7 @@ import {
     Youtube,
     Instagram,
     ChevronDownIcon,
+    House,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -35,6 +36,11 @@ interface NavItemType {
 }
 
 const navItems: NavItemType[] = [
+    {
+        name: "Trang chủ",
+        icon: <House size={20} />,
+        path: "/home",
+    },
     {
         name: "Tạo đơn hàng",
         icon: <ShoppingCart size={20} />,
@@ -279,7 +285,7 @@ function UserSidebar() {
                         ) : (
                             nav.path && (
                                 <Link
-                                    className={`hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-3 font-normal rounded-lg text-[14px] group text-slate-300 
+                                    className={`hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-3 font-normal rounded-lg text-[16px] group text-slate-300 
                                         ${isActive(nav.path)
                                             ? "bg-slate-800"
                                             : ""

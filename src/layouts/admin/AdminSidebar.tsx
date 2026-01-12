@@ -308,7 +308,7 @@ function AdminSidebar() {
                         {nav.subItems ? (
                             <button
                                 onClick={() => handleSubmenuToggle(index, menuType)}
-                                className={`relative hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-3 font-medium rounded-lg text-[16px]! group text-slate-300 cursor-pointer ${openSubmenu?.type === menuType && openSubmenu?.index === index
+                                className={`relative hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-3 font-normal rounded-lg text-[16px]!s group text-slate-300 cursor-pointer ${openSubmenu?.type === menuType && openSubmenu?.index === index
                                     ? "bg-slate-800 text-blue-400"
                                     : "text-slate-300 group-hover:text-slate-400"
                                     } cursor-pointer ${!isExpanded && !isHovered
@@ -347,7 +347,7 @@ function AdminSidebar() {
                         ) : (
                             nav.path && (
                                 <Link
-                                    className={`hover:bg-slate-800! flex items-center w-full gap-3 px-3 py-3 font-medium rounded-lg text-md! group text-slate-300 cursor-pointer text-[16px]! 
+                                    className={`hover:bg-slate-800! flex items-center w-full gap-3 px-3 py-3 font-normal rounded-lg text-[16px]! group text-slate-300 cursor-pointer 
                                         ${isActive(nav.path)
                                             ? "bg-slate-800"
                                             : ""
