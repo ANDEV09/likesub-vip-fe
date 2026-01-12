@@ -191,7 +191,7 @@ function StatisticUserModal({
                                     <Legend
                                         verticalAlign="top"
                                         height={36}
-                                        formatter={(value) => <span className="text-sm font-medium text-gray-700">{value}</span>}
+                                        formatter={(value: string) => <span className="text-sm font-medium text-gray-700">{value}</span>}
                                     />
                                 </PieChart>
                             </ResponsiveContainer>

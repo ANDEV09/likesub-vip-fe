@@ -1,3 +1,5 @@
+"use client"
+
 import Badge from "@/components/shared/ui/badge";
 
 import {
@@ -13,6 +15,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 interface User {
     id: number;
@@ -266,7 +269,7 @@ function UserTable() {
                                         <div className="flex items-center gap-3">
                                             {/* User Image */}
                                             <div className="w-10 h-10 overflow-hidden rounded-full">
-                                                <img
+                                                <Image
                                                     width={40}
                                                     height={40}
                                                     src={user.user.image}

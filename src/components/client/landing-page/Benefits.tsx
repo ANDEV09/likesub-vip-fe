@@ -1,4 +1,5 @@
 import { CheckSquare } from "lucide-react";
+import Image from "next/image";
 
 export default function Benefits() {
   return (
@@ -7,10 +8,12 @@ export default function Benefits() {
         {/* Left: Image */}
         <div className="relative">
           <div className="rounded-3xl p-4 h-96 flex items-center justify-center">
-            <img
+            <Image
               src="/images/why-us.png"
               alt="Mobile apps illustration"
               className="w-full h-full object-contain animate-float"
+              width={300}
+              height={300}
             />
           </div>
         </div>

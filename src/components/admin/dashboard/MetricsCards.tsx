@@ -1,4 +1,4 @@
-import { 
+import {
     ArrowDownIcon,
     ArrowUpIcon,
     BoxIcon,
@@ -11,10 +11,10 @@ function MetricsCards() {
     return (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
             {/* Metric Card 1 */}
-            <div className="rounded-2xl border border-gray-200 bg-white p-5 md:p-6">
+            <div className="rounded-md border border-gray-200 bg-white p-5 md:p-6">
                 {/* Icon */}
-                <div className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl">
-                    <Users className="text-gray-800 size-6" />
+                <div className="flex items-center justify-center w-12 h-12 bg-[#846adf] rounded-lg">
+                    <Users className="text-white size-6" />
                 </div>
 
                 {/* Metric Data */}
@@ -23,7 +23,7 @@ function MetricsCards() {
                         <span className="text-sm text-gray-500">
                             Khách hàng
                         </span>
-                        <h4 className="mt-2 font-extrabold text-gray-800 text-[30px] leading-[38px]">
+                        <h4 className="mt-2 font-extrabold text-gray-800 text-[30px] leading-9.5">
                             3,782
                         </h4>
                     </div>
@@ -37,8 +37,8 @@ function MetricsCards() {
             {/* Metric Card 2 */}
             <div className="rounded-2xl border border-gray-200 bg-white p-5 md:p-6">
                 {/* Icon */}
-                <div className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-xl">
-                    <BoxIcon className="text-gray-800 size-6" />
+                <div className="flex items-center justify-center w-12 h-12 bg-[#F5B849] rounded-lg">
+                    <BoxIcon className="text-white size-6" />
                 </div>
 
                 {/* Metric Data */}

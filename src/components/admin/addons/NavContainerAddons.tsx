@@ -13,9 +13,9 @@ function NavContainerAddons() {
     }, [pathName]);
 
     const navClass = ({ isActive }: { isActive: boolean }) =>
-        `flex items-center justify-center gap-2 py-2 px-6 text-sm rounded-2xl font-bold transition-all duration-300 cursor-pointer ${isActive
+        `flex items-center justify-center gap-2 py-2 px-5 text-sm rounded-3xl font-bold transition-all duration-300 cursor-pointer ${isActive
             ? "bg-[#846adf]! text-white"
-            : "text-gray-700 hover:text-purple-900"
+            : "text-gray-700 hover:text-purple-900 hover:bg-slate-100!"
         }`;
 
     return (

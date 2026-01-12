@@ -4,8 +4,8 @@ import {
 } from "lucide-react";
 
 import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
-import StatisticsCards from "@/components/recharge-bank/StatisticsCards";
-import DepositChart from "@/components/recharge-bank/DepositChart";
+import StatisticsCards from "@/components/admin/recharge-bank/StatisticsCards";
+import DepositChart from "@/components/admin/recharge-bank/DepositChart";
 
 import { Input } from "@/components/shared/ui/input";
 import { Label } from "@/components/shared/ui/label";
@@ -19,10 +19,16 @@ import {
     SelectValue
 } from "@/components/shared/ui/select";
 import { DatePicker } from "@/components/shared/ui/date-picker";
-import RechartBankTable from "@/components/recharge-bank/RechartBankTable";
-import Summary from "@/components/recharge-bank/Summary";
+import RechartBankTable from "@/components/admin/recharge-bank/RechartBankTable";
+import Summary from "@/components/admin/recharge-bank/Summary";
 
-function page() {
+async function getRechargeBankData() {
+    await new Promise((resolve) => setTimeout(resolve, 1200));
+    return { title: "Recharge Bank sData" };
+}
+
+async function RechartBankPage() {
+    const data = await getRechargeBankData();
     const titlePage = "Nạp tiền ngân hàng";
 
     return (
@@ -147,7 +153,7 @@ function page() {
                                             <SelectItem value="1000">1.000</SelectItem>
                                             <SelectItem value="5000">5000</SelectItem>
                                             <SelectItem value="10000">10.000</SelectItem>
-                                            <SelectItem value="15000">15.000</SelectItem>
+                                            <SelectItem value="12000">15.000</SelectItem>
                                             <SelectItem value="20000">20.000</SelectItem>
                                             <SelectItem value="30000">30.000</SelectItem>
                                             <SelectItem value="40000">40.000</SelectItem>
@@ -196,4 +202,4 @@ function page() {
     );
 }
 
-export default page;
+export default RechartBankPage;

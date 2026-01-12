@@ -17,9 +17,7 @@ import UserDetailActions from "@/components/admin/users/UserDetailActions";
 
 interface LayoutProps {
     children: React.ReactNode;
-    params: {
-        id: string;
-    };
+    params: Promise<{ id: string }>
 }
 
 export default async function UserDetailLayout({

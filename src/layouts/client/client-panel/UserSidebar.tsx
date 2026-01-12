@@ -20,7 +20,9 @@ import {
     Youtube,
     Instagram,
     ChevronDownIcon,
+    House,
 } from "lucide-react";
+import Image from "next/image";
 
 interface NavItemType {
     name: string;
@@ -34,6 +36,11 @@ interface NavItemType {
 }
 
 const navItems: NavItemType[] = [
+    {
+        name: "Trang chủ",
+        icon: <House size={20} />,
+        path: "/home",
+    },
     {
         name: "Tạo đơn hàng",
         icon: <ShoppingCart size={20} />,
@@ -188,8 +195,8 @@ function UserSidebar() {
                 type === "menu"
                     ? navItems
                     : type === "others"
-                    ? othersItems
-                    : servicesItems;
+                        ? othersItems
+                        : servicesItems;
 
             items.map((nav, index) => {
                 if (nav.subItems) {
@@ -236,77 +243,69 @@ function UserSidebar() {
                                 onClick={() =>
                                     handleSubmenuToggle(index, menuType)
                                 }
-                                className={`relative hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-2 font-normal rounded-lg text-[14px] group text-slate-300 ${
-                                    openSubmenu?.type === menuType &&
+                                className={`relative hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-2 font-normal rounded-lg text-[14px] group text-slate-300 ${openSubmenu?.type === menuType &&
                                     openSubmenu?.index === index
-                                        ? "bg-slate-800 text-blue-400"
-                                        : "text-slate-300 group-hover:text-slate-400"
-                                } cursor-pointer ${
-                                    !isExpanded && !isHovered
+                                    ? "bg-slate-800 text-blue-400"
+                                    : "text-slate-300 group-hover:text-slate-400"
+                                    } cursor-pointer ${!isExpanded && !isHovered
                                         ? "justify-center"
                                         : "justify-start"
-                                }`}
+                                    }`}
                             >
                                 <span
-                                    className={`${
-                                        openSubmenu?.type === menuType &&
+                                    className={`${openSubmenu?.type === menuType &&
                                         openSubmenu?.index === index
-                                            ? "text-blue-400"
-                                            : "text-slate-300 group-hover:text-slate-400"
-                                    }`}
+                                        ? "text-blue-400"
+                                        : "text-slate-300 group-hover:text-slate-400"
+                                        }`}
                                 >
                                     {nav.icon}
                                 </span>
                                 {(isExpanded || isHovered) && (
                                     <span
-                                        className={`${
-                                            openSubmenu?.type === menuType &&
+                                        className={`${openSubmenu?.type === menuType &&
                                             openSubmenu?.index === index
-                                                ? "text-blue-400"
-                                                : "text-slate-300 group-hover:text-slate-400"
-                                        }`}
+                                            ? "text-blue-400"
+                                            : "text-slate-300 group-hover:text-slate-400"
+                                            }`}
                                     >
                                         {nav.name}
                                     </span>
                                 )}
                                 {(isExpanded || isHovered) && (
                                     <ChevronDownIcon
-                                        className={`ml-auto w-5 h-5 transition-transform duration-200 ${
-                                            openSubmenu?.type === menuType &&
+                                        className={`ml-auto w-5 h-5 transition-transform duration-200 ${openSubmenu?.type === menuType &&
                                             openSubmenu?.index === index
-                                                ? "rotate-180 text-blue-400"
-                                                : ""
-                                        }`}
+                                            ? "rotate-180 text-blue-400"
+                                            : ""
+                                            }`}
                                     />
                                 )}
                             </button>
                         ) : (
                             nav.path && (
                                 <Link
-                                    className={`hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-3 font-normal rounded-lg text-[14px] group text-slate-300 
-                                        ${
-                                            isActive(nav.path)
-                                                ? "bg-slate-800"
-                                                : ""
+                                    className={`hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-3 font-normal rounded-lg text-[16px] group text-slate-300 
+                                        ${isActive(nav.path)
+                                            ? "bg-slate-800"
+                                            : ""
                                         }
                                     `}
                                     href={nav.path}
                                 >
                                     <span
-                                        className={`${
-                                            isActive(nav.path)
-                                                ? "text-blue-400"
-                                                : "text-slate-300 group-hover:text-slate-400"
-                                        }`}
+                                        className={`${isActive(nav.path)
+                                            ? "text-blue-400"
+                                            : "text-slate-300 group-hover:text-slate-400"
+                                            }`}
                                     >
                                         {nav.icon}
                                     </span>
                                     <span
-                                        className={`${
-                                            isActive(nav.path)
-                                                ? "text-blue-400"
-                                                : "text-slate-300 group-hover:text-slate-400"
-                                        }`}
+                                        className={`${isActive(nav.path)
+                                            ? "text-blue-400"
+                                            : "text-slate-300 group-hover:text-slate-400"
+                                            }`}
                                     >
                                         {nav.name}
                                     </span>
@@ -326,12 +325,11 @@ function UserSidebar() {
                                 style={{
                                     height:
                                         openSubmenu?.type === menuType &&
-                                        openSubmenu?.index === index
-                                            ? `${
-                                                  subMenuHeight[
-                                                      `${menuType}-${index}`
-                                                  ]
-                                              }px`
+                                            openSubmenu?.index === index
+                                            ? `${subMenuHeight[
+                                            `${menuType}-${index}`
+                                            ]
+                                            }px`
                                             : "0px",
                                 }}
                             >
@@ -339,11 +337,10 @@ function UserSidebar() {
                                     {nav.subItems.map((subItem) => (
                                         <li key={subItem.name}>
                                             <Link
-                                                className={`hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-2 font-normal rounded-lg text-[14px] group text-slate-300 ${
-                                                    isActive(subItem.path)
-                                                        ? "text-blue-400"
-                                                        : "text-slate-300 group-hover:text-slate-400"
-                                                }`}
+                                                className={`hover:bg-slate-800 flex items-center w-full gap-3 px-3 py-2 font-normal rounded-lg text-[14px] group text-slate-300 ${isActive(subItem.path)
+                                                    ? "text-blue-400"
+                                                    : "text-slate-300 group-hover:text-slate-400"
+                                                    }`}
                                                 href={subItem.path}
                                             >
                                                 {subItem.name}
@@ -364,8 +361,14 @@ function UserSidebar() {
     return (
         <aside className="sticky mt-1 lg:mt-0 flex flex-col top-0 px-5 left-0 w-72 bg-[#0f172a] text-gray-900 h-screen transition-all duration-300 ease-in-out z-50">
             {/* Logo */}
-            <Link href={"/"} className="h-18 py-3 px-6 mb-4">
-                <img src="/images/logo.png" alt="" className="w-auto h-auto" />
+            <Link href={"/"} className="h-18 py-4.5 px-6 mb-4">
+                <Image
+                    src="/images/logo.png"
+                    alt=""
+                    className="w-auto h-auto"
+                    width={200}
+                    height={50}
+                />
             </Link>
 
             {/* Nav Item */}

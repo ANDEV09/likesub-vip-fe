@@ -12,11 +12,11 @@ function UserProfilePassword() {
         const y =
             containerRef.current.getBoundingClientRect().top +
             window.scrollY -
-            80; 
+            80;
 
         scroll.scrollTo(y, {
-            duration: 1000,               
-            smooth: "easeInOutQuart"      
+            duration: 1000,
+            smooth: "easeInOutQuart"
         });
     }, []);
 
@@ -28,7 +28,7 @@ function UserProfilePassword() {
                     <label htmlFor="" className="text-slate-800 font-medium text-sm">
                         Mật khẩu hiện tại
                     </label>
-                    <input 
+                    <input
                         type="text"
                         className="border border-gray-300 rounded-sm py-1.5 px-4"
                         placeholder="Vui lòng nhập mật khẩu hiện tại"
@@ -38,7 +38,7 @@ function UserProfilePassword() {
                     <label htmlFor="" className="text-slate-800 font-medium text-sm">
                         Mật khẩu mới
                     </label>
-                    <input 
+                    <input
                         type="text"
                         className="border border-gray-300 rounded-sm py-1.5 px-4"
                         placeholder="Vui lòng nhập mật khẩu mới"
@@ -48,19 +48,12 @@ function UserProfilePassword() {
                     <label htmlFor="" className="text-slate-800 font-medium text-sm">
                         Xác nhận mật khẩu
                     </label>
-                    <input 
+                    <input
                         type="text"
                         className="border border-gray-300 rounded-sm py-1.5 px-4"
                         placeholder="Vui lòng xác nhận mật khẩu"
                     />
                 </div>
-            </div>
-
-            {/* Forgot Password */}
-            <div className="w-full">
-                <span className="text-slate-800 hover:text-slate-600 font-medium text-sm underline cursor-pointer">
-                    Quên mật khẩu?
-                </span>
             </div>
 
             {/* Save Button */}

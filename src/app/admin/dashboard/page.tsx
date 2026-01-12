@@ -3,7 +3,14 @@ import MonthlySalesChartAdmin from "@/components/admin/dashboard/MonthlySalesCha
 import MonthlyTarget from "@/components/admin/dashboard/MonthlyTarget";
 import StatisticsChart from "@/components/admin/dashboard/StatisticsChart";
 
-export default function Dashboard() {
+async function getDashboardData() {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    return { title: "Admin Dashboard" };
+}
+
+export default async function Dashboard() {
+    const data = await getDashboardData();
+
     return (
         <div className="p-6 grid grid-cols-12 gap-4 md:gap-6">
             {/* Card & Pie, Bar Chart */}
