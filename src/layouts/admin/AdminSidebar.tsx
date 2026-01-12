@@ -20,6 +20,7 @@ import {
     ShieldCheck
 } from "lucide-react";
 import { useSidebar } from "@/contexts/shared/SidebarContext";
+import Image from "next/image";
 
 interface NavItemType {
     name: string,
@@ -414,11 +415,13 @@ function AdminSidebar() {
     return (
         <aside className="sticky mt-1 lg:mt-0 flex flex-col top-0 px-5 left-0 w-74! bg-[#0f172a] text-gray-900 border-r border-gray-200 h-screen transition-all duration-300 ease-in-out z-50">
             {/* Logo */}
-            <Link href={"/"} className="h-18 py-3 px-6 mb-4">
-                <img
+            <Link href={"/"} className="h-18 py-4.5 px-6 mb-4">
+                <Image
                     src="/images/logo.png"
                     alt=""
                     className="w-auto h-auto"
+                    width={200}
+                    height={50}
                 />
             </Link>
 

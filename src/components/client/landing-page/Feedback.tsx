@@ -5,6 +5,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import { Star } from "lucide-react";
 import "swiper/css";
 import "swiper/css/pagination";
+import Image from "next/image";
 
 export default function Feedback() {
   const feedbacks = [
@@ -77,11 +78,13 @@ export default function Feedback() {
         >
           {feedbacks.map((fb, idx) => (
             <SwiperSlide key={idx}>
-              <div className="flex flex-col items-center text-center min-w-[300px]">
-                <img
+              <div className="flex flex-col items-center text-center min-w-75">
+                <Image
                   src={fb.avatar}
                   alt={fb.name}
                   className="w-16 h-16 rounded-full object-cover mb-4 shadow"
+                  width={16}
+                  height={16}
                 />
                 <div className="flex gap-1 mb-7">
                   {[...Array(5)].map((_, i) => (

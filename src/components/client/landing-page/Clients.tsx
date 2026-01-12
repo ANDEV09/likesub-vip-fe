@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Clients() {
   const socialIcons = [
     {
@@ -51,10 +53,12 @@ export default function Clients() {
               key={icon.name}
               className="bg-white rounded-xl flex items-center justify-center p-8 shadow-md animate-bounce hover:ring-4 hover:ring-cyan-400 hover:ring-opacity-50 transition-all duration-200"
             >
-              <img
+              <Image
                 src={icon.src}
                 alt={icon.name}
-                className="w-20 h-20 object-contain"
+                className="object-contain"
+                width={60}
+                height={60}
               />
             </div>
           ))}

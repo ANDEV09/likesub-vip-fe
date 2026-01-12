@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
@@ -6,7 +7,13 @@ export default function Header() {
       <div className="container mx-auto py-5 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img src="/images/logo.png" alt="LIKESUB-VIP" className="h-9 w-auto" />
+          <Image
+            src="/images/logo.png"
+            alt="LIKESUB-VIP"
+            className="h-9 w-auto"
+            width={200}
+            height={50}
+          />
         </div>
         {/* Menu + Actions */}
         <div className="flex items-center gap-4 font-medium text-sm">

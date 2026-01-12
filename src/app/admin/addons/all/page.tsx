@@ -1,4 +1,5 @@
 import { Check, ShoppingCart } from 'lucide-react';
+import Image from 'next/image';
 
 async function getAddonData() {
     await new Promise((resolve) => setTimeout(resolve, 1200));
@@ -92,14 +93,16 @@ async function AllAddonCards() {
                 {addons.map((addon) => (
                     <div
                         key={addon.id}
-                        className="bg-white rounded-sm shadow-md hover:shadow-xl transition-shadow  duration-300 flex flex-col h-full"
+                        className="bg-white rounded-sm shadow-md hover:shadow-xl transition-shadow group transform duration-300 flex flex-col h-full"
                     >
                         {/* Image Section */}
                         <div className="relative overflow-hidden">
-                            <img
+                            <Image
                                 src={addon.image}
                                 alt={addon.title}
-                                className="w-full h-50 object-cover"
+                                className="w-full h-50 object-cover group-hover:scale-115 transition-transform duration-500"
+                                height={50}
+                                width={300}
                             />
 
                             {addon.badge && (
