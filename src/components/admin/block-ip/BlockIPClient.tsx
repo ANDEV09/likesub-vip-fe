@@ -1,14 +1,16 @@
+"use client"
+
 import {
     CircleX,
-    Search,
+    Plus,
+    Search
 } from "lucide-react";
 
-import AdminSubHeader from "@/layouts/admin/AdminSubHeader";
-import StatisticsCards from "@/components/admin/recharge-bank/StatisticsCards";
-import DepositChart from "@/components/admin/recharge-bank/DepositChart";
+import IPTable from "@/components/admin/block-ip/IPTable";
 
 import { Input } from "@/components/shared/ui/input";
 import { Label } from "@/components/shared/ui/label";
+import { DatePicker } from "@/components/shared/ui/date-picker";
 import {
     Select,
     SelectContent,
@@ -18,97 +20,70 @@ import {
     SelectTrigger,
     SelectValue
 } from "@/components/shared/ui/select";
-import { DatePicker } from "@/components/shared/ui/date-picker";
-import RechartBankTable from "@/components/admin/recharge-bank/RechartBankTable";
-import Summary from "@/components/admin/recharge-bank/Summary";
+import { useState } from "react";
+import AddIPFormModal from "./AddIPFormModal";
 
-async function getRechargeBankData() {
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-    return { title: "Recharge Bank sData" };
-}
-
-async function RechartBankPage() {
-    const data = await getRechargeBankData();
-    const titlePage = "Nạp tiền ngân hàng";
+function BlockIPClient() {
+    const [isShowAddIPFormModal, setIsShowAddIPFormModal] = useState(false);
 
     return (
         <>
-            {/* Page Breadcrumb */}
-            <AdminSubHeader titlePage={titlePage} />
+            {/* Modal */}
+            {
+                isShowAddIPFormModal &&
+                <AddIPFormModal
+                    setIsShowAddIPFormModal={setIsShowAddIPFormModal}
+                />
+            }
 
-            {/* Main Content */}
-            <div className="mt-4 p-6 w-full flex flex-col gap-6">
-                <div className="flex justify-between gap-6 space-y-6">
-                    <StatisticsCards />
-                    <DepositChart />
-                </div>
-
-                {/* Title Page */}
-                <div className="flex flex-col items-center justify-between w-full border-b border-gray-200 bg-white rounded-md">
+            <div className="p-6 w-full flex flex-col gap-6">
+                {/* Users */}
+                <div className="bg-white rounded-md border border-gray-200">
                     {/* Title Page */}
-                    <div className="flex flex-col items-start w-full px-6 py-4 border-b border-gray-200">
-                        <span className="text-lg font-medium text-slate-800">
-                            Lịch sử hoá đơn nạp tiền
-                        </span>
-                        <span className="text-[13px] text-gray-500">
-                            Theo dõi chi tiết các giao dịch nạp tiền theo thời gian.
-                        </span>
+                    <div className="px-6 py-4 flex items-center justify-between w-full border-b border-gray-200">
+                        {/* Left Section - Title */}
+                        <div className="flex flex-col items-start">
+                            <span className="text-lg font-medium text-slate-800">
+                                Danh sách IP bị chặn
+                            </span>
+                        </div>
+
+                        {/* Right Section - Add Button */}
+                        <div className="relative flex items-center gap-4">
+                            <button
+                                onClick={() => setIsShowAddIPFormModal(!isShowAddIPFormModal)}
+                                className="flex items-center gap-2 cursor-pointer text-white px-2.5 py-2 bg-[#846adf] hover:opacity-90 transition-opacity duration-300 rounded-sm"
+                            >
+                                <Plus className="w-4 h-4 text-white" />
+                                <span className="text-[13px] text-white font-bold">
+                                    Thêm IP cần block
+                                </span>
+                            </button>
+                        </div>
                     </div>
 
                     {/* Search & Filter */}
                     <div className="flex flex-col items-start gap-4 py-3 px-6 border-b border-gray-200">
-                        {/* Row 1 - Search Input & Buttons */}
-                        <div className="w-full mt-2 relative flex items-center justify-between gap-4 text-sm!">
-                            {/* User ID */}
-                            <div className="grid w-full items-center gap-3">
-                                <Input
-                                    type="number"
-                                    id="id"
-                                    placeholder="ID thành viên"
-                                    className="shadow-none"
-                                />
-                            </div>
-
-                            {/* User Username */}
-                            <div className="grid w-full items-center gap-3">
+                        {/* Row 1 - Search Input */}
+                        <div className="w-full mt-2 relative flex items-center gap-4 text-sm!">
+                            {/* Search IP Address */}
+                            <div className="grid items-center gap-3">
                                 <Input
                                     type="text"
-                                    id="username"
-                                    placeholder="Tên thành viên"
-                                    className="shadow-none"
+                                    id="address"
+                                    placeholder="Tìm IP"
+                                    className="shadow-none w-60"
                                 />
                             </div>
 
-                            {/* Transaction Code */}
-                            <div className="grid w-full items-center gap-3">
-                                <Input
-                                    type="text"
-                                    id="transactionCode"
-                                    placeholder="Mã giao dịch"
-                                    className="shadow-none"
-                                />
-                            </div>
-
-                            {/* Bank Name */}
-                            <div className="grid w-full items-center gap-3">
-                                <Input
-                                    type="text"
-                                    id="bank"
-                                    placeholder="Ngân hàng"
-                                    className="shadow-none"
-                                />
-                            </div>
-
-                            {/* Time */}
-                            <div className="grid w-full items-center gap-3">
-                                <DatePicker placeholder="Chọn thời gian" className="max-w-60" />
-                            </div>
+                            {/* Date Input */}
+                            <DatePicker className="max-w-60" />
 
                             {/* Buttons */}
                             <div className="flex w-full items-center gap-2">
                                 {/* Search Button */}
                                 <button
-                                    className="w-26 flex items-center gap-1 cursor-pointer text-white px-2.5 py-2 bg-[#846adf] hover:opacity-90 transition-opacity duration-300 rounded-sm"
+                                    className="flex items-center gap-1 cursor-pointer text-white px-2.5 py-2 bg-[#846adf] hover:opacity-90 transition-opacity duration-300 rounded-sm"
                                 >
                                     <Search className="w-4 h-4 text-white" />
                                     <span className="text-[13px] text-white font-bold">
@@ -118,7 +93,7 @@ async function RechartBankPage() {
 
                                 {/* Clear Filter Button */}
                                 <button
-                                    className="w-28 flex items-center gap-1 cursor-pointer text-white px-2.5 py-2 bg-[#e6533c] hover:opacity-80 transition-opacity duration-300 rounded-sm"
+                                    className="flex items-center gap-1 cursor-pointer text-white px-2.5 py-2 bg-[#e6533c] hover:opacity-80 transition-opacity duration-300 rounded-sm"
                                 >
                                     <CircleX className="w-4 h-4 text-white" />
                                     <span className="text-[13px] text-white font-bold">
@@ -151,13 +126,6 @@ async function RechartBankPage() {
                                             <SelectItem value="100">100</SelectItem>
                                             <SelectItem value="500">500</SelectItem>
                                             <SelectItem value="1000">1.000</SelectItem>
-                                            <SelectItem value="5000">5000</SelectItem>
-                                            <SelectItem value="10000">10.000</SelectItem>
-                                            <SelectItem value="12000">15.000</SelectItem>
-                                            <SelectItem value="20000">20.000</SelectItem>
-                                            <SelectItem value="30000">30.000</SelectItem>
-                                            <SelectItem value="40000">40.000</SelectItem>
-                                            <SelectItem value="50000">50.000</SelectItem>
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
@@ -190,16 +158,25 @@ async function RechartBankPage() {
                             </div>
                         </div>
                     </div>
+
+                    {/* Table */}
+                    <IPTable />
+
+                    {/* Bottom Table */}
+                    <div className="flex items-center justify-between py-4 px-6 border-t border-gray-200">
+                        <div className="flex items-center gap-1 text-xs font-medium">
+                            <span className="text-gray-500">Showing</span>
+                            <span className="text-slate-800">1</span>
+                            <span className="text-gray-500">to</span>
+                            <span className="text-slate-800">7</span>
+                            <span className="text-gray-500">of</span>
+                            <span className="text-slate-800">20</span>
+                        </div>
+                    </div>
                 </div>
-
-                {/* Table */}
-                <RechartBankTable />
-
-                {/* Summary */}
-                <Summary />
             </div>
         </>
-    );
+    )
 }
 
-export default RechartBankPage;
+export default BlockIPClient
