@@ -1,3 +1,5 @@
+"use client"
+
 import Badge from "@/components/shared/ui/badge";
 
 import {
