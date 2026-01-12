@@ -3,7 +3,14 @@ import {
     ShoppingCart
 } from 'lucide-react';
 
-function PaymentAddonCards() {
+async function getAddonData() {
+    await new Promise((resolve) => setTimeout(resolve, 1200));
+    return { title: "Addons" };
+}
+
+async function PaymentAddonCards() {
+    const data = await getAddonData();
+
     const addons = [
         {
             id: 1,
